@@ -3,6 +3,7 @@
 var yeoman = require('yeoman-generator'),
   chalk = require('chalk'),
   _ = require('lodash'),
+  jhipsterUtils = require('../../node_modules/generator-jhipster/generators/util'),
   packagejs = require(__dirname + '/../../package.json');
 
 // Stores JHipster variables
@@ -112,20 +113,20 @@ module.exports = yeoman.Base.extend({
       var elementComponentName = this.navElementKeyCamelCased;
 
       // HTML TEMPLATE
-      this.template('src/main/webapp/app/element/element.html', webappDir + 'scripts/app/' + elementComponentName + '/' + elementComponentName + '.html');
+      this.template('src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
 
       // CONTROLLER
-      this.template('src/main/webapp/app/element/element.controller.js', webappDir + 'scripts/app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
+      this.template('src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
 
       // STATE
-      this.template('src/main/webapp/app/element/element.state.js', webappDir + 'scripts/app/' + elementComponentName + '/' + elementComponentName + '.state.js');
+      this.template('src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
 
       // SERVICE
-      this.template('src/main/webapp/app/element/element.service.js', webappDir + 'scripts/app/' + elementComponentName + '/' + elementComponentName + '.service.js');
+      this.template('src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
 
       // DIRECTIVE
       if (this.props.createDirective) {
-        this.template('src/main/webapp/app/element/element.directive.js', webappDir + 'scripts/app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
+        this.template('src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
       }
 
       // ELEMENT JSON
@@ -141,17 +142,27 @@ module.exports = yeoman.Base.extend({
       var i18nValue = this.navElementKey;
       jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', enableTranslation);
 
-      // ENTRIES TO INDEX.HTML
-      // jhipsterFunc.addJavaScriptToIndex('app/' + elementComponentName + '/' + elementComponentName + '.state.js');
-      // jhipsterFunc.addJavaScriptToIndex('app/' + elementComponentName + '/' + elementComponentName + '.service.js');
-      // jhipsterFunc.addJavaScriptToIndex('app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
-      // if (this.props.createDirective) {
-      // jhipsterFunc.addJavaScriptToIndex('app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
-      // }
-
       // ENTRIES TO NAVBAR.HTML
-      var glyphiconName = 'glyphicon-baby-formula';
-      jhipsterFunc.addElementToMenu(elementComponentName, glyphiconName, enableTranslation);
+      var glyphiconName = 'baby-formula';
+      try {
+        var fullPath = webappDir + 'app/layouts/navbar/navbar.html';
+        jhipsterUtils.rewriteFile({
+          file: fullPath,
+          needle: 'jhipster-needle-add-element-to-menu',
+          splicable: [
+            `
+                <li ng-class="{active: vm.$state.includes('${elementComponentName}')}">
+                    <a ui-sref="${elementComponentName}" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-${glyphiconName}"></span>&nbsp;
+                        <span ${enableTranslation ? 'data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
+                    </a>
+                </li>`
+          ]
+        }, this);
+      } catch (e) {
+        this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Reference to ') + elementComponentName + ' ' + chalk.yellow('not added to menu.\n') + chalk.red(JSON.stringify(e)));
+      }
+
 
       // TESTS
       this.template('src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
