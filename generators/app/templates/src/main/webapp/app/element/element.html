@@ -1,0 +1,22 @@
+<div ng-cloak>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+      <% if(createDirective) { %><h6 about-today></h6><% } %>
+      <h6 class="text-right" ng-bind="todayMessage"></h6>
+
+      <h1 class="text-capitalize text-center" data-translate="<%=navElementKeyCamelCased%>.title">Title</h1>
+
+      <h5 class="text-center" data-translate="<%=navElementKeyCamelCased%>.subtitle">Subtitle</h5>
+
+      <hr/>
+
+      <p class="text-justify" data-translate="<%=navElementKeyCamelCased%>.content">
+        Content
+      </p>
+
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
