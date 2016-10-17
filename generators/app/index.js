@@ -112,22 +112,28 @@ module.exports = yeoman.Base.extend({
 
       var elementComponentName = this.navElementKeyCamelCased;
 
+
       // HTML TEMPLATE
       this.template('src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
+
 
       // CONTROLLER
       this.template('src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
 
+
       // STATE
       this.template('src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
 
+
       // SERVICE
       this.template('src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
+
 
       // DIRECTIVE
       if (this.props.createDirective) {
         this.template('src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
       }
+
 
       // ELEMENT JSON
       if (enableTranslation) {
@@ -137,10 +143,12 @@ module.exports = yeoman.Base.extend({
         }, this);
       }
 
+
       // GLOBAL JSON
       var i18nKey = this.navElementKeyCamelCased;
       var i18nValue = this.navElementKey;
       jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', enableTranslation);
+
 
       // ENTRIES TO NAVBAR.HTML
       var glyphiconName = 'baby-formula';
@@ -160,7 +168,7 @@ module.exports = yeoman.Base.extend({
           ]
         }, this);
       } catch (e) {
-        this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Reference to ') + elementComponentName + ' ' + chalk.yellow('not added to menu.\n') + chalk.red(JSON.stringify(e)));
+        this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Reference to ') + elementComponentName + ' ' + chalk.yellow('not added to menu.\n') + chalk.red(e) + '\n');
       }
 
 
