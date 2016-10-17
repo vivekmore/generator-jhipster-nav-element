@@ -76,32 +76,14 @@ module.exports = yeoman.Base.extend({
       this.navElementKey = this.props.navElementKey;
       this.createDirective = this.props.createDirective;
 
-      this.navElementKeyCamelCased = this.navElementKey;
-      if (this.navElementKey) {
-
-        if (this.navElementKey.indexOf('-') !== -1) {
-          this.navElementKeyCamelCased = this.navElementKey.replace(/-([a-z])/g, function (match) {
-            return match[1].toUpperCase();
-          });
-
-        } else if (this.navElementKey.indexOf('_') !== -1) {
-          this.navElementKeyCamelCased = this.navElementKey.replace(/_([a-z])/g, function (match) {
-            return match[1].toUpperCase();
-          });
-
-        } else if (this.navElementKey.indexOf(' ') !== -1) {
-          var s = this.navElementKey.replace(' ', '-');
-          this.navElementKeyCamelCased = s.replace(/-([a-z])/g, function (match) {
-            return match[1].toUpperCase();
-          });
-        }
-
+      if (!!this.navElementKey) {
+        var s = this.navElementKey.trim().replace(' ', '-').replace('_', '-');
+        this.navElementKeyCamelCased = _.camelCase(s);
+        this.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
       } else {
         this.log('Invalid navElementKey provided');
         return;
       }
-
-      this.navElementKeyCapitalized = this.navElementKeyCamelCased.charAt(0).toUpperCase() + this.navElementKeyCamelCased.slice(1);
 
       this.log('baseName=' + this.baseName);
       this.log('packageName=' + this.packageName);
