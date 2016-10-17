@@ -1,0 +1,54 @@
+{
+  "name": "generator-jhipster-nav-element",
+  "version": "0.0.0",
+  "description": "This generator allows adding of new nav elements (and a template/controller/state components suite)",
+  "keywords": [
+    "yeoman-generator",
+    "jhipster-module"
+  ],
+  "homepage": "https://github.com/vivekmore/generator-jhipster-nav-element",
+  "author": {
+    "name": "Vivek More",
+    "email": "vivz.thats.me@gmail.com",
+    "url": "https://github.com/vivekmore"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekmore/generator-jhipster-nav-element.git"
+  },
+  "dependencies": {
+    "yeoman-generator": "0.22.4",
+    "chalk": "1.1.1",
+    "mkdirp": "0.5.1",
+    "generator-jhipster": ">=3.9.1"
+  },
+  "devDependencies": {
+    "fs-extra": "0.26.4",
+    "gulp": "^3.9.0",
+    "gulp-bump": "1.0.0",
+    "gulp-eslint": "1.0.0",
+    "gulp-exclude-gitignore": "1.0.0",
+    "gulp-git": "1.6.1",
+    "gulp-istanbul": "0.10.3",
+    "gulp-mocha": "2.2.0",
+    "gulp-nsp": "2.3.0",
+    "gulp-plumber": "1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-sequence": "0.4.4",
+    "gulp-shell": "^0.5.1",
+    "mocha": "2.3.4",
+    "yeoman-assert": "2.1.1",
+    "yeoman-test": "1.0.0"
+  },
+  "scripts": {
+    "test": "mocha test/*"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"
+  }
+}
