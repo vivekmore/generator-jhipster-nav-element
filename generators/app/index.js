@@ -165,10 +165,6 @@ module.exports = yeoman.Base.extend({
     }
   },
 
-  install: function () {
-    this.installDependencies();
-  },
-
   end: function () {
     this.log('End of nav-element generator');
   }
