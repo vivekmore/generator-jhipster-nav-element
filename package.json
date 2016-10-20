@@ -46,7 +46,7 @@
     "yeoman-test": "1.5.1"
   },
   "scripts": {
-    "test": "mocha --reporter spec test/*.js "
+    "test": "mocha --reporter spec test/test-*.js "
   },
   "license": "Apache-2.0",
   "bugs": {

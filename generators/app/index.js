@@ -67,10 +67,7 @@ module.exports = yeoman.Base.extend({
       this.baseName = jhipsterVar.baseName;
       this.packageName = jhipsterVar.packageName;
       this.angularAppName = jhipsterVar.angularAppName;
-      var javaDir = jhipsterVar.javaDir;
-      var resourceDir = jhipsterVar.resourceDir;
-      var webappDir = jhipsterVar.webappDir;
-      var enableTranslation = jhipsterVar.enableTranslation;
+      this.enableTranslation = jhipsterVar.enableTranslation;
 
       this.message = this.props.message;
       this.navElementKey = this.props.navElementKey;
@@ -85,16 +82,20 @@ module.exports = yeoman.Base.extend({
         return;
       }
 
+      this.log('------------------------------------------------------------\n');
       this.log('baseName=' + this.baseName);
       this.log('packageName=' + this.packageName);
       this.log('angularAppName=' + this.angularAppName);
+      this.log('enableTranslation=' + this.enableTranslation);
       this.log('navElementKey=' + this.navElementKey);
       this.log('navElementKeyCamelCased=' + this.navElementKeyCamelCased);
       this.log('navElementKeyCapitalized=' + this.navElementKeyCapitalized);
+      this.log('------------------------------------------------------------\n');
 
       var elementComponentName = this.navElementKeyCamelCased;
 
 
+      var webappDir = jhipsterVar.webappDir;
       // HTML TEMPLATE
       this.template('src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
 
@@ -118,8 +119,9 @@ module.exports = yeoman.Base.extend({
 
 
       // ELEMENT JSON
-      if (enableTranslation) {
+      if (this.enableTranslation) {
         jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
+          this.log('processing for ' + language);
           var fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
           this.template('src/main/webapp/i18n/lang/element.json', fullPath);
         }, this);
@@ -129,7 +131,7 @@ module.exports = yeoman.Base.extend({
       // GLOBAL JSON
       var i18nKey = this.navElementKeyCamelCased;
       var i18nValue = this.navElementKey;
-      jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', enableTranslation);
+      jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', this.enableTranslation);
 
 
       // ENTRIES TO NAVBAR.HTML
@@ -144,7 +146,7 @@ module.exports = yeoman.Base.extend({
                 <li ng-class="{active: vm.$state.includes('${elementComponentName}')}">
                     <a ui-sref="${elementComponentName}" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-${glyphiconName}"></span>&nbsp;
-                        <span ${enableTranslation ? 'data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
+                        <span ${this.enableTranslation ? 'data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
                     </a>
                 </li>`
           ]
