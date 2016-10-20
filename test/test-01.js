@@ -34,41 +34,8 @@ const constants = require('../node_modules/generator-jhipster/generators/generat
 
       changed: [
         {
-          file: CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html',
-          content: `
-                <li ui-sref-active="active">
-                    <a ui-sref="aboutUs" ng-click="vm.collapseNavbar()">
-                        <span class="glyphicon glyphicon-baby-formula"></span>&nbsp;
-                        <span>About Us</span>
-                    </a>
-                </li>
-<!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-`
-        },
-        {
-          file: CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
-          content: `{}
-`
-        },
-        {
-          file: CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
-          content: `{}
-`
-        }
-      ],
-
-      changes: [
-        {
           actual: CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html',
           expected: TEST_TEMPLATE_DIR + 'app/layouts/navbar/navbar.html'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
-          expected: TEST_TEMPLATE_DIR + 'i18n/en/global.json',
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
-          expected: TEST_TEMPLATE_DIR + 'i18n/fr/global.json',
         }
       ]
 
@@ -108,16 +75,6 @@ describe('default template : navElementKey="" : createDirective=true', function 
 
   it('modifies all files as expected', function () {
     _.forEach(expectedFiles.client.changed, function (change) {
-      var actualContent = fs.readFileSync(change.file, 'utf8');
-
-      // need to do this because yeoman returns a weird content from it's in-memory file system
-      actualContent = actualContent.replace(/(\\n)/, '\n');
-      assert.textEqual(actualContent, change.content);
-    });
-  });
-
-  it('modifies navbar', function () {
-    _.forEach(expectedFiles.client.changes, function (change) {
       var actualContent = fs.readFileSync(change.actual, 'utf8');
       var expectedContent = fs.readFileSync(change.expected, 'utf8');
       assert.textEqual(actualContent, expectedContent);
