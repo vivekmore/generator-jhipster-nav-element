@@ -73,7 +73,7 @@ describe('default template : navElementKey="" : createDirective=true', function 
   });
 
   it('modifies navbar', function () {
-    assert.fileContent(expectedFiles.client.changed.navbarHtml, /.*(<li ng-class="\{active: vm\.\$state\.includes\('aboutUs'\)\}">)(.|\n)*glyphicon/);
+    assert.fileContent(expectedFiles.client.changed.navbarHtml, /.*(<li ng-class="\{active: vm\.\$state\.includes\('aboutUs'\)\}">)(\n)*(.|\n)*glyphicon/);
   });
 
 });
