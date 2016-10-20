@@ -136,10 +136,10 @@ module.exports = yeoman.Base.extend({
           needle: 'jhipster-needle-add-element-to-menu',
           splicable: [
             `
-                <li ng-class="{active: vm.$state.includes('${elementComponentName}')}">
+                <li ui-sref-active="active">
                     <a ui-sref="${elementComponentName}" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-${glyphiconName}"></span>&nbsp;
-                        <span ${this.enableTranslation ? 'data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
+                        <span${this.enableTranslation ? ' data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
                     </a>
                 </li>`
           ]
