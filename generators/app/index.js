@@ -22,9 +22,7 @@ module.exports = yeoman.Base.extend({
             jhipsterVar: jhipsterVar,
             jhipsterFunc: jhipsterFunc
           }
-        },
-        this.options.testmode ? {local: require.resolve('generator-jhipster/generators/modules')} : null
-      );
+        });
     },
     displayLogo: function () {
       // Have Yeoman greet the user.
@@ -73,14 +71,9 @@ module.exports = yeoman.Base.extend({
       this.navElementKey = this.props.navElementKey;
       this.createDirective = this.props.createDirective;
 
-      if (!!this.navElementKey) {
-        var s = this.navElementKey.trim().replace(' ', '-').replace('_', '-');
-        this.navElementKeyCamelCased = _.camelCase(s);
-        this.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
-      } else {
-        this.log('Invalid navElementKey provided');
-        return;
-      }
+      var s = this.navElementKey.trim().replace(' ', '-').replace('_', '-');
+      this.navElementKeyCamelCased = _.camelCase(s);
+      this.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
 
       this.log('------------------------------------------------------------\n');
       this.log('baseName=' + this.baseName);
