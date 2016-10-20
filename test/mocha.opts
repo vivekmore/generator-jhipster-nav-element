@@ -1,0 +1,7 @@
+--colors
+--reporter spec
+--ui tdd
+--timeout 2000
+
+test/test-*.js
+
