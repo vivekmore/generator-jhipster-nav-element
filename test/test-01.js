@@ -6,12 +6,7 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 var fse = require('fs-extra');
 
-var deps = [
-  [helpers.createDummyGenerator(), 'jhipster:modules']
-];
-
 const constants = require('../node_modules/generator-jhipster/generators/generator-constants'),
-  TEST_DIR = constants.TEST_DIR,
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
@@ -31,18 +26,21 @@ const expectedFiles = {
       CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.state.spec.js'
     ],
 
-    changed: [
-      CLIENT_MAIN_SRC_DIR + 'index.html',
-      CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html',
+    notAdded: [
+      CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json',
+      CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json'
+    ],
 
-      CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
-      CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json'
-    ]
+    changed: {
+      navbarHtml: CLIENT_MAIN_SRC_DIR +'app/layouts/navbar/navbar.html',
+      enGlobalJson: CLIENT_MAIN_SRC_DIR +'i18n/en/global.json',
+      frGlobalJson: CLIENT_MAIN_SRC_DIR +'i18n/fr/global.json'
+    }
   }
 
 };
 
-describe('JHipster generator', function () {
+describe('default template : navElementKey="" : createDirective=true', function () {
 
   beforeEach(function (done) {
 
@@ -56,20 +54,26 @@ describe('JHipster generator', function () {
         skipInstall: true
       })
       .withPrompts({
-        'navElementKey': 'about-us',
+        'navElementKey': '',
         'createDirective': true
       })
-      .withGenerators(deps)
+      .withGenerators([path.join(__dirname, '../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });
 
   });
 
-  it('creates expected files for default configuration for client generator', function () {
+  it('creates expected files', function () {
     assert.file(expectedFiles.client.added);
-    assert.file(expectedFiles.client.changed);
-    console.log('test passed');
+  });
+
+  it('does not create i18n component.json', function () {
+    assert.noFile(expectedFiles.client.notAdded);
+  });
+
+  it('modifies navbar', function () {
+    assert.fileContent(expectedFiles.client.changed.navbarHtml, /.*(<li ng-class="\{active: vm\.\$state\.includes\('aboutUs'\)\}">)(.|\n)*glyphicon/);
   });
 
 });
