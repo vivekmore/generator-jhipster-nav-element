@@ -50,7 +50,6 @@ describe('default template : navElementKey="" : createDirective=true', function 
         fse.copySync(path.join(__dirname, '../test/templates/01-default'), dir)
       })
       .withOptions({
-        testmode: true,
         skipInstall: true
       })
       .withPrompts({
