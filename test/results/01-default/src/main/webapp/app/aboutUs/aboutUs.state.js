@@ -2,29 +2,29 @@
     'use strict';
 
     angular
-        .module('<%=angularAppName%>')
+        .module('myappApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('<%=navElementKeyCamelCased%>', {
+        $stateProvider.state('aboutUs', {
             parent: 'app',
-            url: '/<%=navElementKeyCamelCased%>',
+            url: '/aboutUs',
             data: {
                 authorities: [],
-                pageTitle: 'global.menu.<%=navElementKeyCamelCased%>'
+                pageTitle: 'global.menu.aboutUs'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/<%=navElementKeyCamelCased%>/<%=navElementKeyCamelCased%>.html',
-                    controller: '<%=controllerName%>',
-                    controllerAs: '<%=navElementKeyCamelCased%>Vm'
+                    templateUrl: 'app/aboutUs/aboutUs.html',
+                    controller: 'AboutUsController',
+                    controllerAs: 'aboutUsVm'
                 }
             },
             resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('<%=navElementKeyCamelCased%>');
+                    $translatePartialLoader.addPart('aboutUs');
                     return $translate.refresh();
                 }]
             }

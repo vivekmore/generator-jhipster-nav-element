@@ -74,6 +74,7 @@ module.exports = yeoman.Base.extend({
       var s = this.navElementKey.trim().replace(' ', '-').replace('_', '-');
       this.navElementKeyCamelCased = _.camelCase(s);
       this.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
+      this.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
 
       this.log('------------------------------------------------------------\n');
       this.log('baseName=' + this.baseName);
@@ -81,6 +82,7 @@ module.exports = yeoman.Base.extend({
       this.log('angularAppName=' + this.angularAppName);
       this.log('enableTranslation=' + this.enableTranslation);
       this.log('navElementKey=' + this.navElementKey);
+      this.log('controllerName=' + this.controllerName);
       this.log('navElementKeyCamelCased=' + this.navElementKeyCamelCased);
       this.log('navElementKeyCapitalized=' + this.navElementKeyCapitalized);
       this.log('------------------------------------------------------------\n');

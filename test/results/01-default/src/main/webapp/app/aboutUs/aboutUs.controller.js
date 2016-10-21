@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('<%=angularAppName%>')
-        .controller('<%=controllerName%>', <%=controllerName%>);
+        .module('myappApp')
+        .controller('AboutUsController', AboutUsController);
 
-    <%=controllerName%>.$inject = ['$scope', '<%=navElementKeyCapitalized%>Service'];
+    AboutUsController.$inject = ['$scope', 'AboutUsService'];
 
-    function <%=controllerName%>($scope, <%=navElementKeyCapitalized%>Service) {
+    function AboutUsController($scope, AboutUsService) {
         var vm = this;
 
         $scope.todayMessage = todayToString();
@@ -24,7 +24,7 @@
         }
 
         function dateWithOrdinal(date) {
-            return date + <%=navElementKeyCapitalized%>Service.getOrdinalIndicator(date);
+            return date + AboutUsService.getOrdinalIndicator(date);
         }
 
     }
