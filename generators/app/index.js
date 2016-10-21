@@ -76,6 +76,8 @@ module.exports = yeoman.Base.extend({
       this.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
       this.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
       this.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
+      this.directiveName = 'aboutToday';
+      this.directiveKebabCased = _.kebabCase(this.directiveName.trim());
 
       this.log('------------------------------------------------------------\n');
       this.log('baseName=' + this.baseName);
@@ -85,6 +87,8 @@ module.exports = yeoman.Base.extend({
       this.log('navElementKey=' + this.navElementKey);
       this.log('controllerName=' + this.controllerName);
       this.log('serviceName=' + this.serviceName);
+      this.log('directiveName=' + this.directiveName);
+      this.log('directiveKebabCased=' + this.directiveKebabCased);
       this.log('navElementKeyCamelCased=' + this.navElementKeyCamelCased);
       this.log('navElementKeyCapitalized=' + this.navElementKeyCapitalized);
       this.log('------------------------------------------------------------\n');

@@ -3,7 +3,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-      <% if(createDirective) { %><h6 about-today></h6><% } %>
+      <% if(createDirective) { %><h6 <%=directiveKebabCased%>></h6><% } %>
       <h6 class="text-right" ng-bind="todayMessage"></h6>
 
       <h1 class="text-capitalize text-center" data-translate="<%=navElementKeyCamelCased%>.title">Title</h1>
