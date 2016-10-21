@@ -3,11 +3,11 @@
 
     angular
         .module('<%=angularAppName%>')
-        .factory('<%=navElementKeyCapitalized%>Service', <%=navElementKeyCapitalized%>Service);
+        .factory('<%=serviceName%>', <%=serviceName%>);
 
-    <%=navElementKeyCapitalized%>Service.$inject = ['$resource'];
+    <%=serviceName%>.$inject = ['$resource'];
 
-    function <%=navElementKeyCapitalized%>Service($resource) {
+    function <%=serviceName%>($resource) {
         var service = {
             getOrdinalIndicator: getOrdinalIndicator
         };

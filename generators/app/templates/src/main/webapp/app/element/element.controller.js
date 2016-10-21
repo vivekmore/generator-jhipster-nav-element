@@ -5,9 +5,9 @@
         .module('<%=angularAppName%>')
         .controller('<%=controllerName%>', <%=controllerName%>);
 
-    <%=controllerName%>.$inject = ['$scope', '<%=navElementKeyCapitalized%>Service'];
+    <%=controllerName%>.$inject = ['$scope', '<%=serviceName%>'];
 
-    function <%=controllerName%>($scope, <%=navElementKeyCapitalized%>Service) {
+    function <%=controllerName%>($scope, <%=serviceName%>) {
         var vm = this;
 
         $scope.todayMessage = todayToString();
@@ -24,7 +24,7 @@
         }
 
         function dateWithOrdinal(date) {
-            return date + <%=navElementKeyCapitalized%>Service.getOrdinalIndicator(date);
+            return date + <%=serviceName%>.getOrdinalIndicator(date);
         }
 
     }
