@@ -5,9 +5,9 @@
         .module('<%=angularAppName%>')
         .directive('aboutToday', aboutToday);
 
-    aboutToday.$inject = ['<%=navElementKeyCapitalized%>Service'];
+    aboutToday.$inject = ['<%=serviceName%>'];
 
-    function aboutToday(<%=navElementKeyCapitalized%>Service) {
+    function aboutToday(<%=serviceName%>) {
 
         var directive = {
             restrict: 'A',
@@ -25,7 +25,7 @@
             var date = today.getDate();
 
             scope.weekday = today.toLocaleString('en-us', {weekday: 'long'});
-            scope.dateWithOrdinal = date + <%=navElementKeyCapitalized%>Service.getOrdinalIndicator(date);
+            scope.dateWithOrdinal = date + <%=serviceName%>.getOrdinalIndicator(date);
             scope.month = today.toLocaleString('en-us', {month: 'long'});
             scope.fullYear = today.getFullYear();
         }
