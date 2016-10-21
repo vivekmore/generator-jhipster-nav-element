@@ -1,2 +1,0 @@
-hello nav-element!
-It's dummy.txt
