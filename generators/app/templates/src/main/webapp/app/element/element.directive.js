@@ -3,11 +3,11 @@
 
     angular
         .module('<%=angularAppName%>')
-        .directive('aboutToday', aboutToday);
+        .directive('<%=directiveName%>', <%=directiveName%>);
 
-    aboutToday.$inject = ['<%=serviceName%>'];
+    <%=directiveName%>.$inject = ['<%=serviceName%>'];
 
-    function aboutToday(<%=serviceName%>) {
+    function <%=directiveName%>(<%=serviceName%>) {
 
         var directive = {
             restrict: 'A',
