@@ -1,9 +1,5 @@
 'use strict';
 
-describe('<%=navElementKeyCapitalized%> Controller Tests', function () {
+describe('<%=controllerName%>', function () {
 
-  describe('<%=navElementKeyCapitalized%>Controller', function () {
-
-
-  });
 });
