@@ -50,7 +50,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "license": "Apache-2.0",
   "bugs": {
