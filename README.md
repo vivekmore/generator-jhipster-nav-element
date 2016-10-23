@@ -25,7 +25,15 @@ To update this module:
 npm update -g generator-jhipster-nav-element
 ```
 
+
 # Usage
+
+To run the module on a JHipster generated application:
+
+```bash
+yo jhipster-nav-element
+```
+
 
 # License
 
