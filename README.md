@@ -37,6 +37,6 @@ Apache-2.0 © [Vivek More]
 [travis-image]: https://travis-ci.org/vivekmore/generator-jhipster-nav-element.svg?branch=master
 [travis-url]: https://travis-ci.org/vivekmore/generator-jhipster-nav-element
 [daviddm-image]: https://david-dm.org/vivekmore/generator-jhipster-nav-element.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/vivekmore/generator-jhipster-module
+[daviddm-url]: https://david-dm.org/vivekmore/generator-jhipster-nav-element
 [coveralls-image]: https://coveralls.io/repos/github/vivekmore/generator-jhipster-nav-element/badge.svg
 [coveralls-url]: https://coveralls.io/github/vivekmore/generator-jhipster-nav-element
