@@ -28,6 +28,7 @@
     "yeoman-generator": "0.22.4"
   },
   "devDependencies": {
+    "coveralls": "^2.11.14",
     "fs": "0.0.1-security",
     "fs-extra": "0.30.0",
     "gulp": "^3.9.0",
