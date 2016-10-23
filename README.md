@@ -1,5 +1,5 @@
 # generator-jhipster-nav-element
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status][coveralls-image]][coveralls-url]
 > JHipster module, This generator allows adding of new nav elements (and a template/controller/state components suite)
 
 # Introduction
@@ -38,3 +38,5 @@ Apache-2.0 © [Vivek More]
 [travis-url]: https://travis-ci.org/vivekmore/generator-jhipster-nav-element
 [daviddm-image]: https://david-dm.org/vivekmore/generator-jhipster-nav-element.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/vivekmore/generator-jhipster-module
+[coveralls-image]: https://coveralls.io/repos/github/vivekmore/generator-jhipster-nav-element/badge.svg
+[coveralls-url]: https://coveralls.io/github/vivekmore/generator-jhipster-nav-element
