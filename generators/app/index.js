@@ -136,7 +136,7 @@ module.exports = yeoman.Base.extend({
 
 
       // ENTRIES TO NAVBAR.HTML
-      var glyphiconName = 'baby-formula';
+      var glyphiconName = 'asterisk';
       try {
         var fullPath = webappDir + 'app/layouts/navbar/navbar.html';
         jhipsterUtils.rewriteFile({
