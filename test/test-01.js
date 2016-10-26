@@ -9,7 +9,7 @@ var fse = require('fs-extra');
 var _ = require('lodash');
 
 const constants = require('../node_modules/generator-jhipster/generators/generator-constants'),
-  RESULTS_DIR = __dirname + '/results/01-default',
+  RESULTS_DIR = __dirname + '/results/about-us/01-default',
   RESULT_CLIENT_MAIN_SRC_DIR = RESULTS_DIR + '/src/main/webapp/',
   RESULT_CLIENT_TEST_SRC_DIR = RESULTS_DIR + '/src/test/javascript/',
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
@@ -83,6 +83,7 @@ describe('default template : navElementKey="" : createDirective=true', function 
         skipInstall: true
       })
       .withPrompts({
+        'templateType': 'ABOUT-US',
         'navElementKey': '',
         'createDirective': true
       })

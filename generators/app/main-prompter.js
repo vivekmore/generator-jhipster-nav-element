@@ -1,7 +1,7 @@
 'use strict';
 
 var chalk = require('chalk'),
-    constants = require('./constants');
+  constants = require('./constants');
 
 module.exports = {
   askToChooseATemplate,
@@ -20,19 +20,18 @@ function askToChooseATemplate(generator) {
     message: 'Which *type* of template would you like to use?',
     choices: [
       {
-        value: constants.TEMPLATE_TYPE.DEFAULT,
-        name: 'About Us'
+        name: 'About Us',
+        value: constants.TEMPLATE_TYPE.DEFAULT
       },
       {
-        value: constants.TEMPLATE_TYPE.FAQ,
-        name: 'Frequently Asked Questions'
+        name: 'Frequently Asked Questions',
+        value: constants.TEMPLATE_TYPE.FAQ
       },
       {
-        value: constants.TEMPLATE_TYPE.CONTACT_US,
-        name: 'Contact Us'
+        name: 'Contact Us',
+        value: constants.TEMPLATE_TYPE.CONTACT_US
       }
-    ],
-    default: constants.TEMPLATE_TYPE.DEFAULT
+    ]
 
   }).then(function (prompt) {
     generator.props.templateType = prompt.templateType;

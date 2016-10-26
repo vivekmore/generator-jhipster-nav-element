@@ -58,7 +58,9 @@ module.exports = Generator.extend({
     }
   },
 
-  configuring: {},
+  configuring: function () {
+    this.templateDir = _.toLower(this.props.templateType) + '/';
+  },
 
   props: {},
 
