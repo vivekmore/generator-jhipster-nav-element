@@ -50,24 +50,24 @@ function write(generator) {
 
   var webappDir = jhipsterVar.webappDir;
   // HTML TEMPLATE
-  generator.template('src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
+  generator.template(generator.templateDir + 'src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
 
 
   // CONTROLLER
-  generator.template('src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
+  generator.template(generator.templateDir + 'src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
 
 
   // STATE
-  generator.template('src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
+  generator.template(generator.templateDir + 'src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
 
 
   // SERVICE
-  generator.template('src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
+  generator.template(generator.templateDir + 'src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
 
 
   // DIRECTIVE
   if (generator.props.createDirective) {
-    generator.template('src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
+    generator.template(generator.templateDir + 'src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
   }
 
 
@@ -76,7 +76,7 @@ function write(generator) {
     jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
       generator.log('processing for ' + language);
       var fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
-      generator.template('src/main/webapp/i18n/lang/element.json', fullPath);
+      generator.template(generator.templateDir + 'src/main/webapp/i18n/lang/element.json', fullPath);
     }, this);
   }
 
@@ -106,11 +106,11 @@ function write(generator) {
 
 
   // TESTS
-  generator.template('src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
-  generator.template('src/test/javascript/spec/app/element/element.state.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
-  generator.template('src/test/javascript/spec/app/element/element.service.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
+  generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
+  generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.state.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
+  generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.service.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
   if (generator.props.createDirective) {
-    generator.template('src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
+    generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
   }
 
 }
