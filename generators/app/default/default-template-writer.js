@@ -1,0 +1,116 @@
+'use strict';
+
+var _ = require('lodash'),
+    jhipsterUtils = require('../../../node_modules/generator-jhipster/generators/util');
+
+module.exports = {
+  write
+};
+
+function write(generator) {
+
+  // console.log(JSON.stringify(generator));
+
+  var jhipsterVar = generator.inheritedStuff.jhipsterVar;
+  var jhipsterFunc = generator.inheritedStuff.jhipsterFunc;
+
+  generator.baseName = jhipsterVar.baseName;
+  generator.packageName = jhipsterVar.packageName;
+  generator.angularAppName = jhipsterVar.angularAppName;
+  generator.enableTranslation = jhipsterVar.enableTranslation;
+
+  generator.message = generator.props.message;
+  generator.navElementKey = generator.props.navElementKey;
+  generator.createDirective = generator.props.createDirective;
+
+  var s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
+  generator.navElementKeyCamelCased = _.camelCase(s);
+  generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
+  generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
+  generator.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
+  generator.directiveName = 'aboutToday';
+  generator.directiveKebabCased = _.kebabCase(generator.directiveName.trim());
+
+  generator.log('------------------------------------------------------------');
+  generator.log('baseName=' + generator.baseName);
+  generator.log('packageName=' + generator.packageName);
+  generator.log('angularAppName=' + generator.angularAppName);
+  generator.log('enableTranslation=' + generator.enableTranslation);
+  generator.log('navElementKey=' + generator.navElementKey);
+  generator.log('controllerName=' + generator.controllerName);
+  generator.log('serviceName=' + generator.serviceName);
+  generator.log('directiveName=' + generator.directiveName);
+  generator.log('directiveKebabCased=' + generator.directiveKebabCased);
+  generator.log('navElementKeyCamelCased=' + generator.navElementKeyCamelCased);
+  generator.log('navElementKeyCapitalized=' + generator.navElementKeyCapitalized);
+  generator.log('------------------------------------------------------------');
+
+  var elementComponentName = generator.navElementKeyCamelCased;
+
+
+  var webappDir = jhipsterVar.webappDir;
+  // HTML TEMPLATE
+  generator.template('src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
+
+
+  // CONTROLLER
+  generator.template('src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
+
+
+  // STATE
+  generator.template('src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
+
+
+  // SERVICE
+  generator.template('src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
+
+
+  // DIRECTIVE
+  if (generator.props.createDirective) {
+    generator.template('src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
+  }
+
+
+  // ELEMENT JSON
+  if (generator.enableTranslation) {
+    jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
+      generator.log('processing for ' + language);
+      var fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
+      generator.template('src/main/webapp/i18n/lang/element.json', fullPath);
+    }, this);
+  }
+
+
+  // GLOBAL JSON
+  var i18nKey = generator.navElementKeyCamelCased;
+  var i18nValue = generator.navElementKey;
+  jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', generator.enableTranslation);
+
+
+  // ENTRIES TO NAVBAR.HTML
+  var glyphiconName = 'asterisk';
+  var fullPath = webappDir + 'app/layouts/navbar/navbar.html';
+  jhipsterUtils.rewriteFile({
+    file: fullPath,
+    needle: 'jhipster-needle-add-element-to-menu',
+    splicable: [
+      `
+                <li ui-sref-active="active">
+                    <a ui-sref="${elementComponentName}" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-${glyphiconName}"></span>&nbsp;
+                        <span${generator.enableTranslation ? ' data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
+                    </a>
+                </li>`
+    ]
+  }, generator);
+
+
+  // TESTS
+  generator.template('src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
+  generator.template('src/test/javascript/spec/app/element/element.state.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
+  generator.template('src/test/javascript/spec/app/element/element.service.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
+  if (generator.props.createDirective) {
+    generator.template('src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
+  }
+
+}
