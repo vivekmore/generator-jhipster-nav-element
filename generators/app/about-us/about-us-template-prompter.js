@@ -1,16 +1,11 @@
 'use strict';
 var path = require('path'),
   util = require('util'),
-  _ = require('lodash'),
   yeoman = require('yeoman-generator'),
   chalk = require('chalk'),
-  // jhipsterUtils = require('./util'),
-  Insight = require('insight'),
   fs = require('fs'),
   shelljs = require('shelljs'),
-  // packagejs = require('../package.json'),
   semver = require('semver'),
-  exec = require('child_process').exec,
   os = require('os'),
   pluralize = require('pluralize');
 
