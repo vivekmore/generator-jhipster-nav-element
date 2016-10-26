@@ -1,13 +1,6 @@
 'use strict';
-var path = require('path'),
-  util = require('util'),
-  yeoman = require('yeoman-generator'),
-  chalk = require('chalk'),
-  fs = require('fs'),
-  shelljs = require('shelljs'),
-  semver = require('semver'),
-  os = require('os'),
-  pluralize = require('pluralize');
+var util = require('util'),
+  yeoman = require('yeoman-generator');
 
 module.exports = DefaultGenerator;
 
