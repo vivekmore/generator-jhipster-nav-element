@@ -23,13 +23,13 @@ DefaultGenerator.prototype.defaultTemplateQuestions = function (generator) {
       type: 'input',
       name: 'navElementKey',
       message: 'What would you like the nav element id to be? (e.g. aboutUs, about-us)',
-      // validate: function (input) {
-      //   if (/^([a-zA-Z0-9_]*)$/.test(input)) {
-      //     return true;
-      //   } else {
-      //     return 'Your nav element id cannot contain special characters or a blank space';
-      //   }
-      // },
+      validate: function (input) {
+        if (/^([a-zA-Z0-9_]*)$/.test(input)) {
+          return true;
+        } else {
+          return 'Your nav element id cannot contain special characters or a blank space';
+        }
+      },
       default: 'about-us'
     },
     {
