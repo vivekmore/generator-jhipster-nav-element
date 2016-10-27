@@ -7,9 +7,10 @@ var helpers = require('yeoman-test');
 var fs = require('fs');
 var fse = require('fs-extra');
 var _ = require('lodash');
+var navElementConstants = require('../../../generators/app/constants');
 
-const constants = require('../node_modules/generator-jhipster/generators/generator-constants'),
-  RESULTS_DIR = __dirname + '/results/about-us/01-default',
+const constants = require('../../../node_modules/generator-jhipster/generators/generator-constants'),
+  RESULTS_DIR = __dirname + '/results',
   RESULT_CLIENT_MAIN_SRC_DIR = RESULTS_DIR + '/src/main/webapp/',
   RESULT_CLIENT_TEST_SRC_DIR = RESULTS_DIR + '/src/test/javascript/',
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
@@ -52,42 +53,53 @@ const constants = require('../node_modules/generator-jhipster/generators/generat
         {
           actual: CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.state.spec.js',
           expected: RESULT_CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.state.spec.js'
+        },
+        {
+          actual: CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json',
+          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json'
+        },
+        {
+          actual: CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json',
+          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json'
         }
-      ],
-
-      notAdded: [
-        CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json',
-        CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json'
       ],
 
       changed: [
         {
           actual: CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html',
           expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html'
+        },
+        {
+          actual: CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
+          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
+        },
+        {
+          actual: CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
+          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
         }
       ]
 
     }
   };
 
-describe('default template : navElementKey="" : createDirective=true', function () {
+describe('translation-enabled', function () {
 
   before(function (done) {
 
     helpers
-      .run(path.join(__dirname, '../generators/app'))
+      .run(path.join(__dirname, '../../../generators/app'))
       .inTmpDir(function (dir) {
-        fse.copySync(path.join(__dirname, '../test/templates/01-default'), dir)
+        fse.copySync(path.join(__dirname, '/playground'), dir)
       })
       .withOptions({
         skipInstall: true
       })
       .withPrompts({
-        'templateType': 'ABOUT-US',
+        'templateType': navElementConstants.TEMPLATE_TYPE.DEFAULT,
         'navElementKey': '',
         'createDirective': true
       })
-      .withGenerators([path.join(__dirname, '../node_modules/generator-jhipster/generators/modules')])
+      .withGenerators([path.join(__dirname, '../../../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });
@@ -105,10 +117,6 @@ describe('default template : navElementKey="" : createDirective=true', function 
       assert.textEqual(actualContent, expectedContent);
     });
 
-  });
-
-  it('does not create i18n component.json', function () {
-    assert.noFile(expectedFiles.client.notAdded);
   });
 
   it('modifies all files as expected', function () {
