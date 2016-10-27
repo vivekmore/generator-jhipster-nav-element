@@ -1,0 +1,24 @@
+{
+  "client": {
+    "added": [
+      "app/aboutUs/aboutUs.controller.js",
+      "app/aboutUs/aboutUs.directive.js",
+      "app/aboutUs/aboutUs.service.js",
+      "app/aboutUs/aboutUs.state.js",
+      "app/aboutUs/aboutUs.html",
+      "i18n/en/aboutUs.json",
+      "i18n/fr/aboutUs.json"
+    ],
+    "addedTests": [
+      "spec/app/aboutUs/aboutUs.controller.spec.js",
+      "spec/app/aboutUs/aboutUs.directive.spec.js",
+      "spec/app/aboutUs/aboutUs.service.spec.js",
+      "spec/app/aboutUs/aboutUs.state.spec.js"
+    ],
+    "changed": [
+      "app/layouts/navbar/navbar.html",
+      "i18n/en/global.json",
+      "i18n/fr/global.json"
+    ]
+  }
+}

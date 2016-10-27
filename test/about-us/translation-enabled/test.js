@@ -8,79 +8,14 @@ var fs = require('fs');
 var fse = require('fs-extra');
 var _ = require('lodash');
 var navElementConstants = require('../../../generators/app/constants');
+var expectedFiles = require('./expectations.json');
 
 const constants = require('../../../node_modules/generator-jhipster/generators/generator-constants'),
   RESULTS_DIR = __dirname + '/results',
   RESULT_CLIENT_MAIN_SRC_DIR = RESULTS_DIR + '/src/main/webapp/',
   RESULT_CLIENT_TEST_SRC_DIR = RESULTS_DIR + '/src/test/javascript/',
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
-  CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR,
-  expectedFiles = {
-    client: {
-      added: [
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.controller.js',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.controller.js'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.directive.js',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.directive.js'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.service.js',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.service.js'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.state.js',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.state.js'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.html',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/aboutUs/aboutUs.html'
-        },
-        {
-          actual: CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.controller.spec.js',
-          expected: RESULT_CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.controller.spec.js'
-        },
-        {
-          actual: CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.directive.spec.js',
-          expected: RESULT_CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.directive.spec.js'
-        },
-        {
-          actual: CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.service.spec.js',
-          expected: RESULT_CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.service.spec.js'
-        },
-        {
-          actual: CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.state.spec.js',
-          expected: RESULT_CLIENT_TEST_SRC_DIR + 'spec/app/aboutUs/aboutUs.state.spec.js'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/en/aboutUs.json'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/fr/aboutUs.json'
-        }
-      ],
-
-      changed: [
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'app/layouts/navbar/navbar.html'
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/en/global.json',
-        },
-        {
-          actual: CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
-          expected: RESULT_CLIENT_MAIN_SRC_DIR + 'i18n/fr/global.json',
-        }
-      ]
-
-    }
-  };
+  CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
 describe('translation-enabled', function () {
 
@@ -106,14 +41,27 @@ describe('translation-enabled', function () {
 
   });
 
-  it('creates expected files', function () {
+  it('creates expected production files', function () {
 
     _.forEach(expectedFiles.client.added, function (change) {
 
-      assert.file(change.actual);
+      assert.file(CLIENT_MAIN_SRC_DIR + change);
 
-      var actualContent = fs.readFileSync(change.actual, 'utf8');
-      var expectedContent = fs.readFileSync(change.expected, 'utf8');
+      var actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      var expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      assert.textEqual(actualContent, expectedContent);
+    });
+
+  });
+
+  it('creates expected test files', function () {
+
+    _.forEach(expectedFiles.client.addedTests, function (change) {
+
+      assert.file(CLIENT_TEST_SRC_DIR + change);
+
+      var actualContent = fs.readFileSync(CLIENT_TEST_SRC_DIR + change, 'utf8');
+      var expectedContent = fs.readFileSync(RESULT_CLIENT_TEST_SRC_DIR + change, 'utf8');
       assert.textEqual(actualContent, expectedContent);
     });
 
@@ -121,8 +69,8 @@ describe('translation-enabled', function () {
 
   it('modifies all files as expected', function () {
     _.forEach(expectedFiles.client.changed, function (change) {
-      var actualContent = fs.readFileSync(change.actual, 'utf8');
-      var expectedContent = fs.readFileSync(change.expected, 'utf8');
+      var actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      var expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
       assert.textEqual(actualContent, expectedContent);
     });
   });
