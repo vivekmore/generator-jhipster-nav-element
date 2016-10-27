@@ -7,10 +7,11 @@ var helpers = require('yeoman-test');
 var fs = require('fs');
 var fse = require('fs-extra');
 var _ = require('lodash');
+var constants = require('../../../node_modules/generator-jhipster/generators/generator-constants');
 var navElementConstants = require('../../../generators/app/constants');
 var expectedFiles = require('./expectations.json');
 
-const constants = require('../../../node_modules/generator-jhipster/generators/generator-constants'),
+const
   RESULTS_DIR = __dirname + '/results',
   RESULT_CLIENT_MAIN_SRC_DIR = RESULTS_DIR + '/src/main/webapp/',
   RESULT_CLIENT_TEST_SRC_DIR = RESULTS_DIR + '/src/test/javascript/',
