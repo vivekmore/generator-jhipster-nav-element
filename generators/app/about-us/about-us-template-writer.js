@@ -9,8 +9,6 @@ module.exports = {
 
 function write(generator) {
 
-  // console.log(JSON.stringify(generator));
-
   var jhipsterVar = generator.inheritedStuff.jhipsterVar;
   var jhipsterFunc = generator.inheritedStuff.jhipsterFunc;
 
@@ -89,21 +87,8 @@ function write(generator) {
 
   // ENTRIES TO NAVBAR.HTML
   var glyphiconName = 'asterisk';
-  var fullPath = webappDir + 'app/layouts/navbar/navbar.html';
-  jhipsterUtils.rewriteFile({
-    file: fullPath,
-    needle: 'jhipster-needle-add-element-to-menu',
-    splicable: [
-      `
-                <li ui-sref-active="active">
-                    <a ui-sref="${elementComponentName}" ng-click="vm.collapseNavbar()">
-                        <span class="glyphicon glyphicon-${glyphiconName}"></span>&nbsp;
-                        <span${generator.enableTranslation ? ' data-translate="global.menu.' + elementComponentName + '"' : ''}>${_.startCase(elementComponentName)}</span>
-                    </a>
-                </li>`
-    ]
-  }, generator);
 
+    jhipsterFunc.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation);
 
   // TESTS
   generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
