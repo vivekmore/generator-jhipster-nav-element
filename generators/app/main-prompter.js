@@ -1,16 +1,16 @@
 'use strict';
 
 var chalk = require('chalk'),
-  constants = require('./constants');
+  constants = require('./constants'),
+  defaultTemplatePrompter = require('./about-us/about-us-template-prompter'),
+  faqTemplatePrompter = require('./faq/faq-template-prompter');
 
 module.exports = {
-  askToChooseATemplate,
-  askContactUsTemplateQuestions,
-  askFaqTemplateQuestions,
-  askDefaultTemplateQuestions
+  promptToChooseATemplate,
+  promptTemplateSpecificQuestions
 };
 
-function askToChooseATemplate(generator) {
+function promptToChooseATemplate(generator) {
 
   var done = generator.async();
 
@@ -37,17 +37,34 @@ function askToChooseATemplate(generator) {
     generator.props.templateType = prompt.templateType;
     // To access props later use this.props.someOption;
     done();
-  }.bind(this));
+  });
+}
+
+function promptTemplateSpecificQuestions(generator) {
+  switch (generator.props.templateType) {
+    case constants.TEMPLATE_TYPE.CONTACT_US:
+      askContactUsTemplateQuestions(generator);
+      break;
+    case constants.TEMPLATE_TYPE.FAQ:
+      askFaqTemplateQuestions(generator);
+      break;
+    case constants.TEMPLATE_TYPE.DEFAULT:
+      askDefaultTemplateQuestions(generator);
+      break;
+    default:
+      generator.log('The templateType [' + generator.props.templateType + '] is unknown');
+      break;
+  }
 }
 
 function askContactUsTemplateQuestions(generator) {
-  generator.defaultTemplateQuestions(generator);
+  // TODO: implement
 }
 
 function askFaqTemplateQuestions(generator) {
-  generator.defaultTemplateQuestions(generator);
+  faqTemplatePrompter.askQuestions(generator);
 }
 
 function askDefaultTemplateQuestions(generator) {
-  generator.defaultTemplateQuestions(generator);
+  defaultTemplatePrompter.askQuestions(generator);
 }

@@ -25,7 +25,7 @@ function write(generator) {
   generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
   generator.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
-  generator.directiveName = 'aboutToday';
+  generator.directiveName = 'faqToday';
   generator.directiveKebabCased = _.kebabCase(generator.directiveName.trim());
 
   generator.log('------------------------------------------------------------');
