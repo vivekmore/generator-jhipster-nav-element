@@ -5,7 +5,7 @@ module.exports = {
 };
 
 /**
- * Ask questions required to build the default template
+ * Ask questions required to build the faq template
  *
  * @param {object} generator - generator instance to use
  */
@@ -23,7 +23,7 @@ function askQuestions(generator) {
           return 'Your nav element id cannot contain special characters or a blank space';
         }
       },
-      default: 'about-us'
+      default: 'faq'
     },
     {
       type: 'list',

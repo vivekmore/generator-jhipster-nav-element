@@ -1,26 +1,22 @@
 'use strict';
 
 var yeoman = require('yeoman-generator'),
-  constants = require('./constants'),
-  prompts = require('./main-prompter'),
-  defaultTemplatePrompter = require('./about-us/about-us-template-prompter'),
-  defaultTemplateWriter = require('./about-us/about-us-template-writer'),
-  util = require('util'),
+  mainPrompter = require('./main-prompter'),
+  mainWriter = require('./main-writer'),
   chalk = require('chalk'),
   _ = require('lodash'),
-  packagejs = require(__dirname + '/../../package.json');
+  packageJson = require(__dirname + '/../../package.json');
 
 // JHipster variables & functions
 var jhipsterVar = {moduleName: 'nav-element'};
 var jhipsterFunc = {};
 
 var Generator = yeoman.Base.extend({});
-util.inherits(Generator, defaultTemplatePrompter);
 
 module.exports = Generator.extend({
 
   initializing: {
-    compose: function (args) {
+    compose: function () {
       this.composeWith('jhipster:modules',
         {
           options: {
@@ -31,30 +27,17 @@ module.exports = Generator.extend({
     },
     displayLogo: function () {
       // Have Yeoman greet the user.
-      this.log('Welcome to the ' + chalk.red('JHipster nav-element') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
+      this.log('Welcome to the ' + chalk.red('JHipster nav-element') + ' generator! ' + chalk.yellow('v' + packageJson.version + '\n'));
     }
   },
 
   prompting: {
-    askToChooseATemplate: function () {
-      prompts.askToChooseATemplate(this);
+    chooseATemplate: function () {
+      mainPrompter.promptToChooseATemplate(this);
     },
 
-    askTemplateSpecificQuestions: function () {
-      switch (this.props.templateType) {
-      case constants.TEMPLATE_TYPE.CONTACT_US:
-        prompts.askContactUsTemplateQuestions(this);
-        break;
-      case constants.TEMPLATE_TYPE.FAQ:
-        prompts.askFaqTemplateQuestions(this);
-        break;
-      case constants.TEMPLATE_TYPE.DEFAULT:
-        prompts.askDefaultTemplateQuestions(this);
-        break;
-      default:
-        this.log('The templateType [' + this.props.templateType + '] is unknown');
-        break;
-      }
+    templateSpecificQuestions: function () {
+      mainPrompter.promptTemplateSpecificQuestions(this);
     }
   },
 
@@ -70,12 +53,12 @@ module.exports = Generator.extend({
   },
 
   writing: {
-    writeFromDefaultTemplate: function () {
-      defaultTemplateWriter.write(this);
+    writeTemplateSpecificFiles: function () {
+      mainWriter.writeTemplate(this);
     }
   },
 
   end: function () {
-    this.log('End of nav-element generator');
+    this.log('End of nav element generation');
   }
 });
