@@ -42,18 +42,18 @@ module.exports = Generator.extend({
 
     askTemplateSpecificQuestions: function () {
       switch (this.props.templateType) {
-        case constants.TEMPLATE_TYPE.CONTACT_US:
-          prompts.askContactUsTemplateQuestions(this);
-          break;
-        case constants.TEMPLATE_TYPE.FAQ:
-          prompts.askFaqTemplateQuestions(this);
-          break;
-        case constants.TEMPLATE_TYPE.DEFAULT:
-          prompts.askDefaultTemplateQuestions(this);
-          break;
-        default:
-          this.log('The templateType [' + this.props.templateType + '] is unknown');
-          break;
+      case constants.TEMPLATE_TYPE.CONTACT_US:
+        prompts.askContactUsTemplateQuestions(this);
+        break;
+      case constants.TEMPLATE_TYPE.FAQ:
+        prompts.askFaqTemplateQuestions(this);
+        break;
+      case constants.TEMPLATE_TYPE.DEFAULT:
+        prompts.askDefaultTemplateQuestions(this);
+        break;
+      default:
+        this.log('The templateType [' + this.props.templateType + '] is unknown');
+        break;
       }
     }
   },
