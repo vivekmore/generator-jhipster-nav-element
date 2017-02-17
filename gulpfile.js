@@ -79,9 +79,11 @@
     });
   });
 
-  gulp.task('publish', shell.task([
-    'npm publish'
-  ]));
+  gulp.task('publish', function () {
+    shell.task([
+      'npm publish'
+    ]);
+  });
 
   function bump(level) {
     return function () {
