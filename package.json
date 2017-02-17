@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This generator allows adding of new nav elements (and a template/controller/state components suite)",
   "keywords": [
     "yeoman-generator",
@@ -31,8 +31,8 @@
     "coveralls": "^2.11.14",
     "fs": "0.0.1-security",
     "fs-extra": "0.30.0",
-    "gulp": "^3.9.0",
-    "gulp-bump": "1.0.0",
+    "gulp": "3.9.0",
+    "gulp-bump": "2.6.1",
     "gulp-eslint": "1.0.0",
     "gulp-exclude-gitignore": "1.0.0",
     "gulp-git": "1.6.1",
@@ -41,7 +41,7 @@
     "gulp-nsp": "2.3.0",
     "gulp-plumber": "1.0.1",
     "gulp-rename": "^1.2.0",
-    "gulp-sequence": "0.4.4",
+    "gulp-sequence": "0.4.6",
     "gulp-shell": "^0.5.1",
     "istanbul": "^0.4.5",
     "mocha": "3.0.2",
