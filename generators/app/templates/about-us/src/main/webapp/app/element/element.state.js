@@ -21,12 +21,6 @@
                     controller: '<%=controllerName%>',
                     controllerAs: 'vm'
                 }
-            },
-            resolve: {
-                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('<%=navElementKeyCamelCased%>');
-                    return $translate.refresh();
-                }]
             }
         });
     }
