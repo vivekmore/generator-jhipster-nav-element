@@ -19,7 +19,7 @@
                 'content@': {
                     templateUrl: 'app/faq/faq.html',
                     controller: 'FaqController',
-                    controllerAs: 'faqVm'
+                    controllerAs: 'vm'
                 }
             },
             resolve: {
