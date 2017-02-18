@@ -10,7 +10,7 @@
     function FaqController($scope, FaqService) {
         var vm = this;
 
-        $scope.todayMessage = todayToString();
+        $scope.controllerMessage = todayToString();
 
         vm.todayToString = todayToString;
 
