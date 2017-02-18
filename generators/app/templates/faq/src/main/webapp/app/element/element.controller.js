@@ -10,7 +10,7 @@
     function <%=controllerName%>($scope, <%=serviceName%>) {
         var vm = this;
 
-        $scope.todayMessage = todayToString();
+        $scope.controllerMessage = todayToString();
 
         vm.todayToString = todayToString;
 
