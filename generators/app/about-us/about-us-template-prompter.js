@@ -18,7 +18,7 @@ function askQuestions(generator) {
       name: 'navElementKey',
       message: 'What would you like the nav element id to be? (e.g. aboutUs, about_us)',
       validate: elementIdValidator.validate,
-      default: 'about-us'
+      default: 'about_us'
     },
     {
       type: 'list',
