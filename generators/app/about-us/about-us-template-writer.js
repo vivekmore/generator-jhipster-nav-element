@@ -88,7 +88,7 @@ function write(generator) {
   // ENTRIES TO NAVBAR.HTML
   var glyphiconName = 'asterisk';
 
-    jhipsterFunc.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation);
+  jhipsterFunc.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation);
 
   // TESTS
   generator.template(generator.templateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
