@@ -1,5 +1,7 @@
 'use strict';
 
+const elementIdValidator = require('../validators/element-id-validator');
+
 module.exports = {
   askQuestions
 };
@@ -15,14 +17,8 @@ function askQuestions(generator) {
     {
       type: 'input',
       name: 'navElementKey',
-      message: 'What would you like the nav element id to be? (e.g. aboutUs, about-us)',
-      validate: function (input) {
-        if (/^([a-zA-Z0-9_]*)$/.test(input)) {
-          return true;
-        } else {
-          return 'Your nav element id cannot contain special characters or a blank space';
-        }
-      },
+      message: 'What would you like the nav element id to be? (e.g. frequentlyAskedQuestions, frequently_asked_questions)',
+      validate: elementIdValidator.validate,
       default: 'faq'
     },
     {
