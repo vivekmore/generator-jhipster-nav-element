@@ -1,15 +1,15 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var fs = require('fs');
-var fse = require('fs-extra');
-var _ = require('lodash');
-var constants = require('../../../node_modules/generator-jhipster/generators/generator-constants');
-var navElementConstants = require('../../../generators/app/constants');
-var expectedFiles = require('./expectations.json');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const fs = require('fs');
+const fse = require('fs-extra');
+const _ = require('lodash');
+const constants = require('../../../node_modules/generator-jhipster/generators/generator-constants');
+const navElementConstants = require('../../../generators/app/constants');
+const expectedFiles = require('./expectations.json');
 
 const
   RESULTS_DIR = __dirname + '/results',
@@ -18,7 +18,7 @@ const
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
-describe('translation-enabled', function () {
+describe('default template | translation-enabled', function () {
 
   before(function (done) {
 
@@ -48,8 +48,8 @@ describe('translation-enabled', function () {
 
       assert.file(CLIENT_MAIN_SRC_DIR + change);
 
-      var actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      var expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
       assert.textEqual(actualContent, expectedContent);
     });
 
@@ -61,8 +61,8 @@ describe('translation-enabled', function () {
 
       assert.file(CLIENT_TEST_SRC_DIR + change);
 
-      var actualContent = fs.readFileSync(CLIENT_TEST_SRC_DIR + change, 'utf8');
-      var expectedContent = fs.readFileSync(RESULT_CLIENT_TEST_SRC_DIR + change, 'utf8');
+      const actualContent = fs.readFileSync(CLIENT_TEST_SRC_DIR + change, 'utf8');
+      const expectedContent = fs.readFileSync(RESULT_CLIENT_TEST_SRC_DIR + change, 'utf8');
       assert.textEqual(actualContent, expectedContent);
     });
 
@@ -70,8 +70,8 @@ describe('translation-enabled', function () {
 
   it('modifies all files as expected', function () {
     _.forEach(expectedFiles.client.changed, function (change) {
-      var actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      var expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+      const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
       assert.textEqual(actualContent, expectedContent);
     });
   });

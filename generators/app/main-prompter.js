@@ -26,10 +26,6 @@ function promptToChooseATemplate(generator) {
       {
         name: 'Frequently Asked Questions',
         value: constants.TEMPLATE_TYPE.FAQ
-      },
-      {
-        name: 'Contact Us',
-        value: constants.TEMPLATE_TYPE.CONTACT_US
       }
     ]
 
@@ -42,23 +38,13 @@ function promptToChooseATemplate(generator) {
 
 function promptTemplateSpecificQuestions(generator) {
   switch (generator.props.templateType) {
-    case constants.TEMPLATE_TYPE.CONTACT_US:
-      askContactUsTemplateQuestions(generator);
-      break;
     case constants.TEMPLATE_TYPE.FAQ:
       askFaqTemplateQuestions(generator);
       break;
     case constants.TEMPLATE_TYPE.DEFAULT:
       askDefaultTemplateQuestions(generator);
       break;
-    default:
-      generator.log('The templateType [' + generator.props.templateType + '] is unknown');
-      break;
   }
-}
-
-function askContactUsTemplateQuestions(generator) {
-  // TODO: implement
 }
 
 function askFaqTemplateQuestions(generator) {
