@@ -19,7 +19,7 @@
                 'content@': {
                     templateUrl: 'app/aboutUs/aboutUs.html',
                     controller: 'AboutUsController',
-                    controllerAs: 'aboutUsVm'
+                    controllerAs: 'vm'
                 }
             },
             resolve: {

@@ -19,7 +19,7 @@
                 'content@': {
                     templateUrl: 'app/<%=navElementKeyCamelCased%>/<%=navElementKeyCamelCased%>.html',
                     controller: '<%=controllerName%>',
-                    controllerAs: '<%=navElementKeyCamelCased%>Vm'
+                    controllerAs: 'vm'
                 }
             },
             resolve: {
