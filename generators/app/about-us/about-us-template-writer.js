@@ -26,6 +26,7 @@ function write(generator) {
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
   generator.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
   generator.directiveName = 'aboutToday';
+  generator.navElementTranslationPart = _.camelCase(s);
   generator.directiveKebabCased = _.kebabCase(generator.directiveName.trim());
 
   generator.log('------------------------------------------------------------');
@@ -79,7 +80,7 @@ function write(generator) {
 
 
   // GLOBAL JSON
-  var i18nKey = generator.navElementKeyCamelCased;
+  var i18nKey = generator.navElementTranslationPart;
   var i18nValue = generator.navElementKey;
   jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', generator.enableTranslation);
 

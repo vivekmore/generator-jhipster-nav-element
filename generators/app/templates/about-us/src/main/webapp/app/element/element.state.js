@@ -21,6 +21,14 @@
                     controller: '<%=controllerName%>',
                     controllerAs: 'vm'
                 }
+            <%_ if (enableTranslation) {  _%>
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('<%=navElementTranslationPart%>');
+                    return $translate.refresh();
+                }]
+            <%_ } _%>
             }
         });
     }
