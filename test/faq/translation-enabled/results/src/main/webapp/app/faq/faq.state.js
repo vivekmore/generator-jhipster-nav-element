@@ -21,6 +21,12 @@
                     controller: 'FaqController',
                     controllerAs: 'vm'
                 }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('faq');
+                    return $translate.refresh();
+                }]
             }
         });
     }
