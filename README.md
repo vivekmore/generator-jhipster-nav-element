@@ -34,6 +34,14 @@ To run the module on a JHipster generated application:
 yo jhipster-nav-element
 ```
 
+**Compatibility table**: 
+
+| generator-jhipster-nav-element | generator-jhipster |
+| ------------------------------ | ------------------ |
+| <1.0.0                         | >=3.12.1 <4.0.0    |
+| >=1.0.0                        | >=4.0.0            |
+
+
 
 # License
 
