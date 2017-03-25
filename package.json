@@ -12,6 +12,10 @@
     "email": "vivz.thats.me@gmail.com",
     "url": "https://github.com/vivekmore"
   },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=2.14.2"
+  },
   "files": [
     "generators"
   ],
