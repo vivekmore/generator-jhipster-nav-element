@@ -3,6 +3,7 @@
 var chalk = require('chalk'),
   constants = require('./constants'),
   defaultTemplatePrompter = require('./about-us/about-us-template-prompter'),
+  defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter'),
   faqTemplatePrompter = require('./faq/faq-template-prompter');
 
 module.exports = {
@@ -52,5 +53,9 @@ function askFaqTemplateQuestions(generator) {
 }
 
 function askDefaultTemplateQuestions(generator) {
-  defaultTemplatePrompter.askQuestions(generator);
+  if (generator.inheritedStuff.jhipsterVar.clientFramework === 'angular2') {
+    defaultNg2TemplatePrompter.askQuestions(generator);
+  } else {
+    defaultTemplatePrompter.askQuestions(generator);
+  }
 }
