@@ -102,8 +102,6 @@ function write(generator) {
 
 
   // ENTRIES TO NAVBAR.HTML
-  var glyphiconName = 'asterisk';
-
   // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
   var navbarPath = `${jhipsterVar.CONSTANTS.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
   jhipsterUtils.rewriteFile({
