@@ -15,6 +15,7 @@ function write(generator) {
   generator.packageName = jhipsterVar.packageName;
   generator.angularAppName = jhipsterVar.angularAppName;
   generator.enableTranslation = jhipsterVar.enableTranslation;
+  generator.clientFramework = jhipsterVar.clientFramework;
 
   generator.message = generator.props.message;
   generator.navElementKey = generator.props.navElementKey;

@@ -1,0 +1,25 @@
+{
+  "client": {
+    "added": [
+      "src/main/webapp/app/about-us/about-us.component.html",
+      "src/main/webapp/app/about-us/about-us.component.ts",
+      "src/main/webapp/app/about-us/about-us.module.ts",
+      "src/main/webapp/app/about-us/about-us.route.ts",
+      "src/main/webapp/app/about-us/about-us.scss",
+      "src/main/webapp/app/about-us/index.ts",
+      "src/main/webapp/i18n/en/about-us.json",
+      "src/main/webapp/i18n/fr/about-us.json"
+    ],
+    "addedTests": [
+      "src/test/javascript/spec/app/about-us/about-us.component.spec.ts"
+    ],
+    "skipped": [
+    ],
+    "changed": [
+      "src/main/webapp/app/layouts/navbar/navbar.component.html",
+      "src/main/webapp/app/app.module.ts",
+      "src/main/webapp/i18n/en/global.json",
+      "src/main/webapp/i18n/fr/global.json"
+    ]
+  }
+}

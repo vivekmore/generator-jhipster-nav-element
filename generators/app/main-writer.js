@@ -2,6 +2,7 @@
 
 var constants = require('./constants'),
   defaultTemplateWriter = require('./about-us/about-us-template-writer'),
+  defaultNg2TemplateWriter = require('./about-us/about-us-ng2-template-writer'),
   faqTemplateWriter = require('./faq/faq-template-writer');
 
 module.exports = {
@@ -24,5 +25,10 @@ function writeFaqTemplate(generator) {
 }
 
 function writeDefaultTemplate(generator) {
-  defaultTemplateWriter.write(generator);
+  if (generator.inheritedStuff.jhipsterVar.clientFramework === 'angular2') {
+    defaultNg2TemplateWriter.write(generator);
+  } else {
+    defaultTemplateWriter.write(generator);
+  }
+
 }

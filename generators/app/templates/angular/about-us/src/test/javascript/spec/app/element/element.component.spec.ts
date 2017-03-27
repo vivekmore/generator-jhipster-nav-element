@@ -1,0 +1,3 @@
+describe('<%=componentName%> Tests', () => {
+
+});
