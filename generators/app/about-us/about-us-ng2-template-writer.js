@@ -86,6 +86,16 @@ function write(generator) {
     webappDir + 'app/' + componentDirName + '/' + componentName + '.scss');
 
 
+  // APP MODULE
+  jhipsterFunc.replaceContent(webappDir + 'app/app.module.ts',
+    '@NgModule',
+    `import {${generator.moduleName}} from './${componentDirName}/${generator.moduleTsName}';\n@NgModule`);
+
+  jhipsterFunc.replaceContent(webappDir + 'app/app.module.ts',
+    'imports: [',
+    `imports: [\n${generator.moduleName},\n`);
+
+
   // ELEMENT JSON
   if (generator.enableTranslation) {
     jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
