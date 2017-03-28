@@ -13,6 +13,6 @@ function validate(input) {
   if (/^([a-zA-Z0-9_]*)$/.test(input)) {
     return true;
   } else {
-    return 'Nav element id cannot contain special characters (except _) or a blank space.';
+    return 'Nav element may contain only alphanumeric values and underscores';
   }
 }
