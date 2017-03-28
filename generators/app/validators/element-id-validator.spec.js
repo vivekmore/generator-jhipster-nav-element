@@ -25,7 +25,7 @@ describe('element-id-validator', function () {
 
       const actual = elementIdValidator.validate(testValue);
 
-      const expected = "Nav element id cannot contain special characters (except _) or a blank space.";
+      const expected = "Nav element may contain only alphanumeric values and underscores";
       assert.strictEqual(actual, expected, "validate() should return [" + expected + "] for [" + testValue + "]");
 
     });
