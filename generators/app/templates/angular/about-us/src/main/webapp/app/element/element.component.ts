@@ -14,6 +14,7 @@ export class <%=componentName%> implements OnInit {
 
   constructor(private jhiLanguageService: JhiLanguageService) {
     this.jhiLanguageService.setLocations(['<%=locationName%>']);
+    this.message = '<%=componentName%> message';
   }
 
   ngOnInit() {

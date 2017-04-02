@@ -14,6 +14,7 @@ export class AboutUsComponent implements OnInit {
 
   constructor(private jhiLanguageService: JhiLanguageService) {
     this.jhiLanguageService.setLocations(['about-us']);
+    this.message = 'AboutUsComponent message';
   }
 
   ngOnInit() {
