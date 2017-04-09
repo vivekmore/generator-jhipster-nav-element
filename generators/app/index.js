@@ -11,19 +11,12 @@ var yeoman = require('yeoman-generator'),
 var jhipsterVar = {moduleName: 'nav-element'};
 var jhipsterFunc = {};
 
-var Generator = yeoman.Base.extend({});
-
-module.exports = Generator.extend({
+module.exports = yeoman.extend({
 
   initializing: {
     compose: function () {
       this.composeWith('jhipster:modules',
-        {
-          options: {
-            jhipsterVar: jhipsterVar,
-            jhipsterFunc: jhipsterFunc
-          }
-        });
+        {jhipsterVar, jhipsterFunc});
     },
     displayLogo: function () {
       // Have Yeoman greet the user.
@@ -54,6 +47,16 @@ module.exports = Generator.extend({
 
   writing: {
     writeTemplateSpecificFiles: function () {
+
+      // function to use directly template
+      this.template = function (source, destination) {
+        this.fs.copyTpl(
+          this.templatePath(source),
+          this.destinationPath(destination),
+          this
+        );
+      };
+
       mainWriter.writeTemplate(this);
     }
   },
