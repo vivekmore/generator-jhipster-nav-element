@@ -13,7 +13,7 @@ const expectedFiles = require('./expectations.json');
 
 const RESULTS_DIR = __dirname + '/results/';
 
-describe('default angular template', function () {
+describe('default angular template - translation enabled', function () {
 
   before(function (done) {
 
