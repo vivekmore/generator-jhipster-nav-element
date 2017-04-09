@@ -114,17 +114,29 @@ function write(generator) {
   // ENTRIES TO NAVBAR.HTML
   // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
   var navbarPath = `${jhipsterVar.CONSTANTS.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-  jhipsterUtils.rewriteFile({
-    file: navbarPath,
-    needle: 'jhipster-needle-add-element-to-menu',
-    splicable: [`
+  var navbarCode;
+  if (generator.enableTranslation) {
+    navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
                     <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
                     <span jhiTranslate="global.menu.${generator.componentI18nKey}">${generator.tabName}</span>
                 </a>
-            </li>`
-    ]
+            </li>`;
+  } else {
+    navbarCode = `
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
+                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
+                    <span>${generator.tabName}</span>
+                </a>
+            </li>`;
+  }
+
+  jhipsterUtils.rewriteFile({
+    file: navbarPath,
+    needle: 'jhipster-needle-add-element-to-menu',
+    splicable: [navbarCode]
   }, generator);
 
   // TESTS

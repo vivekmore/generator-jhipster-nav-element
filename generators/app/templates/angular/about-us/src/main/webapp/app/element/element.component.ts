@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {JhiLanguageService} from 'ng-jhipster';
-
+<% if (enableTranslation) {  %>import {JhiLanguageService} from 'ng-jhipster';
+<% } %>
 @Component({
   selector: '<%=selector%>',
   templateUrl: './<%=templateName%>',
@@ -12,9 +12,9 @@ export class <%=componentName%> implements OnInit {
 
   message: string;
 
-  constructor(private jhiLanguageService: JhiLanguageService) {
-    this.jhiLanguageService.setLocations(['<%=locationName%>']);
-    this.message = '<%=componentName%> message';
+  constructor(<% if (enableTranslation) {  %>private jhiLanguageService: JhiLanguageService<%}%>) {
+    <% if (enableTranslation) {  %>this.jhiLanguageService.setLocations(['<%=locationName%>']);
+    <%}%>this.message = '<%=componentName%> message';
   }
 
   ngOnInit() {
