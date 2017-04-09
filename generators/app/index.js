@@ -15,8 +15,7 @@ module.exports = yeoman.extend({
 
   initializing: {
     compose: function () {
-      this.composeWith('jhipster:modules',
-        {jhipsterVar, jhipsterFunc});
+      this.composeWith('jhipster:modules', {jhipsterVar, jhipsterFunc});
     },
     displayLogo: function () {
       // Have Yeoman greet the user.
@@ -40,10 +39,7 @@ module.exports = yeoman.extend({
 
   props: {},
 
-  inheritedStuff: {
-    jhipsterVar: jhipsterVar,
-    jhipsterFunc: jhipsterFunc
-  },
+  inheritedStuff: {jhipsterVar, jhipsterFunc},
 
   writing: {
     writeTemplateSpecificFiles: function () {
