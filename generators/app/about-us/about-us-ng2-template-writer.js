@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-const jhipsterUtils = require('generator-jhipster/generators/util');
+const jhipsterUtils = require('generator-jhipster/generators/utils');
 
 module.exports = {
   write
