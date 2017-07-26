@@ -29,6 +29,7 @@
     "generator-jhipster": "4.6.2",
     "lodash": "4.17.4",
     "mkdirp": "0.5.1",
+    "tabtab": "^2.2.2",
     "yeoman-generator": "1.1.1"
   },
   "devDependencies": {
