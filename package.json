@@ -56,6 +56,7 @@
   },
   "scripts": {
     "test": "mocha",
+    "preinstall": "npm rebuild",
     "preversion": "npm i && npm prune && npm test",
     "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
