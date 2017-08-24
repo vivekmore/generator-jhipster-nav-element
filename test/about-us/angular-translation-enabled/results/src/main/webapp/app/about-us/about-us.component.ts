@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
   selector: 'jhi-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: [
-    'about-us.scss'
+    'about-us.css'
   ]
 })
 export class AboutUsComponent implements OnInit {

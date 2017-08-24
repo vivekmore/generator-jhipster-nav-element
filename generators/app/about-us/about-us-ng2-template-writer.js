@@ -16,6 +16,7 @@ function write(generator) {
   generator.packageName = jhipsterVar.packageName;
   generator.angularAppName = jhipsterVar.angularAppName;
   generator.enableTranslation = jhipsterVar.enableTranslation;
+  generator.useSass = jhipsterVar.useSass;
 
   generator.message = generator.props.message;
   generator.navElementKey = generator.props.navElementKey;
@@ -25,6 +26,7 @@ function write(generator) {
   generator.componentI18nKey = _.kebabCase(s).toLowerCase();
   generator.selector = 'jhi-' + _.kebabCase(s).toLowerCase();
   generator.templateName = _.kebabCase(s).toLowerCase() + '.component.html';
+  generator.cssName = _.kebabCase(s).toLowerCase() + '.css';
   generator.scssName = _.kebabCase(s).toLowerCase() + '.scss';
   generator.componentName = _.upperFirst(_.camelCase(s)) + 'Component';
   generator.componentTsName = _.kebabCase(s).toLowerCase() + '.component';
@@ -80,10 +82,16 @@ function write(generator) {
     webappDir + 'app/' + componentDirName + '/' + 'index.ts');
 
 
-  // SCSS
-  generator.template(
-    ng2TemplateDir + 'src/main/webapp/app/element/element.scss',
-    webappDir + 'app/' + componentDirName + '/' + componentName + '.scss');
+  // STYLE
+  if (generator.useSass) {
+    generator.template(
+      ng2TemplateDir + 'src/main/webapp/app/element/element.scss',
+      webappDir + 'app/' + componentDirName + '/' + componentName + '.scss');
+  } else {
+    generator.template(
+      ng2TemplateDir + 'src/main/webapp/app/element/element.css',
+      webappDir + 'app/' + componentDirName + '/' + componentName + '.css');
+  }
 
 
   // APP MODULE
