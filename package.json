@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "This generator allows adding of new nav elements (and a template/controller/state components suite)",
   "keywords": [
     "yeoman-generator",
@@ -58,13 +58,10 @@
     "test": "mocha",
     "preinstall": "npm rebuild",
     "preversion": "npm i && npm prune && npm test",
-    "prepublish": "git push --tags",
+    "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
     "bump-major": "npm version major",
-    "publish-next-patch": "npm run bump-patch && npm publish",
-    "publish-next-minor": "npm run bump-minor && npm publish",
-    "publish-next-major": "npm run bump-major && npm publish",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
