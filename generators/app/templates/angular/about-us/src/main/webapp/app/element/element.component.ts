@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
   selector: '<%=selector%>',
   templateUrl: './<%=templateName%>',
   styleUrls: [
-    '<%=scssName%>'
+    '<%=useSass ? scssName : cssName%>'
   ]
 })
 export class <%=componentName%> implements OnInit {
