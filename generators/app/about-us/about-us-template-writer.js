@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
+const _ = require('lodash');
+const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
   write
@@ -8,20 +9,19 @@ module.exports = {
 
 function write(generator) {
 
-  var jhipsterVar = generator.inheritedStuff.jhipsterVar;
-  var jhipsterFunc = generator.inheritedStuff.jhipsterFunc;
+  const jhipsterAppConfig = generator.jhipsterAppConfig;
 
-  generator.baseName = jhipsterVar.baseName;
-  generator.packageName = jhipsterVar.packageName;
-  generator.angularAppName = jhipsterVar.angularAppName;
-  generator.enableTranslation = jhipsterVar.enableTranslation;
-  generator.clientFramework = jhipsterVar.clientFramework;
+  generator.baseName = jhipsterAppConfig.baseName;
+  generator.packageName = jhipsterAppConfig.packageName;
+  generator.angularAppName = generator.getAngularAppName();
+  generator.enableTranslation = jhipsterAppConfig.enableTranslation;
+  generator.clientFramework = jhipsterAppConfig.clientFramework;
 
   generator.message = generator.props.message;
   generator.navElementKey = generator.props.navElementKey;
   generator.createDirective = generator.props.createDirective;
 
-  var s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
+  const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
   generator.navElementKeyCamelCased = _.camelCase(s);
   generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
@@ -44,11 +44,11 @@ function write(generator) {
   generator.log('navElementKeyCapitalized=' + generator.navElementKeyCapitalized);
   generator.log('------------------------------------------------------------');
 
-  var elementComponentName = generator.navElementKeyCamelCased;
+  const elementComponentName = generator.navElementKeyCamelCased;
 
-  var angularjsTemplateDir = 'angularjs/' + generator.templateDir;
+  const angularjsTemplateDir = 'angularjs/' + generator.templateDir;
 
-  var webappDir = jhipsterVar.webappDir;
+  const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
   // HTML TEMPLATE
   generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
 
@@ -73,31 +73,31 @@ function write(generator) {
 
   // ELEMENT JSON
   if (generator.enableTranslation) {
-    jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
+    generator.getAllInstalledLanguages().forEach(function (language) {
       generator.log('processing for ' + language);
-      var fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
+      const fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
       generator.template(angularjsTemplateDir + 'src/main/webapp/i18n/lang/element.json', fullPath);
     }, generator);
   }
 
 
   // GLOBAL JSON
-  var i18nKey = generator.navElementTranslationPart;
-  var i18nValue = generator.navElementKey;
-  jhipsterFunc.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', generator.enableTranslation);
+  const i18nKey = generator.navElementTranslationPart;
+  const i18nValue = generator.navElementKey;
+  generator.addTranslationKeyToAllLanguages(i18nKey, i18nValue, 'addElementTranslationKey', generator.enableTranslation);
 
 
   // ENTRIES TO NAVBAR.HTML
-  var glyphiconName = 'asterisk';
+  const glyphiconName = 'asterisk';
 
-  jhipsterFunc.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation, 'angular1');
+  generator.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation, 'angular1');
 
   // TESTS
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.state.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.service.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.state.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.service.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
   if (generator.props.createDirective) {
-    generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
+    generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
   }
 
 }
