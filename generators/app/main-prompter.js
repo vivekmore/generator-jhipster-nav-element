@@ -53,7 +53,7 @@ function askFaqTemplateQuestions(generator) {
 }
 
 function askDefaultTemplateQuestions(generator) {
-  if (generator.inheritedStuff.jhipsterVar.clientFramework === 'angular2') {
+  if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
     defaultNg2TemplatePrompter.askQuestions(generator);
   } else {
     defaultTemplatePrompter.askQuestions(generator);

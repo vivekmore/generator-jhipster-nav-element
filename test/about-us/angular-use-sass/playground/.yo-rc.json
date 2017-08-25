@@ -24,6 +24,6 @@
     "testFrameworks": [
       "gatling"
     ],
-    "clientFramework": "angular2"
+    "clientFramework": "angularX"
   }
 }
