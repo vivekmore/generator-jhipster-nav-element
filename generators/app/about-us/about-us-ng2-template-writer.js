@@ -1,7 +1,8 @@
 'use strict';
 
-var _ = require('lodash');
+const _ = require('lodash');
 const jhipsterUtils = require('generator-jhipster/generators/utils');
+const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
   write
@@ -9,20 +10,19 @@ module.exports = {
 
 function write(generator) {
 
-  var jhipsterVar = generator.inheritedStuff.jhipsterVar;
-  var jhipsterFunc = generator.inheritedStuff.jhipsterFunc;
+  const jhipsterAppConfig = generator.jhipsterAppConfig;
 
-  generator.baseName = jhipsterVar.baseName;
-  generator.packageName = jhipsterVar.packageName;
-  generator.angularAppName = jhipsterVar.angularAppName;
-  generator.enableTranslation = jhipsterVar.enableTranslation;
-  generator.useSass = jhipsterVar.useSass;
+  generator.baseName = jhipsterAppConfig.baseName;
+  generator.packageName = jhipsterAppConfig.packageName;
+  generator.angularAppName = generator.getAngularAppName();
+  generator.enableTranslation = jhipsterAppConfig.enableTranslation;
+  generator.useSass = jhipsterAppConfig.useSass;
 
   generator.message = generator.props.message;
   generator.navElementKey = generator.props.navElementKey;
   generator.createDirective = generator.props.createDirective;
 
-  var s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
+  const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
   generator.componentI18nKey = _.kebabCase(s).toLowerCase();
   generator.selector = 'jhi-' + _.kebabCase(s).toLowerCase();
   generator.templateName = _.kebabCase(s).toLowerCase() + '.component.html';
@@ -46,12 +46,12 @@ function write(generator) {
   generator.log('navElementKey=' + generator.navElementKey);
   generator.log('------------------------------------------------------------');
 
-  var componentName = _.kebabCase(s).toLowerCase();
-  var componentDirName = _.kebabCase(s).toLowerCase();
+  const componentName = _.kebabCase(s).toLowerCase();
+  const componentDirName = _.kebabCase(s).toLowerCase();
 
-  var ng2TemplateDir = 'angular/' + generator.templateDir;
+  const ng2TemplateDir = 'angular/' + generator.templateDir;
 
-  var webappDir = jhipsterVar.webappDir;
+  const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
   // HTML TEMPLATE
   generator.template(
     ng2TemplateDir + 'src/main/webapp/app/element/element.component.html',
@@ -95,18 +95,18 @@ function write(generator) {
 
 
   // APP MODULE
-  jhipsterFunc.replaceContent(webappDir + 'app/app.module.ts',
+  generator.replaceContent(webappDir + 'app/app.module.ts',
     '@NgModule',
     `import {${generator.moduleName}} from './${componentDirName}/${generator.moduleTsName}';\n@NgModule`);
 
-  jhipsterFunc.replaceContent(webappDir + 'app/app.module.ts',
+  generator.replaceContent(webappDir + 'app/app.module.ts',
     'imports: [',
     `imports: [\n${generator.moduleName},\n`);
 
 
   // ELEMENT JSON
   if (generator.enableTranslation) {
-    jhipsterFunc.getAllInstalledLanguages().forEach(function (language) {
+    generator.getAllInstalledLanguages().forEach(function (language) {
       generator.log('processing for ' + language);
       generator.template(
         ng2TemplateDir + 'src/main/webapp/i18n/lang/element.json',
@@ -116,13 +116,13 @@ function write(generator) {
 
 
   // GLOBAL JSON
-  jhipsterFunc.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+  generator.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
 
 
   // ENTRIES TO NAVBAR.HTML
   // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
-  var navbarPath = `${jhipsterVar.CONSTANTS.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-  var navbarCode;
+  const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
+  let navbarCode;
   if (generator.enableTranslation) {
     navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -150,6 +150,6 @@ function write(generator) {
   // TESTS
   generator.template(
     ng2TemplateDir + 'src/test/javascript/spec/app/element/element.component.spec.ts',
-    jhipsterVar.CONSTANTS.CLIENT_TEST_SRC_DIR + 'spec/app/' + componentName + '/' + componentName + '.component.spec.ts');
+    jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + componentName + '/' + componentName + '.component.spec.ts');
 
 }
