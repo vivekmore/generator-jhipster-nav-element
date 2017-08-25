@@ -25,7 +25,8 @@ function writeFaqTemplate(generator) {
 }
 
 function writeDefaultTemplate(generator) {
-  if (generator.inheritedStuff.jhipsterVar.clientFramework === 'angular2') {
+
+  if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
     defaultNg2TemplateWriter.write(generator);
   } else {
     defaultTemplateWriter.write(generator);

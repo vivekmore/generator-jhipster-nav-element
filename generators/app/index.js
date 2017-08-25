@@ -1,25 +1,42 @@
 'use strict';
 
-var yeoman = require('yeoman-generator'),
-  mainPrompter = require('./main-prompter'),
-  mainWriter = require('./main-writer'),
-  chalk = require('chalk'),
-  _ = require('lodash'),
-  packageJson = require(__dirname + '/../../package.json');
+const yeoman = require('yeoman-generator');
+const BaseGenerator = require('generator-jhipster/generators/generator-base');
+const JhipsterGenerator = yeoman.extend({});
+const util = require('util');
+const chalk = require('chalk');
+const semver = require('semver');
+const _ = require('lodash');
 
-// JHipster variables & functions
-var jhipsterVar = {moduleName: 'nav-element'};
-var jhipsterFunc = {};
+const packageJson = require(__dirname + '/../../package.json');
+const mainPrompter = require('./main-prompter');
+const mainWriter = require('./main-writer');
 
-module.exports = yeoman.extend({
+util.inherits(JhipsterGenerator, BaseGenerator);
+
+module.exports = JhipsterGenerator.extend({
 
   initializing: {
-    compose: function () {
-      this.composeWith('jhipster:modules', {jhipsterVar, jhipsterFunc});
+    readConfig() {
+      this.jhipsterAppConfig = this.getJhipsterAppConfig();
+      if (!this.jhipsterAppConfig) {
+        this.error(`Can't read .yo-rc.json`);
+      }
     },
-    displayLogo: function () {
+    displayLogo() {
+      // it's here to show that you can use functions from generator-jhipster
+      // this function is in: generator-jhipster/generators/generator-base.js
+      this.printJHipsterLogo();
+
       // Have Yeoman greet the user.
-      this.log('Welcome to the ' + chalk.red('JHipster nav-element') + ' generator! ' + chalk.yellow('v' + packageJson.version + '\n'));
+      this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster Nav Element')} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`);
+    },
+    checkJhipster() {
+      const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
+      const minimumJhipsterVersion = packageJson.dependencies['generator-jhipster'];
+      if (!semver.satisfies(jhipsterVersion, minimumJhipsterVersion)) {
+        this.warning(`\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`);
+      }
     }
   },
 
@@ -38,8 +55,6 @@ module.exports = yeoman.extend({
   },
 
   props: {},
-
-  inheritedStuff: {jhipsterVar, jhipsterFunc},
 
   writing: {
     writeTemplateSpecificFiles: function () {
