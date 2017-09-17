@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "chalk": "2.1.0",
-    "generator-jhipster": "4.8.0",
+    "generator-jhipster": "4.8.2",
     "lodash": "4.17.4",
-    "shelljs": "^0.7.8",
     "mkdirp": "0.5.1",
-    "tabtab": "^2.2.2",
+    "shelljs": "0.7.8",
+    "tabtab": "2.2.2",
     "yeoman-generator": "1.1.1"
   },
   "devDependencies": {
