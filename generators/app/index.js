@@ -19,9 +19,6 @@ module.exports = JhipsterGenerator.extend({
   initializing: {
     readConfig() {
       this.jhipsterAppConfig = this.getJhipsterAppConfig();
-      if (!this.jhipsterAppConfig) {
-        this.error(`Can't read .yo-rc.json`);
-      }
     },
     displayLogo() {
       // it's here to show that you can use functions from generator-jhipster
