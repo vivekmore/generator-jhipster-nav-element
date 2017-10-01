@@ -35,7 +35,6 @@ describe('default template | no directive created', function () {
         'navElementKey': 'about_us',
         'createDirective': false
       })
-      .withGenerators([path.join(__dirname, '../../../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });

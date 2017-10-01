@@ -29,7 +29,6 @@ describe('default angular template - translation enabled', function () {
         'templateType': navElementConstants.TEMPLATE_TYPE.DEFAULT,
         'navElementKey': 'about_us'
       })
-      .withGenerators([path.join(__dirname, '../../../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });
