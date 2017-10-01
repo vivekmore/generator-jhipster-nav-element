@@ -34,7 +34,6 @@ describe('faq template | no directive', function () {
         'navElementKey': 'faq',
         'createDirective': false
       })
-      .withGenerators([path.join(__dirname, '../../../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });

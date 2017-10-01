@@ -35,7 +35,6 @@ describe('default template | translation-disabled', function () {
         'navElementKey': 'about_us',
         'createDirective': true
       })
-      .withGenerators([path.join(__dirname, '../../../node_modules/generator-jhipster/generators/modules')])
       .on('end', function () {
         done();
       });
