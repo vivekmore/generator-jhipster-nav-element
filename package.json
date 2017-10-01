@@ -1,9 +1,12 @@
 {
   "name": "generator-jhipster-nav-element",
   "version": "1.4.5",
-  "description": "This generator allows adding of new nav elements (and a template/controller/state components suite)",
+  "description": "A generator to scaffold a new page (and the corresponding navigation menu) in a JHipster project.",
   "keywords": [
+    "scaffold",
+    "generator",
     "yeoman-generator",
+    "jhipster",
     "jhipster-module"
   ],
   "homepage": "https://github.com/vivekmore/generator-jhipster-nav-element",
