@@ -22,14 +22,14 @@ function write(generator) {
   generator.createDirective = generator.props.createDirective;
 
   const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
-  generator.navElementKeyCamelCased = _.camelCase(s);
   generator.navElementKeyKebabCased = _.kebabCase(s);
   generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
   generator.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
   generator.directiveName = 'aboutToday';
-  generator.navElementTranslationPart = _.kebabCase(s);
   generator.directiveKebabCased = _.kebabCase(generator.directiveName.trim());
+  generator.navElementTranslationPart = _.kebabCase(s);
+  generator.navElementStartCase = _.startCase(s);
 
   generator.log('------------------------------------------------------------');
   generator.log('baseName=' + generator.baseName);
@@ -41,9 +41,10 @@ function write(generator) {
   generator.log('serviceName=' + generator.serviceName);
   generator.log('directiveName=' + generator.directiveName);
   generator.log('directiveKebabCased=' + generator.directiveKebabCased);
-  generator.log('navElementKeyCamelCased=' + generator.navElementKeyCamelCased);
   generator.log('navElementKeyKebabCased=' + generator.navElementKeyKebabCased);
   generator.log('navElementKeyCapitalized=' + generator.navElementKeyCapitalized);
+  generator.log('navElementTranslationPart=' + generator.navElementTranslationPart);
+  generator.log('navElementStartCase=' + generator.navElementStartCase);
   generator.log('------------------------------------------------------------');
 
   const elementComponentNameKebabCased = generator.navElementKeyKebabCased;
