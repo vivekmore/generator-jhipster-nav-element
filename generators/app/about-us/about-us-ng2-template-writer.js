@@ -24,6 +24,7 @@ function write(generator) {
 
   const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
   generator.componentI18nKey = _.kebabCase(s).toLowerCase();
+  generator.componentStartCase = _.startCase(s);
   generator.selector = 'jhi-' + _.kebabCase(s).toLowerCase();
   generator.templateName = _.kebabCase(s).toLowerCase() + '.component.html';
   generator.cssName = _.kebabCase(s).toLowerCase() + '.css';
