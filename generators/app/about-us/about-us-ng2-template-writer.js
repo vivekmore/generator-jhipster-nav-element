@@ -16,6 +16,7 @@ function write(generator) {
   generator.packageName = jhipsterAppConfig.packageName;
   generator.angularAppName = generator.getAngularAppName();
   generator.enableTranslation = jhipsterAppConfig.enableTranslation;
+  generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
   generator.useSass = jhipsterAppConfig.useSass;
 
   generator.message = generator.props.message;
@@ -105,10 +106,11 @@ function write(generator) {
     `imports: [\n${generator.moduleName},\n`);
 
 
-  // ELEMENT JSON
+  // i18n ELEMENT JSON
   if (generator.enableTranslation) {
     generator.getAllInstalledLanguages().forEach(function (language) {
-      generator.log('processing for ' + language);
+      generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
+      generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
       generator.template(
         ng2TemplateDir + 'src/main/webapp/i18n/lang/element.json',
         webappDir + 'i18n/' + language + '/' + componentName + '.json');
