@@ -18,7 +18,7 @@ const
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
-describe('faq template | translation-enabled', function () {
+xdescribe('faq template | translation-enabled', function () {
 
   before(function (done) {
 
