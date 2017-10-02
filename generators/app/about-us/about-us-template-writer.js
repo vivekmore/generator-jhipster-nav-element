@@ -22,7 +22,6 @@ function write(generator) {
   generator.createDirective = generator.props.createDirective;
 
   const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
-  generator.navElementKeyCamelCased = _.camelCase(s);
   generator.navElementKeyKebabCased = _.kebabCase(s);
   generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
@@ -41,7 +40,6 @@ function write(generator) {
   generator.log('serviceName=' + generator.serviceName);
   generator.log('directiveName=' + generator.directiveName);
   generator.log('directiveKebabCased=' + generator.directiveKebabCased);
-  generator.log('navElementKeyCamelCased=' + generator.navElementKeyCamelCased);
   generator.log('navElementKeyKebabCased=' + generator.navElementKeyKebabCased);
   generator.log('navElementKeyCapitalized=' + generator.navElementKeyCapitalized);
   generator.log('------------------------------------------------------------');
