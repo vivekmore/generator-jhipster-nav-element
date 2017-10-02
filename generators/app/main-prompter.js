@@ -3,8 +3,7 @@
 var chalk = require('chalk'),
   constants = require('./constants'),
   defaultTemplatePrompter = require('./about-us/about-us-template-prompter'),
-  defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter'),
-  faqTemplatePrompter = require('./faq/faq-template-prompter');
+  defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter');
 
 module.exports = {
   promptToChooseATemplate,
@@ -18,15 +17,11 @@ function promptToChooseATemplate(generator) {
   generator.prompt({
     type: 'list',
     name: 'templateType',
-    message: 'Which *type* of page would you like to generate?',
+    message: 'Which *type* of page would you like to generate? (More templates will be added soon! Stay tuned...)',
     choices: [
       {
         name: 'About Us',
         value: constants.TEMPLATE_TYPE.DEFAULT
-      },
-      {
-        name: 'Frequently Asked Questions',
-        value: constants.TEMPLATE_TYPE.FAQ
       }
     ]
 
@@ -39,17 +34,10 @@ function promptToChooseATemplate(generator) {
 
 function promptTemplateSpecificQuestions(generator) {
   switch (generator.props.templateType) {
-    case constants.TEMPLATE_TYPE.FAQ:
-      askFaqTemplateQuestions(generator);
-      break;
     case constants.TEMPLATE_TYPE.DEFAULT:
       askDefaultTemplateQuestions(generator);
       break;
   }
-}
-
-function askFaqTemplateQuestions(generator) {
-  faqTemplatePrompter.askQuestions(generator);
 }
 
 function askDefaultTemplateQuestions(generator) {
