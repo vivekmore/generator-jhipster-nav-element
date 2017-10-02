@@ -15,6 +15,7 @@ function write(generator) {
   generator.packageName = jhipsterAppConfig.packageName;
   generator.angularAppName = generator.getAngularAppName();
   generator.enableTranslation = jhipsterAppConfig.enableTranslation;
+  generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
   generator.clientFramework = jhipsterAppConfig.clientFramework;
 
   generator.message = generator.props.message;
@@ -74,10 +75,11 @@ function write(generator) {
   }
 
 
-  // ELEMENT JSON
+  // i18n ELEMENT JSON
   if (generator.enableTranslation) {
     generator.getAllInstalledLanguages().forEach(function (language) {
-      generator.log('processing for ' + language);
+      generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
+      generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
       const fullPath = webappDir + 'i18n/' + language + '/' + elementComponentNameKebabCased + '.json';
       generator.template(angularjsTemplateDir + 'src/main/webapp/i18n/lang/element.json', fullPath);
     }, generator);
