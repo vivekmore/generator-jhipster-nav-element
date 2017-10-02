@@ -23,11 +23,12 @@ function write(generator) {
 
   const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
   generator.navElementKeyCamelCased = _.camelCase(s);
+  generator.navElementKeyKebabCased = _.kebabCase(s);
   generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
   generator.controllerName = _.upperFirst(_.camelCase(s)) + 'Controller';
   generator.serviceName = _.upperFirst(_.camelCase(s)) + 'Service';
   generator.directiveName = 'aboutToday';
-  generator.navElementTranslationPart = _.camelCase(s);
+  generator.navElementTranslationPart = _.kebabCase(s);
   generator.directiveKebabCased = _.kebabCase(generator.directiveName.trim());
 
   generator.log('------------------------------------------------------------');
@@ -41,33 +42,34 @@ function write(generator) {
   generator.log('directiveName=' + generator.directiveName);
   generator.log('directiveKebabCased=' + generator.directiveKebabCased);
   generator.log('navElementKeyCamelCased=' + generator.navElementKeyCamelCased);
+  generator.log('navElementKeyKebabCased=' + generator.navElementKeyKebabCased);
   generator.log('navElementKeyCapitalized=' + generator.navElementKeyCapitalized);
   generator.log('------------------------------------------------------------');
 
-  const elementComponentName = generator.navElementKeyCamelCased;
+  const elementComponentNameKebabCased = generator.navElementKeyKebabCased;
 
   const angularjsTemplateDir = 'angularjs/' + generator.templateDir;
 
   const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
   // HTML TEMPLATE
-  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.html');
+  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.html', webappDir + 'app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.html');
 
 
   // CONTROLLER
-  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.controller.js');
+  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.controller.js', webappDir + 'app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.controller.js');
 
 
   // STATE
-  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.state.js');
+  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.state.js', webappDir + 'app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.state.js');
 
 
   // SERVICE
-  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.service.js');
+  generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.service.js', webappDir + 'app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.service.js');
 
 
   // DIRECTIVE
   if (generator.props.createDirective) {
-    generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentName + '/' + elementComponentName + '.directive.js');
+    generator.template(angularjsTemplateDir + 'src/main/webapp/app/element/element.directive.js', webappDir + 'app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.directive.js');
   }
 
 
@@ -75,7 +77,7 @@ function write(generator) {
   if (generator.enableTranslation) {
     generator.getAllInstalledLanguages().forEach(function (language) {
       generator.log('processing for ' + language);
-      const fullPath = webappDir + 'i18n/' + language + '/' + elementComponentName + '.json';
+      const fullPath = webappDir + 'i18n/' + language + '/' + elementComponentNameKebabCased + '.json';
       generator.template(angularjsTemplateDir + 'src/main/webapp/i18n/lang/element.json', fullPath);
     }, generator);
   }
@@ -90,14 +92,14 @@ function write(generator) {
   // ENTRIES TO NAVBAR.HTML
   const glyphiconName = 'asterisk';
 
-  generator.addElementToMenu(elementComponentName, glyphiconName, generator.enableTranslation, 'angular1');
+  generator.addElementToMenu(elementComponentNameKebabCased, glyphiconName, generator.enableTranslation, 'angular1');
 
   // TESTS
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.controller.spec.js');
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.state.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.state.spec.js');
-  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.service.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.service.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.controller.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.controller.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.state.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.state.spec.js');
+  generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.service.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.service.spec.js');
   if (generator.props.createDirective) {
-    generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentName + '/' + elementComponentName + '.directive.spec.js');
+    generator.template(angularjsTemplateDir + 'src/test/javascript/spec/app/element/element.directive.spec.js', jhipsterConstants.CLIENT_TEST_SRC_DIR + 'spec/app/' + elementComponentNameKebabCased + '/' + elementComponentNameKebabCased + '.directive.spec.js');
   }
 
 }

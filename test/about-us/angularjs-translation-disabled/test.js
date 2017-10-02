@@ -18,7 +18,7 @@ const
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
-describe('default template | translation-disabled', function () {
+describe('default angularjs template | translation-disabled', function () {
 
   before(function (done) {
 
