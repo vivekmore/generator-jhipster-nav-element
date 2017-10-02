@@ -17,7 +17,7 @@ const
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
-describe('faq template | no directive', function () {
+xdescribe('faq template | no directive', function () {
 
   before(function (done) {
 

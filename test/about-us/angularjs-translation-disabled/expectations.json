@@ -1,21 +1,21 @@
 {
   "client": {
     "added": [
-      "app/aboutUs/aboutUs.controller.js",
-      "app/aboutUs/aboutUs.directive.js",
-      "app/aboutUs/aboutUs.service.js",
-      "app/aboutUs/aboutUs.state.js",
-      "app/aboutUs/aboutUs.html"
+      "app/about-us/about-us.controller.js",
+      "app/about-us/about-us.directive.js",
+      "app/about-us/about-us.service.js",
+      "app/about-us/about-us.state.js",
+      "app/about-us/about-us.html"
     ],
     "addedTests": [
-      "spec/app/aboutUs/aboutUs.controller.spec.js",
-      "spec/app/aboutUs/aboutUs.directive.spec.js",
-      "spec/app/aboutUs/aboutUs.service.spec.js",
-      "spec/app/aboutUs/aboutUs.state.spec.js"
+      "spec/app/about-us/about-us.controller.spec.js",
+      "spec/app/about-us/about-us.directive.spec.js",
+      "spec/app/about-us/about-us.service.spec.js",
+      "spec/app/about-us/about-us.state.spec.js"
     ],
     "skipped": [
-      "i18n/en/aboutUs.json",
-      "i18n/fr/aboutUs.json"
+      "i18n/en/about-us.json",
+      "i18n/fr/about-us.json"
     ],
     "changed": [
       "app/layouts/navbar/navbar.html"

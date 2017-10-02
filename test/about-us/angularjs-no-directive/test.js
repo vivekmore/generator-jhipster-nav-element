@@ -18,7 +18,7 @@ const
   CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
   CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
-describe('default template | no directive created', function () {
+describe('default angularjs template | no directive created', function () {
 
   before(function (done) {
 

@@ -8,16 +8,16 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('<%=navElementKeyCamelCased%>', {
+        $stateProvider.state('<%=navElementKeyKebabCased%>', {
             parent: 'app',
-            url: '/<%=navElementKeyCamelCased%>',
+            url: '/<%=navElementKeyKebabCased%>',
             data: {
                 authorities: [],
-                pageTitle: 'global.menu.<%=navElementKeyCamelCased%>'
+                pageTitle: 'global.menu.<%=navElementKeyKebabCased%>'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/<%=navElementKeyCamelCased%>/<%=navElementKeyCamelCased%>.html',
+                    templateUrl: 'app/<%=navElementKeyKebabCased%>/<%=navElementKeyKebabCased%>.html',
                     controller: '<%=controllerName%>',
                     controllerAs: 'vm'
                 }
