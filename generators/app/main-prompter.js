@@ -18,7 +18,7 @@ function promptToChooseATemplate(generator) {
   generator.prompt({
     type: 'list',
     name: 'templateType',
-    message: 'Which *type* of template would you like to use?',
+    message: 'Which *type* of page would you like to generate?',
     choices: [
       {
         name: 'About Us',
