@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "jhipsterVersion": "4.9.0",
-    "baseName": "myapp",
+    "baseName": "myApp",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
     "authenticationType": "session",
