@@ -19,4 +19,4 @@ import { ABOUT_US_ROUTE, AboutUsComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class JhipsterAboutUsModule {}
+export class MyAppAboutUsModule {}

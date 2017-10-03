@@ -35,7 +35,9 @@ function write(generator) {
   generator.locationName = _.kebabCase(s).toLowerCase();
   generator.routeName = _.kebabCase(s).toUpperCase().replace('-', '_') + '_ROUTE';
   generator.routeTsName = _.kebabCase(s).toLowerCase() + '.route';
-  generator.moduleName = 'Jhipster' + _.upperFirst(_.camelCase(s)) + 'Module';
+  generator.angularName = _.upperFirst(_.camelCase(s));
+  generator.moduleName = _.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s)) + 'Module';
+  generator.moduleTsNameMinusSuffix = _.kebabCase(s).toLowerCase();
   generator.moduleTsName = _.kebabCase(s).toLowerCase() + '.module';
   generator.pageTitle = _.kebabCase(s).toLowerCase() + '.title';
   generator.tabName = _.upperFirst(_.kebabCase(s).replace('-', ' '));
@@ -97,13 +99,13 @@ function write(generator) {
 
 
   // APP MODULE
-  generator.replaceContent(webappDir + 'app/app.module.ts',
-    '@NgModule',
-    `import {${generator.moduleName}} from './${componentDirName}/${generator.moduleTsName}';\n@NgModule`);
-
-  generator.replaceContent(webappDir + 'app/app.module.ts',
-    'imports: [',
-    `imports: [\n${generator.moduleName},\n`);
+  generator.addAngularModule(
+    _.upperFirst(generator.getAngularAppName()),
+    generator.angularName,
+    componentDirName,
+    generator.moduleTsNameMinusSuffix,
+    generator.enableTranslation,
+    'angularX');
 
 
   // i18n ELEMENT JSON
