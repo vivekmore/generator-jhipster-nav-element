@@ -1,21 +1,21 @@
 os:
-    - linux
+  - linux
 language: node_js
 node_js:
-  - "6.9.0"
+  - "6.11.3"
 cache:
   yarn: true
   directories:
-    - $HOME/.yarn-cache
-    - node_modules
+#    - $HOME/.yarn-cache
+#    - node_modules
 before_install:
-  - yarn global add yo bower gulp-cli
+  - npm -g i yo bower gulp-cli
+#  - yarn global add yo bower gulp-cli
 install:
-#  - npm prune
-#  - npm install
-#  - npm link
-#  - npm run coveralls
-  - yarn install
-  - yarn link
-#  - yarn run test
-  - yarn run coveralls
+  - npm prune
+  - npm install
+  - npm link
+  - npm run coveralls
+#  - yarn install
+#  - yarn link
+#  - yarn run coveralls
