@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "A generator to scaffold a new page (and the corresponding navigation menu) in a JHipster project.",
   "keywords": [
     "scaffold",
@@ -61,7 +61,6 @@
   },
   "scripts": {
     "test": "mocha",
-    "preinstall": "npm rebuild",
     "preversion": "npm i && npm prune && npm test",
     "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
