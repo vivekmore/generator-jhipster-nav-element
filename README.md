@@ -11,25 +11,25 @@ This generator scaffolds a new page and creates a corresponding navigation menu 
 The following (client-side) artifacts are generated:
 
 ##### 1. AngularJS application (assuming your page is called 'about-us'):
- * about-us.controller.js
- * about-us.directive.js
- * about-us.html
- * about-us.service.js
- * about-us.state.js
- * about-us.json (_i18n resource_)
- * about-us.controller.spec.js
- * about-us.directive.spec.js
- * about-us.service.spec.js
- * about-us.state.spec.js
+ * `src/main/webapp/app/about-us/about-us.controller.js`
+ * `src/main/webapp/app/about-us/about-us.directive.js`
+ * `src/main/webapp/app/about-us/about-us.html`
+ * `src/main/webapp/app/about-us/about-us.service.js`
+ * `src/main/webapp/app/about-us/about-us.state.js`
+ * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
+ * `src/test/javascript/spec/app/about-us/about-us.controller.spec.js`
+ * `src/test/javascript/spec/app/about-us/about-us.directive.spec.js`
+ * `src/test/javascript/spec/app/about-us/about-us.service.spec.js`
+ * `src/test/javascript/spec/app/about-us/about-us.state.spec.js`
 ##### 2. Angular application (assuming your page is called 'about-us'):
- * about-us.component.html
- * about-us.component.ts
- * about-us.module.ts
- * about-us.route.ts
- * about-us.[s]css
- * index.ts
- * about-us.json (_i18n resource_)
- * about-us.component.spec.ts
+ * `src/main/webapp/app/about-us/about-us.component.html`
+ * `src/main/webapp/app/about-us/about-us.component.ts`
+ * `src/main/webapp/app/about-us/about-us.module.ts`
+ * `src/main/webapp/app/about-us/about-us.route.ts`
+ * `src/main/webapp/app/about-us/about-us.[s]css`
+ * `src/main/webapp/app/about-us/index.ts`
+ * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
+ * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
 
 
 # Prerequisites
