@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "1.4.14",
+  "version": "1.4.15",
   "description": "A generator to scaffold a new page (and the corresponding navigation menu) in a JHipster project.",
   "keywords": [
     "scaffold",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "chalk": "2.1.0",
-    "generator-jhipster": "4.9.0",
+    "generator-jhipster": "4.10.0",
     "lodash": "4.17.4",
     "mkdirp": "0.5.1",
     "shelljs": "0.7.8",
