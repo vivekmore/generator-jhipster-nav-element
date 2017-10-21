@@ -1,13 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { JhipsterSharedModule } from '../shared';
+import { SomeProjectSharedModule } from '../shared';
 
 import { ABOUT_US_ROUTE, AboutUsComponent } from './';
 
 @NgModule({
     imports: [
-      JhipsterSharedModule,
+      SomeProjectSharedModule,
       RouterModule.forRoot([ ABOUT_US_ROUTE ], { useHash: true })
     ],
     declarations: [
@@ -19,4 +19,4 @@ import { ABOUT_US_ROUTE, AboutUsComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MyAppAboutUsModule {}
+export class SomeProjectAppAboutUsModule {}
