@@ -14,7 +14,7 @@ function write(generator) {
 
   generator.baseName = jhipsterAppConfig.baseName;
   generator.packageName = jhipsterAppConfig.packageName;
-  generator.angularAppName = generator.getAngularAppName();
+  generator.angularXAppName = generator.getAngularXAppName();
   generator.enableTranslation = jhipsterAppConfig.enableTranslation;
   generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
   generator.useSass = jhipsterAppConfig.useSass;
