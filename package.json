@@ -62,6 +62,7 @@
   "scripts": {
     "test": "mocha",
     "preversion": "npm i && npm prune && npm test",
+    "prepublish": "npm adduser",
     "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
