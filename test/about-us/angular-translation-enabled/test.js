@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it */
+/* global describe, before, it */
 
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -6,7 +6,6 @@ const helpers = require('yeoman-test');
 const fs = require('fs');
 const fse = require('fs-extra');
 const _ = require('lodash');
-const constants = require('../../../node_modules/generator-jhipster/generators/generator-constants');
 const navElementConstants = require('../../../generators/app/constants');
 const expectedFiles = require('./expectations.json');
 
