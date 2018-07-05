@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it */
+/* global describe, before, it */
 
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -10,19 +10,10 @@ const constants = require('../../../node_modules/generator-jhipster/generators/g
 const navElementConstants = require('../../../generators/app/constants');
 const expectedFiles = require('./expectations.json');
 
-const
-    RESULTS_DIR = `${__dirname}/results`;
-
-
+const RESULTS_DIR = `${__dirname}/results`;
 const RESULT_CLIENT_MAIN_SRC_DIR = `${RESULTS_DIR}/src/main/webapp/`;
-
-
 const RESULT_CLIENT_TEST_SRC_DIR = `${RESULTS_DIR}/src/test/javascript/`;
-
-
 const CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR;
-
-
 const CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
 
 describe('default angularjs template | translation-enabled', () => {
