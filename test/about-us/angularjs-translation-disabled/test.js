@@ -1,5 +1,4 @@
-/*global describe, beforeEach, it*/
-'use strict';
+/* global describe, beforeEach, it */
 
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -12,73 +11,71 @@ const navElementConstants = require('../../../generators/app/constants');
 const expectedFiles = require('./expectations.json');
 
 const
-  RESULTS_DIR = __dirname + '/results',
-  RESULT_CLIENT_MAIN_SRC_DIR = RESULTS_DIR + '/src/main/webapp/',
-  RESULT_CLIENT_TEST_SRC_DIR = RESULTS_DIR + '/src/test/javascript/',
-  CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR,
-  CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
+    RESULTS_DIR = `${__dirname}/results`;
 
-describe('default angularjs template | translation-disabled', function () {
 
-  before(function (done) {
+const RESULT_CLIENT_MAIN_SRC_DIR = `${RESULTS_DIR}/src/main/webapp/`;
 
-    helpers
-      .run(path.join(__dirname, '../../../generators/app'))
-      .inTmpDir(function (dir) {
-        fse.copySync(path.join(__dirname, '/playground'), dir)
-      })
-      .withOptions({
-        skipInstall: true
-      })
-      .withPrompts({
-        'templateType': navElementConstants.TEMPLATE_TYPE.DEFAULT,
-        'navElementKey': 'about_us',
-        'createDirective': true
-      })
-      .on('end', function () {
-        done();
-      });
 
-  });
+const RESULT_CLIENT_TEST_SRC_DIR = `${RESULTS_DIR}/src/test/javascript/`;
 
-  it('creates expected production files', function () {
 
-    _.forEach(expectedFiles.client.added, function (change) {
+const CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR;
 
-      assert.file(CLIENT_MAIN_SRC_DIR + change);
 
-      const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      assert.textEqual(actualContent, expectedContent);
+const CLIENT_TEST_SRC_DIR = constants.CLIENT_TEST_SRC_DIR;
+
+describe('default angularjs template | translation-disabled', () => {
+    before((done) => {
+        helpers
+            .run(path.join(__dirname, '../../../generators/app'))
+            .inTmpDir((dir) => {
+                fse.copySync(path.join(__dirname, '/playground'), dir);
+            })
+            .withOptions({
+                skipInstall: true
+            })
+            .withPrompts({
+                templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
+                navElementKey: 'about_us',
+                createDirective: true
+            })
+            .on('end', () => {
+                done();
+            });
     });
 
-  });
+    it('creates expected production files', () => {
+        _.forEach(expectedFiles.client.added, (change) => {
+            assert.file(CLIENT_MAIN_SRC_DIR + change);
 
-  it('creates expected test files', function () {
-
-    _.forEach(expectedFiles.client.addedTests, function (change) {
-
-      assert.file(CLIENT_TEST_SRC_DIR + change);
-
-      const actualContent = fs.readFileSync(CLIENT_TEST_SRC_DIR + change, 'utf8');
-      const expectedContent = fs.readFileSync(RESULT_CLIENT_TEST_SRC_DIR + change, 'utf8');
-      assert.textEqual(actualContent, expectedContent);
+            const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+            const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
+            assert.textEqual(actualContent, expectedContent);
+        });
     });
 
-  });
+    it('creates expected test files', () => {
+        _.forEach(expectedFiles.client.addedTests, (change) => {
+            assert.file(CLIENT_TEST_SRC_DIR + change);
 
-  it('skips i18n file creation', function () {
-    _.forEach(expectedFiles.client.skipped, function (change) {
-      assert.noFile(CLIENT_MAIN_SRC_DIR + change);
+            const actualContent = fs.readFileSync(CLIENT_TEST_SRC_DIR + change, 'utf8');
+            const expectedContent = fs.readFileSync(RESULT_CLIENT_TEST_SRC_DIR + change, 'utf8');
+            assert.textEqual(actualContent, expectedContent);
+        });
     });
-  });
 
-  it('modifies all files as expected', function () {
-    _.forEach(expectedFiles.client.changed, function (change) {
-      const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
-      assert.textEqual(actualContent, expectedContent);
+    it('skips i18n file creation', () => {
+        _.forEach(expectedFiles.client.skipped, (change) => {
+            assert.noFile(CLIENT_MAIN_SRC_DIR + change);
+        });
     });
-  });
 
+    it('modifies all files as expected', () => {
+        _.forEach(expectedFiles.client.changed, (change) => {
+            const actualContent = fs.readFileSync(CLIENT_MAIN_SRC_DIR + change, 'utf8');
+            const expectedContent = fs.readFileSync(RESULT_CLIENT_MAIN_SRC_DIR + change, 'utf8');
+            assert.textEqual(actualContent, expectedContent);
+        });
+    });
 });

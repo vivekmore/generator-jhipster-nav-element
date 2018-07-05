@@ -1,27 +1,23 @@
-'use strict';
-
-var constants = require('./constants'),
-  defaultTemplateWriter = require('./about-us/about-us-template-writer'),
-  defaultNg2TemplateWriter = require('./about-us/about-us-ng2-template-writer');
+const constants = require('./constants');
+const defaultTemplateWriter = require('./about-us/about-us-template-writer');
+const defaultNg2TemplateWriter = require('./about-us/about-us-ng2-template-writer');
 
 module.exports = {
-  writeTemplate
+    writeTemplate
 };
 
 function writeTemplate(generator) {
-  switch (generator.props.templateType) {
+    switch (generator.props.templateType) {
     case constants.TEMPLATE_TYPE.DEFAULT:
-      writeDefaultTemplate(generator);
-      break;
-  }
+        writeDefaultTemplate(generator);
+        break;
+    }
 }
 
 function writeDefaultTemplate(generator) {
-
-  if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
-    defaultNg2TemplateWriter.write(generator);
-  } else {
-    defaultTemplateWriter.write(generator);
-  }
-
+    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+        defaultNg2TemplateWriter.write(generator);
+    } else {
+        defaultTemplateWriter.write(generator);
+    }
 }
