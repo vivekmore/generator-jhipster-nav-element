@@ -2,7 +2,7 @@ os:
   - linux
 language: node_js
 node_js:
-  - "6.11.3"
+  - "8.9.1"
 cache:
   yarn: true
   directories:
