@@ -11,6 +11,8 @@ function writeTemplate(generator) {
     case constants.TEMPLATE_TYPE.DEFAULT:
         writeDefaultTemplate(generator);
         break;
+    default:
+        break;
     }
 }
 
