@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  validate
+    validate
 };
 
 /**
@@ -10,9 +8,8 @@ module.exports = {
  * @param {string} input - input to validate
  */
 function validate(input) {
-  if (/^([a-zA-Z0-9_]*)$/.test(input)) {
-    return true;
-  } else {
+    if (/^([a-zA-Z0-9_]*)$/.test(input)) {
+        return true;
+    }
     return 'Nav element may contain only alphanumeric values and underscores';
-  }
 }
