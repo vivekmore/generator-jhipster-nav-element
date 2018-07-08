@@ -15,10 +15,6 @@ function write(generator) {
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.clientFramework = jhipsterAppConfig.clientFramework;
 
-    generator.message = generator.props.message;
-    generator.navElementKey = generator.props.navElementKey;
-    generator.createDirective = generator.props.createDirective;
-
     const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
     generator.navElementKeyKebabCased = _.kebabCase(s);
     generator.navElementKeyCapitalized = _.upperFirst(_.camelCase(s));
@@ -67,7 +63,7 @@ function write(generator) {
 
 
     // DIRECTIVE
-    if (generator.props.createDirective) {
+    if (generator.createDirective) {
         generator.template(`${angularjsTemplateDir}src/main/webapp/app/element/element.directive.js`, `${webappDir}app/${elementComponentNameKebabCased}/${elementComponentNameKebabCased}.directive.js`);
     }
 
@@ -98,7 +94,7 @@ function write(generator) {
     generator.template(`${angularjsTemplateDir}src/test/javascript/spec/app/element/element.controller.spec.js`, `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${elementComponentNameKebabCased}/${elementComponentNameKebabCased}.controller.spec.js`);
     generator.template(`${angularjsTemplateDir}src/test/javascript/spec/app/element/element.state.spec.js`, `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${elementComponentNameKebabCased}/${elementComponentNameKebabCased}.state.spec.js`);
     generator.template(`${angularjsTemplateDir}src/test/javascript/spec/app/element/element.service.spec.js`, `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${elementComponentNameKebabCased}/${elementComponentNameKebabCased}.service.spec.js`);
-    if (generator.props.createDirective) {
+    if (generator.createDirective) {
         generator.template(`${angularjsTemplateDir}src/test/javascript/spec/app/element/element.directive.spec.js`, `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${elementComponentNameKebabCased}/${elementComponentNameKebabCased}.directive.spec.js`);
     }
 }

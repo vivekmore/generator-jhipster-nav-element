@@ -34,9 +34,9 @@ function askQuestions(generator) {
 
     generator.prompt(prompts)
         .then((props) => {
-            generator.props.navElementKey = props.navElementKey;
-            generator.props.createDirective = props.createDirective;
-            // To access props later use this.props.someOption;
+            generator.navElementKey = props.navElementKey;
+            generator.createDirective = props.createDirective;
+            // To access props later use this.someOption;
             done();
         });
 }
