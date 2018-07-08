@@ -1,5 +1,4 @@
 const constants = require('./constants');
-const defaultTemplatePrompter = require('./about-us/about-us-template-prompter');
 const defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter');
 
 module.exports = {
@@ -40,7 +39,5 @@ function promptTemplateSpecificQuestions() {
 function askDefaultTemplateQuestions(generator) {
     if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
         defaultNg2TemplatePrompter.askQuestions(generator);
-    } else {
-        defaultTemplatePrompter.askQuestions(generator);
     }
 }
