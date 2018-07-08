@@ -17,8 +17,8 @@
     "url": "https://github.com/vivekmore"
   },
   "engines": {
-    "node": ">=6.9.5",
-    "npm": ">=5.3.0"
+    "node": ">=8",
+    "npm": ">=6"
   },
   "files": [
     "generators"
