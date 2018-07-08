@@ -10,18 +10,7 @@ This generator scaffolds a new page and creates a corresponding navigation menu 
 
 The following (client-side) artifacts are generated:
 
-##### 1. AngularJS application (assuming your page is called 'about-us'):
- * `src/main/webapp/app/about-us/about-us.controller.js`
- * `src/main/webapp/app/about-us/about-us.directive.js`
- * `src/main/webapp/app/about-us/about-us.html`
- * `src/main/webapp/app/about-us/about-us.service.js`
- * `src/main/webapp/app/about-us/about-us.state.js`
- * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
- * `src/test/javascript/spec/app/about-us/about-us.controller.spec.js`
- * `src/test/javascript/spec/app/about-us/about-us.directive.spec.js`
- * `src/test/javascript/spec/app/about-us/about-us.service.spec.js`
- * `src/test/javascript/spec/app/about-us/about-us.state.spec.js`
-##### 2. Angular application (assuming your page is called 'about-us'):
+##### 1. Angular application (assuming your page is called 'about-us'):
  * `src/main/webapp/app/about-us/about-us.component.html`
  * `src/main/webapp/app/about-us/about-us.component.ts`
  * `src/main/webapp/app/about-us/about-us.module.ts`
@@ -31,6 +20,8 @@ The following (client-side) artifacts are generated:
  * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
  * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
 
+##### 2. React:
+ * Not supported currently
 
 # Prerequisites
 
