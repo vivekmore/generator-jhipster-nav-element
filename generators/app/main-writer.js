@@ -1,5 +1,4 @@
 const constants = require('./constants');
-const defaultTemplateWriter = require('./about-us/about-us-template-writer');
 const defaultNg2TemplateWriter = require('./about-us/about-us-ng2-template-writer');
 
 module.exports = {
@@ -7,7 +6,7 @@ module.exports = {
 };
 
 function writeTemplate(generator) {
-    switch (generator.props.templateType) {
+    switch (generator.templateType) {
     case constants.TEMPLATE_TYPE.DEFAULT:
         writeDefaultTemplate(generator);
         break;
@@ -19,7 +18,5 @@ function writeTemplate(generator) {
 function writeDefaultTemplate(generator) {
     if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
         defaultNg2TemplateWriter.write(generator);
-    } else {
-        defaultTemplateWriter.write(generator);
     }
 }
