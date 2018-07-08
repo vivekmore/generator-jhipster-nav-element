@@ -7,7 +7,7 @@ module.exports = {
 };
 
 function writeTemplate(generator) {
-    switch (generator.props.templateType) {
+    switch (generator.templateType) {
     case constants.TEMPLATE_TYPE.DEFAULT:
         writeDefaultTemplate(generator);
         break;
