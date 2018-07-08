@@ -9,13 +9,13 @@ cache:
 #    - $HOME/.yarn-cache
 #    - node_modules
 before_install:
-  - npm -g i yo bower gulp-cli
-#  - yarn global add yo bower gulp-cli
+#  - npm -g i yo bower gulp-cli
+  - yarn global add yo bower gulp-cli
 install:
-  - npm prune
-  - npm install
-  - npm link
-  - npm run coveralls
-#  - yarn install
-#  - yarn link
-#  - yarn run coveralls
+#  - npm prune
+#  - npm install
+#  - npm link
+#  - npm run coveralls
+  - yarn install
+  - yarn link
+  - yarn run coveralls
