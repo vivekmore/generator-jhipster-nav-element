@@ -16,10 +16,6 @@ function write(generator) {
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.useSass = jhipsterAppConfig.useSass;
 
-    generator.message = generator.props.message;
-    generator.navElementKey = generator.props.navElementKey;
-    generator.createDirective = generator.props.createDirective;
-
     const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
     generator.componentI18nKey = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
