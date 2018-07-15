@@ -6,15 +6,15 @@ const helpers = require('yeoman-test');
 const fs = require('fs');
 const fse = require('fs-extra');
 const _ = require('lodash');
-const navElementConstants = require('../../../generators/app/constants');
+const navElementConstants = require('../../../../generators/app/constants');
 const expectedFiles = require('./expectations.json');
 
 const RESULTS_DIR = `${__dirname}/results/`;
 
-describe('default angular template - useSass: true', () => {
+describe('default angular template - translation disabled', () => {
     before((done) => {
         helpers
-            .run(path.join(__dirname, '../../../generators/app'))
+            .run(path.join(__dirname, '../../../../generators/app'))
             .inTmpDir((dir) => {
                 fse.copySync(path.join(__dirname, '/playground'), dir);
             })
