@@ -57,7 +57,7 @@
     "lint-fix": "eslint . --fix",
     "test": "mocha",
     "preversion": "npm i && npm prune && npm test",
-    "postversion": "git push --tags && npm adduser && npm publish",
+    "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
     "bump-major": "npm version major",
