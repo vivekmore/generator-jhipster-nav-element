@@ -1333,9 +1333,9 @@ gauge@~1.2.5:
     lodash.padend "^4.1.0"
     lodash.padstart "^4.1.0"
 
-generator-jhipster@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-5.3.0.tgz#57bf8642daa914529b52b31025cf65f55f83f258"
+generator-jhipster@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-5.3.1.tgz#74230bcbb8ee9e9f0212dee7c2f375850061378e"
   dependencies:
     axios "0.18.0"
     chalk "2.4.1"
@@ -1346,7 +1346,7 @@ generator-jhipster@5.3.0:
     glob "7.1.2"
     gulp-filter "5.1.0"
     insight "0.10.1"
-    jhipster-core "3.3.1"
+    jhipster-core "3.3.2"
     js-yaml "3.12.0"
     lodash "4.17.10"
     meow "5.0.0"
@@ -2004,9 +2004,9 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-jhipster-core@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-3.3.1.tgz#984073fa7678ac01fcc3f4f3357d18044c14392b"
+jhipster-core@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-3.3.2.tgz#3e79b62b554a8b506d0ca8ec62ebe36814ad8bca"
   dependencies:
     chevrotain "3.7.4"
     fs-extra "7.0.0"
