@@ -2,6 +2,7 @@
 
 ```bash
 npm login
+npm adduser
 npm run bump-patch
 ```
 
