@@ -986,9 +986,9 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.5.0.tgz#8557fcceab5141a8197da9ffd9904f89f64425c6"
+eslint@5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.6.0.tgz#b6f7806041af01f71b3f1895cbb20971ea4b6223"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.5.3"
@@ -1333,9 +1333,9 @@ gauge@~1.2.5:
     lodash.padend "^4.1.0"
     lodash.padstart "^4.1.0"
 
-generator-jhipster@5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-5.3.1.tgz#74230bcbb8ee9e9f0212dee7c2f375850061378e"
+generator-jhipster@5.3.4:
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-5.3.4.tgz#cf40dacf719d34a9ff347a0f163811da89ecfa16"
   dependencies:
     axios "0.18.0"
     chalk "2.4.1"
@@ -1346,7 +1346,8 @@ generator-jhipster@5.3.1:
     glob "7.1.2"
     gulp-filter "5.1.0"
     insight "0.10.1"
-    jhipster-core "3.3.2"
+    jhipster-core "3.3.3"
+    js-object-pretty-print "0.3.0"
     js-yaml "3.12.0"
     lodash "4.17.10"
     meow "5.0.0"
@@ -2004,14 +2005,18 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-jhipster-core@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-3.3.2.tgz#3e79b62b554a8b506d0ca8ec62ebe36814ad8bca"
+jhipster-core@3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-3.3.3.tgz#4bd002f067acb130637b755d79e2bf643ec195b0"
   dependencies:
     chevrotain "3.7.4"
     fs-extra "7.0.0"
     lodash "4.17.10"
     winston "3.0.0"
+
+js-object-pretty-print@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/js-object-pretty-print/-/js-object-pretty-print-0.3.0.tgz#4670e450066ee1eccf35174c7d197f5aa38bcf74"
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -2202,6 +2207,10 @@ lodash.uniq@^4.5.0:
 lodash@4.17.10, lodash@^4.17.10, lodash@^4.17.5:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+
+lodash@4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
 lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"
