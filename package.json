@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "2.0.4",
+  "version": "2.0.9",
   "description": "A generator to scaffold a new page (and the corresponding navigation menu) in a JHipster project.",
   "keywords": [
     "scaffold",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "chalk": "2.4.1",
-    "generator-jhipster": "5.3.0",
-    "lodash": "4.17.10",
+    "generator-jhipster": "5.3.4",
+    "lodash": "4.17.11",
     "mkdirp": "0.5.1",
     "semver": "5.5.1",
     "shelljs": "0.8.2",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "coveralls": "3.0.2",
-    "eslint": "5.5.0",
+    "eslint": "5.6.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "fs": "0.0.1-security",
@@ -57,7 +57,7 @@
     "lint-fix": "eslint . --fix",
     "test": "mocha",
     "preversion": "npm i && npm prune && npm test",
-    "postversion": "git push --tags && npm adduser && npm publish",
+    "postversion": "git push --tags && npm publish",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
     "bump-major": "npm version major",
