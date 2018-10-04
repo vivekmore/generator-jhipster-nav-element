@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "chalk": "2.4.1",
-    "generator-jhipster": "5.3.4",
+    "generator-jhipster": "5.4.0",
     "lodash": "4.17.11",
     "mkdirp": "0.5.1",
     "semver": "5.5.1",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "coveralls": "3.0.2",
-    "eslint": "5.6.0",
+    "eslint": "5.6.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "fs": "0.0.1-security",
