@@ -4,6 +4,7 @@
 npm login
 npm adduser
 npm run bump-patch
+npm publish
 ```
 
 # Troubleshooting
