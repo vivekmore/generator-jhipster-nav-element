@@ -4,7 +4,7 @@
 npm login
 npm adduser
 npm run bump-patch
-npm publish
+npm publish [--otp otpcode]
 ```
 
 # Troubleshooting
