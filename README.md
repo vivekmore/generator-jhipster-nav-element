@@ -15,7 +15,7 @@ The following (client-side) artifacts are generated:
  * `src/main/webapp/app/about-us/about-us.component.ts`
  * `src/main/webapp/app/about-us/about-us.module.ts`
  * `src/main/webapp/app/about-us/about-us.route.ts`
- * `src/main/webapp/app/about-us/about-us.[s]css`
+ * `src/main/webapp/app/about-us/about-us.component.[s]css`
  * `src/main/webapp/app/about-us/index.ts`
  * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
  * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
