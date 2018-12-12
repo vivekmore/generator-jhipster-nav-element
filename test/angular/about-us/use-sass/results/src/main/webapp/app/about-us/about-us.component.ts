@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'jhi-about-us',
+  selector: 'test-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: [
     'about-us.scss'
