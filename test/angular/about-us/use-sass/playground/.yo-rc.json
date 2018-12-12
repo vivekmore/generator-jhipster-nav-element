@@ -25,6 +25,7 @@
     "testFrameworks": [
       "gatling"
     ],
-    "clientFramework": "angularX"
+    "clientFramework": "angularX",
+    "jhiPrefix": "test"
   }
 }
