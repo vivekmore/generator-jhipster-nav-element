@@ -34,6 +34,7 @@ describe('default angular template - translation enabled', () => {
         assert.file(expectedFiles.client.added);
     });
 
+
     it('expected production files have right content', () => {
         _.forEach(expectedFiles.client.added, (change) => {
             const actualContent = fs.readFileSync(change, 'utf8');
