@@ -11,7 +11,7 @@ const expectedFiles = require('./expectations.json');
 
 const RESULTS_DIR = `${__dirname}/results/`;
 
-describe('default angular template - translation enabled', () => {
+describe('nested-routes angular template - translation enabled', () => {
     before((done) => {
         helpers
             .run(path.join(__dirname, '../../../../generators/app'))
