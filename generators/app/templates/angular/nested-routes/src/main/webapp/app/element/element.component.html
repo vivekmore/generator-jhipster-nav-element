@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h6 class="text-right">{{message}}</h6>
+    <h1 class="text-capitalize text-center"<% if (enableTranslation) {  %> jhiTranslate="<%=componentI18nKey%>.title"<% } %>>Title</h1>
+    <h5 class="text-center"<% if (enableTranslation) {  %> jhiTranslate="<%=componentI18nKey%>.subtitle"<% } %>>Subtitle</h5>
+    <hr/>
+    <p class="text-justify"<% if (enableTranslation) {  %> jhiTranslate="<%=componentI18nKey%>.content"<% } %>>Content</p>
+  </div>
+  <div class="col-md-1"></div>
+</div>
