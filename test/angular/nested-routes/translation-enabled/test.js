@@ -22,7 +22,7 @@ describe('default angular template - translation enabled', () => {
                 skipInstall: true
             })
             .withPrompts({
-                templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
+                templateType: navElementConstants.TEMPLATE_TYPE.NESTED_ROUTES,
                 navElementKey: 'about_us'
             })
             .on('end', () => {
