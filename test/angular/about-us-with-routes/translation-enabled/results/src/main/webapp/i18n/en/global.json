@@ -1,0 +1,16 @@
+{
+  "global": {
+    "menu": {
+      "about-us": {
+        "main": "About Us",
+        "page-one": {
+          "main": "Page One"
+        },
+        "page-two": {
+          "main": "Page Two"
+        }
+      },
+      "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)"
+    }
+  }
+}
