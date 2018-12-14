@@ -16,26 +16,42 @@ function write(generator) {
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.useSass = jhipsterAppConfig.useSass;
 
-    const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
-    generator.componentI18nKey = _.kebabCase(s).toLowerCase();
+    const s = generator.navElementKey.trim()
+        .replace(' ', '-')
+        .replace('_', '-');
+    generator.componentI18nKey = _.kebabCase(s)
+        .toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
-    generator.selector = `${prefix}${_.kebabCase(s).toLowerCase()}`;
-    generator.templateName = `${_.kebabCase(s).toLowerCase()}.component.html`;
-    generator.cssName = `${_.kebabCase(s).toLowerCase()}.component.css`;
-    generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
+    generator.selector = `${prefix}${_.kebabCase(s)
+        .toLowerCase()}`;
+    generator.templateName = `${_.kebabCase(s)
+        .toLowerCase()}.component.html`;
+    generator.cssName = `${_.kebabCase(s)
+        .toLowerCase()}.component.css`;
+    generator.scssName = `${_.kebabCase(s)
+        .toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
-    generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
-    generator.locationName = _.kebabCase(s).toLowerCase();
-    generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
-    generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
+    generator.componentTsName = `${_.kebabCase(s)
+        .toLowerCase()}.component`;
+    generator.locationName = _.kebabCase(s)
+        .toLowerCase();
+    generator.routeName = `${_.kebabCase(s)
+        .toUpperCase()
+        .replace('-', '_')}_ROUTE`;
+    generator.routeTsName = `${_.kebabCase(s)
+        .toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
     generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s))}Module`;
-    generator.moduleTsNameMinusSuffix = _.kebabCase(s).toLowerCase();
-    generator.moduleTsName = `${_.kebabCase(s).toLowerCase()}.module`;
-    generator.pageTitle = `${_.kebabCase(s).toLowerCase()}.title`;
-    generator.tabName = _.upperFirst(_.kebabCase(s).replace('-', ' '));
+    generator.moduleTsNameMinusSuffix = _.kebabCase(s)
+        .toLowerCase();
+    generator.moduleTsName = `${_.kebabCase(s)
+        .toLowerCase()}.module`;
+    generator.pageTitle = `${_.kebabCase(s)
+        .toLowerCase()}.title`;
+    generator.tabName = _.upperFirst(_.kebabCase(s)
+        .replace('-', ' '));
 
     generator.log('------------------------------------------------------------');
     generator.log(`baseName=${generator.baseName}`);
@@ -45,43 +61,101 @@ function write(generator) {
     generator.log(`navElementKey=${generator.navElementKey}`);
     generator.log('------------------------------------------------------------');
 
-    const componentName = _.kebabCase(s).toLowerCase();
-    const componentDirName = _.kebabCase(s).toLowerCase();
+    const componentFileNamePrefix = _.kebabCase(s)
+        .toLowerCase();
+    const componentDirName = _.kebabCase(s)
+        .toLowerCase();
+    const subComponents = [
+        {
+            componentName: 'PageOneComponent',
+            selector: 'page-one',
+            templateName: 'page-one.component.html',
+            componentI18nKey: 'page-one',
+            navElementKey: 'page-one',
+            componentFileNamePrefix: 'page-one',
+            componentDirName: 'page-one',
+            routeName: 'PAGE_ONE_ROUTE',
+            locationName: 'page-one',
+            pageTitle: 'page-one.title',
+            componentStartCase: 'Page One',
+            cssName: 'page-one.component.css',
+            scssName: 'page-one.component.scss'
+        },
+        {
+            componentName: 'PageTwoComponent',
+            selector: 'page-two',
+            templateName: 'page-two.component.html',
+            componentI18nKey: 'page-two',
+            navElementKey: 'page-two',
+            componentFileNamePrefix: 'page-two',
+            componentDirName: 'page-two',
+            routeName: 'PAGE_TWO_ROUTE',
+            locationName: 'page-two',
+            pageTitle: 'page-two.title',
+            componentStartCase: 'Page Two',
+            cssName: 'page-two.component.css',
+            scssName: 'page-two.component.scss'
+        }
+    ];
+    generator.subComponents = subComponents;
 
-    const ng2TemplateDir = `angular/${generator.templateDir}`;
+    const defaultNg2TemplateDir = 'angular/about-us/';
+    const nestedRoutesNg2TemplateDir = `angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
-    // HTML TEMPLATE
+
+    // HTML TEMPLATES
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.html`,
-        `${webappDir}app/${componentDirName}/${componentName}.component.html`
+        `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element-with-nested.component.html`,
+        `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.component.html`
     );
+    _.forEach(subComponents, (subComponent) => {
+        generator.currentSubComponent = subComponent;
+        generator.template(
+            `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.component.html`,
+            `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.component.html`
+        );
+    });
 
 
     // COMPONENT
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts`,
-        `${webappDir}app/${componentDirName}/${componentName}.component.ts`
+        `${defaultNg2TemplateDir}src/main/webapp/app/element/element.component.ts`,
+        `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.component.ts`
     );
+    _.forEach(subComponents, (subComponent) => {
+        generator.currentSubComponent = subComponent;
+        generator.template(
+            `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.component.ts`,
+            `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.component.ts`
+        );
+    });
 
 
     // MODULE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.module.ts`,
-        `${webappDir}app/${componentDirName}/${componentName}.module.ts`
+        `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.module.ts`,
+        `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.module.ts`
     );
 
 
     // ROUTE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts`,
-        `${webappDir}app/${componentDirName}/${componentName}.route.ts`
+        `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element-with-nested.route.ts`,
+        `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.route.ts`
     );
+    _.forEach(subComponents, (subComponent) => {
+        generator.currentSubComponent = subComponent;
+        generator.template(
+            `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.route.ts`,
+            `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.route.ts`
+        );
+    });
 
 
     // INDEX
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/index.ts`,
+        `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/index.ts`,
         `${webappDir}app/${componentDirName}/index.ts`
     );
 
@@ -89,14 +163,28 @@ function write(generator) {
     // STYLE
     if (generator.useSass) {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss`,
-            `${webappDir}app/${componentDirName}/${componentName}.component.scss`
+            `${defaultNg2TemplateDir}src/main/webapp/app/element/element.component.scss`,
+            `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.component.scss`
         );
+        _.forEach(subComponents, (subComponent) => {
+            generator.currentSubComponent = subComponent;
+            generator.template(
+                `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.component.scss`,
+                `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.component.scss`
+            );
+        });
     } else {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css`,
-            `${webappDir}app/${componentDirName}/${componentName}.component.css`
+            `${defaultNg2TemplateDir}src/main/webapp/app/element/element.component.css`,
+            `${webappDir}app/${componentDirName}/${componentFileNamePrefix}.component.css`
         );
+        _.forEach(subComponents, (subComponent) => {
+            generator.currentSubComponent = subComponent;
+            generator.template(
+                `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/element.component.css`,
+                `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.component.css`
+            );
+        });
     }
 
 
@@ -113,19 +201,30 @@ function write(generator) {
 
     // i18n ELEMENT JSON
     if (generator.enableTranslation) {
-        generator.getAllInstalledLanguages().forEach((language) => {
-            generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
-            generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
-            generator.template(
-                `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json`,
-                `${webappDir}i18n/${language}/${componentName}.json`
-            );
-        }, generator);
+        generator.getAllInstalledLanguages()
+            .forEach((language) => {
+                generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
+                generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
+                generator.template(
+                    `${defaultNg2TemplateDir}src/main/webapp/i18n/lang/element.json`,
+                    `${webappDir}i18n/${language}/${componentFileNamePrefix}.json`
+                );
+                _.forEach(subComponents, (subComponent) => {
+                    generator.currentSubComponent = subComponent;
+                    generator.template(
+                        `${nestedRoutesNg2TemplateDir}src/main/webapp/i18n/lang/element.json`,
+                        `${webappDir}i18n/${language}/${subComponent.componentFileNamePrefix}.json`
+                    );
+                });
+            }, generator);
     }
 
 
     // GLOBAL JSON
     generator.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    _.forEach(subComponents, (subComponent) => {
+        generator.addTranslationKeyToAllLanguages(subComponent.componentI18nKey, subComponent.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    });
 
 
     // ENTRIES TO NAVBAR.HTML
@@ -158,7 +257,14 @@ function write(generator) {
 
     // TESTS
     generator.template(
-        `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts`,
-        `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentName}/${componentName}.component.spec.ts`
+        `${defaultNg2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts`,
+        `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentFileNamePrefix}/${componentFileNamePrefix}.component.spec.ts`
     );
+    _.forEach(subComponents, (subComponent) => {
+        generator.currentSubComponent = subComponent;
+        generator.template(
+            `${nestedRoutesNg2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts`,
+            `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentFileNamePrefix}/${subComponent.componentFileNamePrefix}/${subComponent.componentFileNamePrefix}.component.spec.ts`
+        );
+    });
 }

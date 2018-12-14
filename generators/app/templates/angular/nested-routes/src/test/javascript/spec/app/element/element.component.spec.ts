@@ -1,3 +1,3 @@
-describe('<%=componentName%> Tests', () => {
+describe('<%=currentSubComponent.componentName%> Tests', () => {
 
 });
