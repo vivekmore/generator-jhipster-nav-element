@@ -1,14 +1,14 @@
 import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
-import { <%=componentName%> } from './';
+import { <%=currentSubComponent.componentName%> } from './';
 
-export const <%=routeName%>: Route = {
-  path: '<%=locationName%>',
-  component: <%=componentName%>,
+export const <%=currentSubComponent.routeName%>: Route = {
+  path: '<%=currentSubComponent.locationName%>',
+  component: <%=currentSubComponent.componentName%>,
   data: {
     authorities: [],
-    pageTitle: '<%=pageTitle%>'
+    pageTitle: '<%=currentSubComponent.pageTitle%>'
   },
   canActivate: [UserRouteAccessService]
 };

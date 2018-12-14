@@ -4,19 +4,15 @@ import { RouterModule } from '@angular/router';
 import { MyAppSharedModule } from '../shared';
 
 import { ABOUT_US_ROUTE, AboutUsComponent } from './';
-import { PageOne } from 'app/about-us/page-one/page-one.component';
-import { PageTwo } from 'app/about-us/page-two/page-two.component';
+import { PageOneComponent } from './page-one/page-one.component';
+import { PageTwoComponent } from './page-two/page-two.component';
 
 @NgModule({
     imports: [
       MyAppSharedModule,
       RouterModule.forRoot([ ABOUT_US_ROUTE ], { useHash: true })
     ],
-    declarations: [
-      AboutUsComponent,
-      PageOne,
-      PageTwo,
-    ],
+    declarations: [AboutUsComponent, PageOneComponent, PageTwoComponent],
     entryComponents: [
     ],
     providers: [

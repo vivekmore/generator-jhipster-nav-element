@@ -13,6 +13,8 @@ export const ABOUT_US_ROUTE: Route = {
     pageTitle: 'about-us.title'
   },
   canActivate: [UserRouteAccessService],
-  children: []
+  children: [
+    PAGE_ONE_ROUTE,
+    PAGE_TWO_ROUTE,
+  ]
 };
-.
