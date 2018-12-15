@@ -68,7 +68,7 @@ function write(generator) {
     const subComponents = [
         {
             componentName: 'PageOneComponent',
-            selector: 'page-one',
+            selector: `${prefix}page-one`,
             templateName: 'page-one.component.html',
             componentI18nKey: 'page-one',
             navElementKey: 'page-one',
@@ -83,7 +83,7 @@ function write(generator) {
         },
         {
             componentName: 'PageTwoComponent',
-            selector: 'page-two',
+            selector: `${prefix}page-two`,
             templateName: 'page-two.component.html',
             componentI18nKey: 'page-two',
             navElementKey: 'page-two',
