@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
-import { <%=currentSubComponent.componentName%> } from './';
+import { <%=currentSubComponent.componentName%> } from './<%=currentSubComponent.componentTsName%>';
 
 export const <%=currentSubComponent.routeName%>: Route = {
   path: '<%=currentSubComponent.locationName%>',
