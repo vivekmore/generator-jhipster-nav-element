@@ -7,10 +7,17 @@
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application.
 
 This generator scaffolds a new page and creates a corresponding navigation menu item in the your JHipster application.
+Currently following templates are available:
+
+
+## A simple page with some content
 
 The following (client-side) artifacts are generated:
 
 ##### 1. Angular application (assuming your page is called 'about-us'):
+ * `src/main/webapp/app/app.module.ts` (_modified_)
+ * `src/main/webapp/app/layouts/navbar/navbar.component.html` (_modified_)
+ * `src/main/webapp/i18n/{lang}/global.json` (_modified_)
  * `src/main/webapp/app/about-us/about-us.component.html`
  * `src/main/webapp/app/about-us/about-us.component.ts`
  * `src/main/webapp/app/about-us/about-us.module.ts`
@@ -19,6 +26,40 @@ The following (client-side) artifacts are generated:
  * `src/main/webapp/app/about-us/index.ts`
  * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
  * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
+
+##### 2. React:
+ * Not supported currently
+
+
+## Nested Routes Template 
+
+This template creates a page with 2 tabs (sub components/pages) accessible via nested routes
+The following (client-side) artifacts are generated/modified:
+
+##### 1. Angular application (assuming your page is called 'hello-world'):
+ * `src/main/webapp/app/app.module.ts` (_modified_)
+ * `src/main/webapp/app/hello-world/navbar.component.html` (_modified_)
+ * `src/main/webapp/i18n/{lang}/global.json` (_modified_)
+ * `src/main/webapp/i18n/{lang}/hello-world.json` (_i18n resources_)
+ * `src/main/webapp/i18n/{lang}/page-one.json` (_i18n resources_)
+ * `src/main/webapp/i18n/{lang}/page-two.json` (_i18n resources_)
+ * `src/main/webapp/app/hello-world/hello-world.component.html`
+ * `src/main/webapp/app/hello-world/hello-world.component.[s]css`
+ * `src/main/webapp/app/hello-world/hello-world.component.ts`
+ * `src/main/webapp/app/hello-world/hello-world.module.ts`
+ * `src/main/webapp/app/hello-world/hello-world.route.ts`
+ * `src/main/webapp/app/hello-world/index.ts`
+ * `src/test/javascript/spec/app/hello-world/hello-world.component.spec.ts`
+ * `src/main/webapp/app/hello-world/page-one/page-one.component.html`
+ * `src/main/webapp/app/hello-world/page-one/page-one.component.[s]css`
+ * `src/main/webapp/app/hello-world/page-one/page-one.component.ts`
+ * `src/main/webapp/app/hello-world/page-one/page-one.route.ts`
+ * `src/test/javascript/spec/app/hello-world/page-one/page-one.component.spec.ts`
+ * `src/main/webapp/app/hello-world/page-two/page-two.component.html`
+ * `src/main/webapp/app/hello-world/page-two/page-two.component.[s]css`
+ * `src/main/webapp/app/hello-world/page-two/page-two.component.ts`
+ * `src/main/webapp/app/hello-world/page-two/page-two.route.ts`
+ * `src/test/javascript/spec/app/hello-world/page-two/page-two.component.spec.ts`
 
 ##### 2. React:
  * Not supported currently
