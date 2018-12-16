@@ -1,0 +1,3 @@
+describe('<%=currentSubComponent.componentName%> Tests', () => {
+
+});

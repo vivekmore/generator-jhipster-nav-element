@@ -2,6 +2,8 @@ import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
 import { AboutUsComponent } from './about-us.component';
+import { PAGE_ONE_ROUTE } from './page-one/page-one.route';
+import { PAGE_TWO_ROUTE } from './page-two/page-two.route';
 
 export const ABOUT_US_ROUTE: Route = {
   path: 'about-us',
@@ -10,5 +12,9 @@ export const ABOUT_US_ROUTE: Route = {
     authorities: [],
     pageTitle: 'about-us.title'
   },
-  canActivate: [UserRouteAccessService]
+  canActivate: [UserRouteAccessService],
+  children: [
+    PAGE_ONE_ROUTE,
+    PAGE_TWO_ROUTE,
+  ]
 };

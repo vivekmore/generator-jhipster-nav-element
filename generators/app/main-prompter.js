@@ -1,5 +1,6 @@
 const constants = require('./constants');
 const defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter');
+const nestedRoutesNg2TemplatePrompter = require('./nested-routes/nested-routes-ng2-template-prompter');
 
 module.exports = {
     promptToChooseATemplate,
@@ -17,6 +18,10 @@ function promptToChooseATemplate() {
             {
                 name: 'About Us',
                 value: constants.TEMPLATE_TYPE.DEFAULT
+            },
+            {
+                name: 'Page with nested routes',
+                value: constants.TEMPLATE_TYPE.NESTED_ROUTES
             }
         ]
     }).then((prompt) => {
@@ -31,6 +36,9 @@ function promptTemplateSpecificQuestions() {
     case constants.TEMPLATE_TYPE.DEFAULT:
         askDefaultTemplateQuestions(this);
         break;
+    case constants.TEMPLATE_TYPE.NESTED_ROUTES:
+        askNestedRoutesTemplateQuestions(this);
+        break;
     default:
         break;
     }
@@ -39,5 +47,10 @@ function promptTemplateSpecificQuestions() {
 function askDefaultTemplateQuestions(generator) {
     if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
         defaultNg2TemplatePrompter.askQuestions(generator);
+    }
+}
+function askNestedRoutesTemplateQuestions(generator) {
+    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+        nestedRoutesNg2TemplatePrompter.askQuestions(generator);
     }
 }
