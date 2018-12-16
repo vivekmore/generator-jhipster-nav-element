@@ -23,8 +23,8 @@ function write(generator) {
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
     generator.selector = `${prefix}${_.kebabCase(s).toLowerCase()}`;
     generator.templateName = `${_.kebabCase(s).toLowerCase()}.component.html`;
-    generator.cssName = `${_.kebabCase(s).toLowerCase()}.css`;
-    generator.scssName = `${_.kebabCase(s).toLowerCase()}.scss`;
+    generator.cssName = `${_.kebabCase(s).toLowerCase()}.component.css`;
+    generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
     generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
     generator.locationName = _.kebabCase(s).toLowerCase();
@@ -89,13 +89,13 @@ function write(generator) {
     // STYLE
     if (generator.useSass) {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.scss`,
-            `${webappDir}app/${componentDirName}/${componentName}.scss`
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss`,
+            `${webappDir}app/${componentDirName}/${componentName}.component.scss`
         );
     } else {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.css`,
-            `${webappDir}app/${componentDirName}/${componentName}.css`
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css`,
+            `${webappDir}app/${componentDirName}/${componentName}.component.css`
         );
     }
 

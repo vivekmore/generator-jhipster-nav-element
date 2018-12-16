@@ -1,0 +1,3 @@
+describe('AboutUsComponent Tests', () => {
+
+});
