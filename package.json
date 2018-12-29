@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "A generator to scaffold a new page (and the corresponding navigation menu) in a JHipster project.",
   "keywords": [
     "scaffold",
@@ -30,17 +30,17 @@
   },
   "dependencies": {
     "chalk": "2.4.1",
-    "generator-jhipster": "5.7.0",
+    "generator-jhipster": "5.7.2",
     "lodash": "4.17.11",
     "mkdirp": "0.5.1",
     "semver": "5.6.0",
     "shelljs": "0.8.3",
     "tabtab": "3.0.2",
-    "yeoman-generator": "3.1.1"
+    "yeoman-generator": "3.2.0"
   },
   "devDependencies": {
     "coveralls": "3.0.2",
-    "eslint": "5.10.0",
+    "eslint": "5.11.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "fs": "0.0.1-security",

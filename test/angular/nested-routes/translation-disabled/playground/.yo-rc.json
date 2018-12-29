@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "jhipsterVersion": "5.0.2",
-    "baseName": "myApp",
+    "baseName": "someProject",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
     "authenticationType": "session",
@@ -12,7 +12,7 @@
     "devDatabaseType": "h2Disk",
     "prodDatabaseType": "mysql",
     "searchEngine": "no",
-    "useSass": true,
+    "useSass": false,
     "buildTool": "maven",
     "enableTranslation": false,
     "enableSocialSignIn": true,
@@ -21,6 +21,6 @@
       "gatling"
     ],
     "clientFramework": "angularX",
-    "jhiPrefix": "test"
+    "jhiPrefix": "kBab"
   }
 }

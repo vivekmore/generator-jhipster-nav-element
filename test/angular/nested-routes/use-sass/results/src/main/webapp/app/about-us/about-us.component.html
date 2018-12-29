@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h6 class="text-right">{{message}}</h6>
+    <h1 class="text-capitalize text-center">Title</h1>
+    <h5 class="text-center">Subtitle</h5>
+    <hr/>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" routerLink="/about-us/page-one">Page One</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" routerLink="/about-us/page-two">Page Two</a>
+      </li>
+    </ul>
+
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-md-1"></div>
+</div>

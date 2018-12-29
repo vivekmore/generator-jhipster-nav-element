@@ -11,7 +11,7 @@ const expectedFiles = require('./expectations.json');
 
 const RESULTS_DIR = `${__dirname}/results/`;
 
-describe('default angular template - translation disabled', () => {
+describe('nested-routes angular template - useSass: true', () => {
     before((done) => {
         helpers
             .run(path.join(__dirname, '../../../../generators/app'))
@@ -22,7 +22,7 @@ describe('default angular template - translation disabled', () => {
                 skipInstall: true
             })
             .withPrompts({
-                templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
+                templateType: navElementConstants.TEMPLATE_TYPE.NESTED_ROUTES,
                 navElementKey: 'about_us'
             })
             .on('end', () => {
