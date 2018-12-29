@@ -30,34 +30,34 @@ describe('default angular template - translation enabled', () => {
             });
     });
 
-    it('creates expected production files', () => {
-        assert.file(expectedFiles.client.added);
-    });
+    _.forEach(expectedFiles.client.added, (file) => {
+        it(`creates expected production file: ${file}`, () => {
+            assert.file(file);
+        });
 
-    it('expected production files have right content', () => {
-        _.forEach(expectedFiles.client.added, (change) => {
-            const actualContent = fs.readFileSync(change, 'utf8');
-            const expectedContent = fs.readFileSync(RESULTS_DIR + change, 'utf8');
+        it(`production file has right content: ${file}`, () => {
+            const actualContent = fs.readFileSync(file, 'utf8');
+            const expectedContent = fs.readFileSync(RESULTS_DIR + file, 'utf8');
             assert.textEqual(actualContent, expectedContent);
         });
     });
 
-    it('creates expected test files', () => {
-        assert.file(expectedFiles.client.addedTests);
-    });
+    _.forEach(expectedFiles.client.addedTests, (file) => {
+        it(`creates expected test file: ${file}`, () => {
+            assert.file(file);
+        });
 
-    it('expected test files have right content', () => {
-        _.forEach(expectedFiles.client.addedTests, (change) => {
-            const actualContent = fs.readFileSync(change, 'utf8');
-            const expectedContent = fs.readFileSync(RESULTS_DIR + change, 'utf8');
+        it(`test file has right content: ${file}`, () => {
+            const actualContent = fs.readFileSync(file, 'utf8');
+            const expectedContent = fs.readFileSync(RESULTS_DIR + file, 'utf8');
             assert.textEqual(actualContent, expectedContent);
         });
     });
 
-    it('modifies all files as expected', () => {
-        _.forEach(expectedFiles.client.changed, (change) => {
-            const actualContent = fs.readFileSync(change, 'utf8');
-            const expectedContent = fs.readFileSync(RESULTS_DIR + change, 'utf8');
+    _.forEach(expectedFiles.client.changed, (file) => {
+        it(`modifies expected production file: ${file}`, () => {
+            const actualContent = fs.readFileSync(file, 'utf8');
+            const expectedContent = fs.readFileSync(RESULTS_DIR + file, 'utf8');
             assert.textEqual(actualContent, expectedContent);
         });
     });
