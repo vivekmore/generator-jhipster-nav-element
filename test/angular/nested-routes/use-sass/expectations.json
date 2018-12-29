@@ -1,0 +1,42 @@
+{
+  "client": {
+    "added": [
+      "src/main/webapp/app/about-us/about-us.component.html",
+      "src/main/webapp/app/about-us/about-us.component.ts",
+      "src/main/webapp/app/about-us/about-us.module.ts",
+      "src/main/webapp/app/about-us/about-us.route.ts",
+      "src/main/webapp/app/about-us/about-us.component.scss",
+      "src/main/webapp/app/about-us/index.ts",
+
+      "src/main/webapp/app/about-us/page-one/page-one.component.html",
+      "src/main/webapp/app/about-us/page-one/page-one.component.ts",
+      "src/main/webapp/app/about-us/page-one/page-one.route.ts",
+      "src/main/webapp/app/about-us/page-one/page-one.component.scss",
+
+      "src/main/webapp/app/about-us/page-two/page-two.component.html",
+      "src/main/webapp/app/about-us/page-two/page-two.component.ts",
+      "src/main/webapp/app/about-us/page-two/page-two.route.ts",
+      "src/main/webapp/app/about-us/page-two/page-two.component.scss"
+    ],
+    "addedTests": [
+      "src/test/javascript/spec/app/about-us/about-us.component.spec.ts",
+      "src/test/javascript/spec/app/about-us/page-one/page-one.component.spec.ts",
+      "src/test/javascript/spec/app/about-us/page-two/page-two.component.spec.ts"
+    ],
+    "skipped": [
+      "src/main/webapp/i18n/en/about-us.json",
+      "src/main/webapp/i18n/fr/about-us.json",
+
+      "src/main/webapp/i18n/en/page-one.json",
+      "src/main/webapp/i18n/fr/page-one.json",
+
+      "src/main/webapp/i18n/en/page-two.json",
+      "src/main/webapp/i18n/fr/page-two.json"
+    ],
+    "changed": [
+      "src/main/webapp/app/layouts/navbar/navbar.component.html",
+      "src/main/webapp/app/app.module.ts",
+      "src/main/webapp/i18n/en/global.json"
+    ]
+  }
+}
