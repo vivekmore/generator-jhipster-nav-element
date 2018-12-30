@@ -15,16 +15,16 @@ Currently following templates are available:
 The following (client-side) artifacts are generated:
 
 ##### 1. Angular application (assuming your page is called 'about-us'):
- * `src/main/webapp/app/app.module.ts` (_modified_)
- * `src/main/webapp/app/layouts/navbar/navbar.component.html` (_modified_)
- * `src/main/webapp/i18n/{lang}/global.json` (_modified_)
+ * `src/main/webapp/app/app.module.ts` (_this gets modified_)
+ * `src/main/webapp/app/layouts/navbar/navbar.component.html` (_this gets modified_)
+ * `src/main/webapp/i18n/{lang}/global.json` (_these get modified_)
+ * `src/main/webapp/i18n/{lang}/about-us.json` (_resource is created for i18n_)
  * `src/main/webapp/app/about-us/about-us.component.html`
  * `src/main/webapp/app/about-us/about-us.component.ts`
  * `src/main/webapp/app/about-us/about-us.module.ts`
  * `src/main/webapp/app/about-us/about-us.route.ts`
- * `src/main/webapp/app/about-us/about-us.component.[s]css`
+ * `src/main/webapp/app/about-us/about-us.component.[s]css` (_css/scss is created based on your jhipster config, i.e. useSass in your .yo-rc.json_)
  * `src/main/webapp/app/about-us/index.ts`
- * `src/main/webapp/i18n/{lang}/about-us.json` (_i18n resources_)
  * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
 
 ##### 2. React:
@@ -37,26 +37,26 @@ This template creates a page with 2 tabs (sub components/pages) accessible via n
 The following (client-side) artifacts are generated/modified:
 
 ##### 1. Angular application (assuming your page is called 'hello-world'):
- * `src/main/webapp/app/app.module.ts` (_modified_)
- * `src/main/webapp/app/hello-world/navbar.component.html` (_modified_)
- * `src/main/webapp/i18n/{lang}/global.json` (_modified_)
- * `src/main/webapp/i18n/{lang}/hello-world.json` (_i18n resources_)
- * `src/main/webapp/i18n/{lang}/page-one.json` (_i18n resources_)
- * `src/main/webapp/i18n/{lang}/page-two.json` (_i18n resources_)
+ * `src/main/webapp/app/app.module.ts` (_this gets modified_)
+ * `src/main/webapp/app/hello-world/navbar.component.html` (_this gets modified_)
+ * `src/main/webapp/i18n/{lang}/global.json` (_these get modified_)
+ * `src/main/webapp/i18n/{lang}/hello-world.json` (_resource is created for i18n_)
+ * `src/main/webapp/i18n/{lang}/page-one.json` (_resource is created for i18n_)
+ * `src/main/webapp/i18n/{lang}/page-two.json` (_resource is created for i18n_)
  * `src/main/webapp/app/hello-world/hello-world.component.html`
- * `src/main/webapp/app/hello-world/hello-world.component.[s]css`
+ * `src/main/webapp/app/hello-world/hello-world.component.[s]css` (_css/scss is created based on your jhipster config, i.e. useSass in your .yo-rc.json_)
  * `src/main/webapp/app/hello-world/hello-world.component.ts`
  * `src/main/webapp/app/hello-world/hello-world.module.ts`
  * `src/main/webapp/app/hello-world/hello-world.route.ts`
  * `src/main/webapp/app/hello-world/index.ts`
  * `src/test/javascript/spec/app/hello-world/hello-world.component.spec.ts`
  * `src/main/webapp/app/hello-world/page-one/page-one.component.html`
- * `src/main/webapp/app/hello-world/page-one/page-one.component.[s]css`
+ * `src/main/webapp/app/hello-world/page-one/page-one.component.[s]css` (_css/scss is created based on your jhipster config, i.e. useSass in your .yo-rc.json_)
  * `src/main/webapp/app/hello-world/page-one/page-one.component.ts`
  * `src/main/webapp/app/hello-world/page-one/page-one.route.ts`
  * `src/test/javascript/spec/app/hello-world/page-one/page-one.component.spec.ts`
  * `src/main/webapp/app/hello-world/page-two/page-two.component.html`
- * `src/main/webapp/app/hello-world/page-two/page-two.component.[s]css`
+ * `src/main/webapp/app/hello-world/page-two/page-two.component.[s]css` (_css/scss is created based on your jhipster config, i.e. useSass in your .yo-rc.json_)
  * `src/main/webapp/app/hello-world/page-two/page-two.component.ts`
  * `src/main/webapp/app/hello-world/page-two/page-two.route.ts`
  * `src/test/javascript/spec/app/hello-world/page-two/page-two.component.spec.ts`
