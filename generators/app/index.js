@@ -19,7 +19,7 @@ module.exports = class extends BaseGenerator {
                 this.printJHipsterLogo();
 
                 // Have Yeoman greet the user.
-                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster Nav Element')} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`);
+                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster Navigation Element')} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`);
             },
             checkJhipster() {
                 const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
@@ -60,6 +60,6 @@ module.exports = class extends BaseGenerator {
     }
 
     end() {
-        this.log('End of nav element generation');
+        this.log('End of navigation element generation');
     }
 };
