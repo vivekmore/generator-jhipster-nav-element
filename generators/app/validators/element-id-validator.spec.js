@@ -18,7 +18,7 @@ describe('element-id-validator', () => {
 
             const actual = elementIdValidator.validate(testValue);
 
-            const expected = 'Nav element may contain only alphanumeric values and underscores';
+            const expected = 'Navigation element may contain only alphanumeric values and underscores';
             assert.strictEqual(actual, expected, `validate() should return [${expected}] for [${testValue}]`);
         });
     });

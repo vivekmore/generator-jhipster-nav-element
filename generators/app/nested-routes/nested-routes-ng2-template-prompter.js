@@ -14,7 +14,7 @@ function askQuestions(generator) {
         {
             type: 'input',
             name: 'navElementKey',
-            message: 'What would you like the nav element id to be? (e.g. aboutUs, about_us)',
+            message: 'What would you like the navigation element id to be? (e.g. aboutUs, about_us)',
             validate: elementIdValidator.validate,
             default: 'hi_there'
         }
