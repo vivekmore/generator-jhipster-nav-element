@@ -1,6 +1,6 @@
 const constants = require('./constants');
-const defaultNg2TemplateWriter = require('./about-us/about-us-ng2-template-writer');
-const nestedRoutesNg2TemplateWriter = require('./nested-routes/nested-routes-ng2-template-writer');
+const defaultNg2TemplateWriter = require('./about-us/about-us-ng-template-writer');
+const nestedRoutesNg2TemplateWriter = require('./nested-routes/nested-routes-ng-template-writer');
 
 module.exports = {
     writeTemplate
