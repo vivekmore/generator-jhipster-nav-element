@@ -1,6 +1,6 @@
 const constants = require('./constants');
-const defaultNg2TemplatePrompter = require('./about-us/about-us-ng2-template-prompter');
-const nestedRoutesNg2TemplatePrompter = require('./nested-routes/nested-routes-ng2-template-prompter');
+const defaultNg2TemplatePrompter = require('./about-us/about-us-ng-template-prompter');
+const nestedRoutesNg2TemplatePrompter = require('./nested-routes/nested-routes-ng-template-prompter');
 
 module.exports = {
     promptToChooseATemplate,
