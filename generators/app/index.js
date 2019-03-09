@@ -45,15 +45,6 @@ module.exports = class extends BaseGenerator {
     get writing() {
         return {
             writeTemplateSpecificFiles() {
-                // function to use directly template
-                this.template = function (source, destination) {
-                    this.fs.copyTpl(
-                        this.templatePath(source),
-                        this.destinationPath(destination),
-                        this
-                    );
-                };
-
                 mainWriter.writeTemplate(this);
             }
         };
