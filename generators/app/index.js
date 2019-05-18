@@ -11,7 +11,7 @@ module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             readConfig() {
-                this.jhipsterAppConfig = this.getJhipsterAppConfig();
+                this.jhipsterAppConfig = this.getAllJhipsterConfig();
             },
             displayLogo() {
                 // it's here to show that you can use functions from generator-jhipster
