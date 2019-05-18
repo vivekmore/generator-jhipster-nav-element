@@ -11,7 +11,7 @@ module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             readConfig() {
-                this.jhipsterAppConfig = this.getJhipsterAppConfig();
+                this.jhipsterAppConfig = this.getAllJhipsterConfig();
             },
             displayLogo() {
                 // it's here to show that you can use functions from generator-jhipster
@@ -45,15 +45,6 @@ module.exports = class extends BaseGenerator {
     get writing() {
         return {
             writeTemplateSpecificFiles() {
-                // function to use directly template
-                this.template = function (source, destination) {
-                    this.fs.copyTpl(
-                        this.templatePath(source),
-                        this.destinationPath(destination),
-                        this
-                    );
-                };
-
                 mainWriter.writeTemplate(this);
             }
         };
