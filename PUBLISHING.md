@@ -1,10 +1,21 @@
 # Publishing
 
+Check if you're logged in
+
+```bash
+npm whoami
+```
+
+If this errors out, log in using
+
 ```bash
 npm login
-npm adduser
+```
+
+```bash
 npm run bump-patch
 npm publish [--otp otpcode]
+npm logout
 ```
 
 # Troubleshooting
