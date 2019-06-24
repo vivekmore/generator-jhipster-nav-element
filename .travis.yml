@@ -2,23 +2,16 @@ os:
   - linux
 language: node_js
 node_js:
-  - "10.4.1"
-cache:
-  directories:
+  - "10.15.3"
+#cache:
+#  directories:
 #    - $HOME/.yarn-cache
 #    - node_modules
 before_install:
-#  - npm -g i yo bower gulp-cli
-  # Install Yarn
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn -v
-  - yarn global add yo
+    # Update NPM
+    - npm install -g npm
 install:
-#  - npm prune
-#  - npm install
-#  - npm link
-#  - npm run coveralls
-  - yarn install
-  - yarn link
-  - yarn run coveralls
+  - npm prune
+  - npm install
+  - npm link
+  - npm run coveralls
