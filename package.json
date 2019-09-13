@@ -36,12 +36,12 @@
     "semver": "6.3.0",
     "shelljs": "0.8.3",
     "tabtab": "3.0.2",
-    "yeoman-generator": "4.0.1"
+    "yeoman-generator": "4.0.2"
   },
   "devDependencies": {
-    "coveralls": "3.0.5",
-    "eslint": "6.1.0",
-    "eslint-config-airbnb-base": "13.2.0",
+    "coveralls": "3.0.6",
+    "eslint": "6.3.0",
+    "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
     "fs": "0.0.2",
     "fs-extra": "8.1.0",
