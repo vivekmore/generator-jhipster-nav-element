@@ -1,4 +1,4 @@
-/* global describe, before, it */
+/* global describe, beforeEach, it */
 const assert = require('yeoman-assert');
 const elementIdValidator = require('./element-id-validator');
 
