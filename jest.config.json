@@ -1,0 +1,7 @@
+{
+  "name": "generator-jhipster-nav-element",
+  "jest": {
+    "verbose": true,
+    "testPathPattern": "test/**/test.js generators/**/*.spec.js"
+  }
+}
