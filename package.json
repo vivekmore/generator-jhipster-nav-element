@@ -59,7 +59,7 @@
     "pretest": "eslint .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "test": "jest --config=jest.config.json",
+    "test": "jest",
     "preversion": "npm i && npm test",
     "postversion": "git push --tags",
     "bump-patch": "npm version patch",
@@ -71,5 +71,18 @@
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"
+  },
+  "jest": {
+    "verbose": true,
+    "maxConcurrency": 1,
+    "testMatch": [
+      "**/test/**/test.js",
+      "**/generators/**/*.spec.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/test/*/results",
+      "/test/*/playground"
+    ]
   }
 }
