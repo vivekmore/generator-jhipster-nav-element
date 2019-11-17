@@ -75,7 +75,6 @@ function write(generator) {
     generator.addNpmDependency('ngx-cookieconsent', '2.2.3');
 
     // Add changes to app.module.ts
-
     const modulePath = `${webappDir}app/app.module.ts`;
     const importContent1 = 'import { DEBUG_INFO_ENABLED } from \'app/app.constants\';';
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1);
@@ -104,4 +103,7 @@ const cookieConfig: NgcCookieConsentConfig = {
 
     const moduleContent = 'NgcCookieConsentModule.forRoot(cookieConfig),';
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module', moduleContent);
+
+    // Add changes to vendor.scss
+    generator.addVendorSCSSStyle('~cookieconsent/build/cookieconsent.min.css', 'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent');
 }
