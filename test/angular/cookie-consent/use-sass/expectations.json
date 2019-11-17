@@ -1,0 +1,10 @@
+{
+  "client": {
+    "added": [],
+    "addedTests": [],
+    "skipped": [],
+    "changed": [
+      "package.json"
+    ]
+  }
+}
