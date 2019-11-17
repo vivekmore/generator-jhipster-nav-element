@@ -74,19 +74,34 @@ function write(generator) {
     generator.addNpmDependency('cookieconsent', '3.1.1');
     generator.addNpmDependency('ngx-cookieconsent', '2.2.3');
 
-    // -- FILE TO CHANGE
-
     // Add changes to app.module.ts
 
     const modulePath = `${webappDir}app/app.module.ts`;
     const importContent1 = 'import { DEBUG_INFO_ENABLED } from \'app/app.constants\';';
-    const importContent2 = 'import { NgcCookieConsentModule } from \'ngx-cookieconsent\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1, importContent2);
-    // this.addBlockContentToFile(importRewriteFileModel);
+    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1);
+    const importContent2 = 'import { NgcCookieConsentConfig, NgcCookieConsentModule } from \'ngx-cookieconsent\';';
+    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent2);
 
-    // TODO: add const DEFAULT_COOKIE_CONFIG to app.module.ts
+    const cookieConsentConfigContent = `
+const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    domain: DEBUG_INFO_ENABLED ? 'localhost' : 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
 
-    const moduleContent = 'NgcCookieConsentModule.forRoot(DEFAULT_COOKIE_CONFIG),';
+@NgModule(`;
+    generator.replaceContent(modulePath, '@NgModule(', cookieConsentConfigContent);
+
+    const moduleContent = 'NgcCookieConsentModule.forRoot(cookieConfig),';
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module', moduleContent);
-    // this.addBlockContentToFile(moduleRewriteFileModel);
 }
