@@ -81,7 +81,7 @@ import { Subscription } from 'rxjs';
     private revokeChoiceSubscription: Subscription;
     private noCookieLawSubscription: Subscription;
 
-    constructor(private ccService: NgcCookieConsentService, `;
+    constructor(private ngcCookieConsentService: NgcCookieConsentService, `;
     generator.replaceContent(mainComponentPath, 'constructor(', mainComponentSubscriptionsContent);
 
     const ngOnDestroyContent = `
@@ -98,27 +98,27 @@ import { Subscription } from 'rxjs';
 
     ngOnInit() {
         // subscribe to cookieconsent observables to react to main events
-        this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(() => {
+        this.popupOpenSubscription = this.ngcCookieConsentService.popupOpen$.subscribe(() => {
             // handle your event here
         });
 
-        this.popupCloseSubscription = this.ccService.popupClose$.subscribe(() => {
+        this.popupCloseSubscription = this.ngcCookieConsentService.popupClose$.subscribe(() => {
             // handle your event here
         });
 
-        this.initializeSubscription = this.ccService.initialize$.subscribe((event: NgcInitializeEvent) => {
+        this.initializeSubscription = this.ngcCookieConsentService.initialize$.subscribe((event: NgcInitializeEvent) => {
             // handle your event here
         });
 
-        this.statusChangeSubscription = this.ccService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
+        this.statusChangeSubscription = this.ngcCookieConsentService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
             // handle your event here
         });
 
-        this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(() => {
+        this.revokeChoiceSubscription = this.ngcCookieConsentService.revokeChoice$.subscribe(() => {
             // handle your event here
         });
 
-        this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
+        this.noCookieLawSubscription = this.ngcCookieConsentService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
             // handle your event here
         });`;
     generator.replaceContent(mainComponentPath, 'ngOnInit() {', ngOnDestroyContent);
