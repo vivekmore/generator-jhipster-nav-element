@@ -80,6 +80,8 @@ function write(generator) {
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1);
     const importContent2 = 'import { NgcCookieConsentConfig, NgcCookieConsentModule } from \'ngx-cookieconsent\';';
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent2);
+    const importContent3 = 'import \'cookieconsent/build/cookieconsent.min\';';
+    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent3);
 
     const cookieConsentConfigContent = `
 const cookieConfig: NgcCookieConsentConfig = {
