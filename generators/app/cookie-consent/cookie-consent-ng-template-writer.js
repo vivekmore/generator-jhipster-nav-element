@@ -16,57 +16,12 @@ function write(generator) {
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.useSass = jhipsterAppConfig.useSass;
 
-    // const s = generator.navElementKey.trim()
-    //     .replace(' ', '-')
-    //     .replace('_', '-');
-    // generator.componentI18nKey = _.kebabCase(s)
-    //     .toLowerCase();
-    // generator.componentStartCase = _.startCase(s);
-    //
-    // const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
-    // generator.selector = `${prefix}${_.kebabCase(s)
-    //     .toLowerCase()}`;
-    // generator.templateName = `${_.kebabCase(s)
-    //     .toLowerCase()}.component.html`;
-    // generator.cssName = `${_.kebabCase(s)
-    //     .toLowerCase()}.component.css`;
-    // generator.scssName = `${_.kebabCase(s)
-    //     .toLowerCase()}.component.scss`;
-    // generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
-    // generator.componentTsName = `${_.kebabCase(s)
-    //     .toLowerCase()}.component`;
-    // generator.locationName = _.kebabCase(s)
-    //     .toLowerCase();
-    // generator.routeName = `${_.kebabCase(s)
-    //     .toUpperCase()
-    //     .replace('-', '_')}_ROUTE`;
-    // generator.routeTsName = `${_.kebabCase(s)
-    //     .toLowerCase()}.route`;
-    // generator.angularName = _.upperFirst(_.camelCase(s));
-    // generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s))}Module`;
-    // generator.moduleTsNameMinusSuffix = _.kebabCase(s)
-    //     .toLowerCase();
-    // generator.moduleTsName = `${_.kebabCase(s)
-    //     .toLowerCase()}.module`;
-    // generator.pageTitle = `${_.kebabCase(s)
-    //     .toLowerCase()}.title`;
-    // generator.tabName = _.upperFirst(_.kebabCase(s)
-    //     .replace('-', ' '));
-
     generator.log('------------------------------------------------------------');
     generator.log(`baseName=${generator.baseName}`);
     generator.log(`packageName=${generator.packageName}`);
     generator.log(`angularAppName=${generator.angularAppName}`);
     generator.log(`enableTranslation=${generator.enableTranslation}`);
-    generator.log(`navElementKey=${generator.navElementKey}`);
     generator.log('------------------------------------------------------------');
-
-    // const componentName = _.kebabCase(s)
-    //     .toLowerCase();
-    // const componentDirName = _.kebabCase(s)
-    //     .toLowerCase();
-    //
-    // const ng2TemplateDir = `angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
@@ -107,5 +62,64 @@ const cookieConfig: NgcCookieConsentConfig = {
     generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module', moduleContent);
 
     // Add changes to vendor.scss
-    generator.addVendorSCSSStyle('~cookieconsent/build/cookieconsent.min.css', 'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent');
+    generator.addVendorSCSSStyle('@import \'~cookieconsent/build/cookieconsent.min.css\';', 'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent');
+
+    // Add changes to main.component.ts
+    const mainComponentPath = `${webappDir}app/layouts/main/main.component.ts`;
+    const mainComponentImportsContent = `
+import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
+import { Subscription } from 'rxjs';
+
+@Component(`;
+    generator.replaceContent(mainComponentPath, '@Component(', mainComponentImportsContent);
+    const mainComponentSubscriptionsContent = `
+    // keep refs to subscriptions to be able to unsubscribe later
+    private popupOpenSubscription: Subscription;
+    private popupCloseSubscription: Subscription;
+    private initializeSubscription: Subscription;
+    private statusChangeSubscription: Subscription;
+    private revokeChoiceSubscription: Subscription;
+    private noCookieLawSubscription: Subscription;
+
+    constructor(private ccService: NgcCookieConsentService, `;
+    generator.replaceContent(mainComponentPath, 'constructor(', mainComponentSubscriptionsContent);
+
+    const ngOnDestroyContent = `
+
+    ngOnDestroy() {
+        // unsubscribe to cookieconsent observables to prevent memory leaks
+        this.popupOpenSubscription.unsubscribe();
+        this.popupCloseSubscription.unsubscribe();
+        this.initializeSubscription.unsubscribe();
+        this.statusChangeSubscription.unsubscribe();
+        this.revokeChoiceSubscription.unsubscribe();
+        this.noCookieLawSubscription.unsubscribe();
+    }
+
+    ngOnInit() {
+        // subscribe to cookieconsent observables to react to main events
+        this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(() => {
+            // handle your event here
+        });
+
+        this.popupCloseSubscription = this.ccService.popupClose$.subscribe(() => {
+            // handle your event here
+        });
+
+        this.initializeSubscription = this.ccService.initialize$.subscribe((event: NgcInitializeEvent) => {
+            // handle your event here
+        });
+
+        this.statusChangeSubscription = this.ccService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
+            // handle your event here
+        });
+
+        this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(() => {
+            // handle your event here
+        });
+
+        this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
+            // handle your event here
+        });`;
+    generator.replaceContent(mainComponentPath, 'ngOnInit() {', ngOnDestroyContent);
 }
