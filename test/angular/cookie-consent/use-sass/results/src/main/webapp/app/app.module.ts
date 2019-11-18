@@ -2,6 +2,7 @@
 
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+import 'cookieconsent/build/cookieconsent.min';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 const cookieConfig: NgcCookieConsentConfig = {
