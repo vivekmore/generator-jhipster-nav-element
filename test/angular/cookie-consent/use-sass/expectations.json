@@ -8,7 +8,6 @@
       "src/main/webapp/app/layouts/main/main.component.ts",
       "src/main/webapp/app/app.constants.ts",
       "src/main/webapp/app/app.module.ts",
-      "src/main/webapp/app/vendor.ts",
       "src/main/webapp/content/scss/vendor.scss"
     ]
   }
