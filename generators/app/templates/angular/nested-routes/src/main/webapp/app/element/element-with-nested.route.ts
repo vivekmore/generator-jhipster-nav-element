@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { UserRouteAccessService } from 'app/core';
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { <%=componentName%> } from './<%=componentTsName%>';
 <%_ for(let i in subComponents) { _%>
 import { <%=subComponents[i].routeName%> } from './<%=subComponents[i].componentDirName%>/<%=subComponents[i].componentFileNamePrefix%>.route';
