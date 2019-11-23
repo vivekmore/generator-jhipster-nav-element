@@ -1,0 +1,52 @@
+{
+    "name": "my-app",
+    "version": "0.0.0",
+    "description": "Description for my-app",
+    "private": true,
+    "license": "UNLICENSED",
+    "cacheDirectories": [
+        "node_modules"
+    ],
+    "dependencies": {
+        "@angular/core": "^7.2.14"
+    },
+    "devDependencies": {
+        "@angular/cli": "^7.3.8"
+    },
+    "engines": {
+        "node": ">=8.9.0"
+    },
+    "lint-staged": {
+        "{,src/**/}*.{md,json,ts,css,scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "scripts": {
+        "prettier:format": "prettier --write \"{,src/**/}*.{md,json,ts,css,scss}\"",
+        "lint": "tslint --project tsconfig.json -e 'node_modules/**'",
+        "lint:fix": "npm run lint -- --fix",
+        "ngc": "ngc -p tsconfig-aot.json",
+        "cleanup": "rimraf target/{aot,www}",
+        "clean-www": "rimraf target//www/app/{src,target/}",
+        "start": "npm run webpack:dev",
+        "start-tls": "npm run webpack:dev -- --env.tls",
+        "serve": "npm run start",
+        "build": "npm run webpack:prod",
+        "test": "npm run lint && jest --coverage --logHeapUsage -w=2 --config src/test/javascript/jest.conf.js",
+        "test:watch": "npm run test -- --watch",
+        "webpack:dev": "npm run webpack-dev-server -- --config webpack/webpack.dev.js --inline --hot --port=9060 --watch-content-base --env.stats=minimal",
+        "webpack:dev-verbose": "npm run webpack-dev-server -- --config webpack/webpack.dev.js --inline --hot --port=9060 --watch-content-base --profile --progress --env.stats=normal",
+        "webpack:build:main": "npm run webpack -- --config webpack/webpack.dev.js --env.stats=minimal",
+        "webpack:build": "npm run cleanup && npm run webpack:build:main",
+        "webpack:prod:main": "npm run webpack -- --config webpack/webpack.prod.js --profile",
+        "webpack:prod": "npm run cleanup && npm run webpack:prod:main && npm run clean-www",
+        "webpack:test": "npm run test",
+        "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+        "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
+    },
+    "jestSonar": {
+        "reportPath": "target/test-results/jest",
+        "reportFile": "TESTS-results-sonar.xml"
+    }
+}

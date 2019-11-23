@@ -3,6 +3,7 @@ module.exports = {
         DEFAULT: 'ABOUT-US',
         FAQ: 'FAQ',
         CONTACT_US: 'CONTACT-US',
-        NESTED_ROUTES: 'NESTED-ROUTES'
+        NESTED_ROUTES: 'NESTED-ROUTES',
+        COOKIE_CONSENT: 'COOKIE-CONSENT'
     }
 };
