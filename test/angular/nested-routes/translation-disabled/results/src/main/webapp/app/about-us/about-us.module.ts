@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SomeProjectSharedModule } from '../shared';
+import { SomeProjectSharedModule } from '../shared/shared.module';
 
 import { ABOUT_US_ROUTE, AboutUsComponent } from './';
 import { PageOneComponent } from './page-one/page-one.component';
