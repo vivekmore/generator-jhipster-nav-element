@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { UserRouteAccessService } from 'app/core';
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { PageTwoComponent } from './page-two.component';
 
 export const PAGE_TWO_ROUTE: Route = {
