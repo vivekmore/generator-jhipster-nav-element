@@ -48,7 +48,7 @@ function write(generator) {
     const componentName = _.kebabCase(s).toLowerCase();
     const componentDirName = _.kebabCase(s).toLowerCase();
 
-    const ng2TemplateDir = `angular/${generator.templateDir}`;
+    const ng2TemplateDir = `../../../templates/angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
     // HTML TEMPLATE
