@@ -1,14 +1,29 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "rootDir": "./generators",
     "module": "commonjs",
-    "target": "es5",
+    "lib": [
+      "es7"
+    ],
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ],
+    "target": "es6",
+    "outDir": "./lib",
     "sourceMap": true
   },
+  "include": [
+    "generators/**/*"
+  ],
   "exclude": [
     "coverage",
-    "node_modules",
     "travis",
-    "test/**/results",
-    "test/**/playground"
+    "generators/app/templates",
+    "templates/**/*.[jt]s",
+    "test/**/results/**/*.[jt]s",
+    "test/**/playground/**/*.[jt]s"
   ]
 }
