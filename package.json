@@ -57,7 +57,7 @@
     "build": "tsc -p .",
     "rebuild": "npm run clean && npm run build",
     "watch": "tsc -p . --watch",
-    "clean": "rimraf ./lib",
+    "clean": "rimraf ./lib coverage",
     "prepare": "npm run rebuild",
     "pretest": "eslint .",
     "lint": "eslint .",
