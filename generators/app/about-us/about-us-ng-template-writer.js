@@ -53,35 +53,35 @@ function write(generator) {
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
     // HTML TEMPLATE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.html`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.component.html.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.component.html`
     );
 
 
     // COMPONENT
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.component.ts`
     );
 
 
     // MODULE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.module.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.module.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.module.ts`
     );
 
 
     // ROUTE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.route.ts`
     );
 
 
     // INDEX
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/index.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/index.ts.ejs`,
         `${webappDir}app/${componentDirName}/index.ts`
     );
 
@@ -89,12 +89,12 @@ function write(generator) {
     // STYLE
     if (generator.useSass) {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss`,
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss.ejs`,
             `${webappDir}app/${componentDirName}/${componentName}.component.scss`
         );
     } else {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css`,
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css.ejs`,
             `${webappDir}app/${componentDirName}/${componentName}.component.css`
         );
     }
@@ -117,7 +117,7 @@ function write(generator) {
             generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
             generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
             generator.template(
-                `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json`,
+                `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json.ejs`,
                 `${webappDir}i18n/${language}/${componentName}.json`
             );
         }, generator);
@@ -158,7 +158,7 @@ function write(generator) {
 
     // TESTS
     generator.template(
-        `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts`,
+        `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts.ejs`,
         `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentName}/${componentName}.component.spec.ts`
     );
 }
