@@ -25,9 +25,7 @@ describe('default angular template - translation enabled', () => {
                 templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
                 navElementKey: 'about_us'
             })
-            .on('end', () => {
-                done();
-            });
+            .on('end', done);
     });
 
     _.forEach(expectedFiles.client.added, (file) => {
