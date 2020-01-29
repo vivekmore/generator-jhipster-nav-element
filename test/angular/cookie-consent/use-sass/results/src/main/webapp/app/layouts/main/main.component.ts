@@ -31,7 +31,7 @@ export class MyMainComponent
         this.noCookieLawSubscription.unsubscribe();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // subscribe to cookieconsent observables to react to main events
         this.popupOpenSubscription = this.ngcCookieConsentService.popupOpen$.subscribe(() => {
             // handle your event here

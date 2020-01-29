@@ -15,7 +15,7 @@ export class PageTwoComponent implements OnInit {
     this.message = 'PageTwoComponent message';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
