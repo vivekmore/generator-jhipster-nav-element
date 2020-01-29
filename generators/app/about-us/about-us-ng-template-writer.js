@@ -17,7 +17,7 @@ function write(generator) {
     generator.useSass = jhipsterAppConfig.useSass;
 
     const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
-    generator.componentI18nKey = _.kebabCase(s).toLowerCase();
+    generator.translationKeyMenu = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
@@ -27,7 +27,7 @@ function write(generator) {
     generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
     generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
-    generator.locationName = _.kebabCase(s).toLowerCase();
+    generator.routerName = _.kebabCase(s).toLowerCase();
     generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
     generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
@@ -125,30 +125,19 @@ function write(generator) {
 
 
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
 
 
     // ENTRIES TO NAVBAR.HTML
     // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
     const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-    let navbarCode;
-    if (generator.enableTranslation) {
-        navbarCode = `
+    const navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span jhiTranslate="global.menu.${generator.componentI18nKey}">${generator.tabName}</span>
+                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
+                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
+                    <span${generator.enableTranslation ? ` jhiTranslate="global.menu.${generator.translationKeyMenu}"` : ''}>${generator.tabName}</span>
                 </a>
             </li>`;
-    } else {
-        navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span>${generator.tabName}</span>
-                </a>
-            </li>`;
-    }
 
     jhipsterUtils.rewriteFile({
         file: navbarPath,
