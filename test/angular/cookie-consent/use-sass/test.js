@@ -24,9 +24,7 @@ describe('cookie-consent angular template - useSass: true', () => {
             .withPrompts({
                 templateType: navElementConstants.TEMPLATE_TYPE.COOKIE_CONSENT
             })
-            .on('end', () => {
-                done();
-            });
+            .on('end', done);
     });
 
     _.forEach(expectedFiles.client.added, (file) => {
