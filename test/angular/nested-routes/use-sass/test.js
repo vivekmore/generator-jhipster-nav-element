@@ -25,9 +25,7 @@ describe('nested-routes angular template - useSass: true', () => {
                 templateType: navElementConstants.TEMPLATE_TYPE.NESTED_ROUTES,
                 navElementKey: 'about_us'
             })
-            .on('end', () => {
-                done();
-            });
+            .on('end', done);
     });
 
     _.forEach(expectedFiles.client.added, (file) => {
