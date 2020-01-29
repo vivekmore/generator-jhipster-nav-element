@@ -13,10 +13,15 @@ Here are the possible components you can generate:
 ### 🍪 [A Cookie Consent Popup](docs/features/COOKIE_CONSENT_COMPONENT.md)
 
 
-# [Installing JHipster](https://jhipster.github.io/installation.html)
+# Installing JHipster
+To install this JHipster globally:
+```bash
+npm install -g generator-jhipster
+```
+[More information on official site](https://jhipster.github.io/installation.html)
 
 
-# Installating the generator-jhipster-nav-element module
+# Installing the generator-jhipster-nav-element module
 
 #### with NPM
 
