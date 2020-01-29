@@ -19,39 +19,25 @@ function write(generator) {
     const s = generator.navElementKey.trim()
         .replace(' ', '-')
         .replace('_', '-');
-    generator.componentI18nKey = _.kebabCase(s)
-        .toLowerCase();
+    generator.translationKeyMenu = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
-    generator.selector = `${prefix}${_.kebabCase(s)
-        .toLowerCase()}`;
-    generator.templateName = `${_.kebabCase(s)
-        .toLowerCase()}.component.html`;
-    generator.cssName = `${_.kebabCase(s)
-        .toLowerCase()}.component.css`;
-    generator.scssName = `${_.kebabCase(s)
-        .toLowerCase()}.component.scss`;
+    generator.selector = `${prefix}${_.kebabCase(s).toLowerCase()}`;
+    generator.templateName = `${_.kebabCase(s).toLowerCase()}.component.html`;
+    generator.cssName = `${_.kebabCase(s).toLowerCase()}.component.css`;
+    generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
-    generator.componentTsName = `${_.kebabCase(s)
-        .toLowerCase()}.component`;
-    generator.locationName = _.kebabCase(s)
-        .toLowerCase();
-    generator.routeName = `${_.kebabCase(s)
-        .toUpperCase()
-        .replace('-', '_')}_ROUTE`;
-    generator.routeTsName = `${_.kebabCase(s)
-        .toLowerCase()}.route`;
+    generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
+    generator.routerName = _.kebabCase(s).toLowerCase();
+    generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
+    generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
     generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s))}Module`;
-    generator.moduleTsNameMinusSuffix = _.kebabCase(s)
-        .toLowerCase();
-    generator.moduleTsName = `${_.kebabCase(s)
-        .toLowerCase()}.module`;
-    generator.pageTitle = `${_.kebabCase(s)
-        .toLowerCase()}.title`;
-    generator.tabName = _.upperFirst(_.kebabCase(s)
-        .replace('-', ' '));
+    generator.moduleTsNameMinusSuffix = _.kebabCase(s).toLowerCase();
+    generator.moduleTsName = `${_.kebabCase(s).toLowerCase()}.module`;
+    generator.pageTitle = `${_.kebabCase(s).toLowerCase()}.title`;
+    generator.tabName = _.upperFirst(_.kebabCase(s).replace('-', ' '));
 
     generator.log('------------------------------------------------------------');
     generator.log(`baseName=${generator.baseName}`);
@@ -61,22 +47,20 @@ function write(generator) {
     generator.log(`navElementKey=${generator.navElementKey}`);
     generator.log('------------------------------------------------------------');
 
-    const componentFileNamePrefix = _.kebabCase(s)
-        .toLowerCase();
-    const componentDirName = _.kebabCase(s)
-        .toLowerCase();
+    const componentFileNamePrefix = _.kebabCase(s).toLowerCase();
+    const componentDirName = _.kebabCase(s).toLowerCase();
     const subComponents = [
         {
             componentName: 'PageOneComponent',
             selector: `${prefix}page-one`,
             templateName: 'page-one.component.html',
-            componentI18nKey: 'page-one',
+            translationKeyMenu: 'page-one',
             navElementKey: 'page-one',
             componentFileNamePrefix: 'page-one',
             componentTsName: 'page-one.component',
             componentDirName: 'page-one',
             routeName: 'PAGE_ONE_ROUTE',
-            locationName: 'page-one',
+            routerName: 'page-one',
             pageTitle: 'page-one.title',
             componentStartCase: 'Page One',
             cssName: 'page-one.component.css',
@@ -86,13 +70,13 @@ function write(generator) {
             componentName: 'PageTwoComponent',
             selector: `${prefix}page-two`,
             templateName: 'page-two.component.html',
-            componentI18nKey: 'page-two',
+            translationKeyMenu: 'page-two',
             navElementKey: 'page-two',
             componentFileNamePrefix: 'page-two',
             componentTsName: 'page-two.component',
             componentDirName: 'page-two',
             routeName: 'PAGE_TWO_ROUTE',
-            locationName: 'page-two',
+            routerName: 'page-two',
             pageTitle: 'page-two.title',
             componentStartCase: 'Page Two',
             cssName: 'page-two.component.css',
@@ -223,9 +207,9 @@ function write(generator) {
 
 
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
     _.forEach(subComponents, (subComponent) => {
-        generator.addTranslationKeyToAllLanguages(subComponent.componentI18nKey, subComponent.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+        generator.addTranslationKeyToAllLanguages(subComponent.translationKeyMenu, subComponent.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
     });
 
 
@@ -236,15 +220,15 @@ function write(generator) {
     if (generator.enableTranslation) {
         navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
                     <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span jhiTranslate="global.menu.${generator.componentI18nKey}">${generator.tabName}</span>
+                    <span jhiTranslate="global.menu.${generator.translationKeyMenu}">${generator.tabName}</span>
                 </a>
             </li>`;
     } else {
         navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
                     <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
                     <span>${generator.tabName}</span>
                 </a>
