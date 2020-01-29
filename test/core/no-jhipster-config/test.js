@@ -10,9 +10,7 @@ describe('core', () => {
             .on('error', (error) => {
                 assert.textEqual(error.message, 'Can\'t read .yo-rc.json');
             })
-            .on('end', () => {
-                done();
-            });
+            .on('end', done);
     });
 
     it('throws error when .yo-rc.json is not found', () => {});

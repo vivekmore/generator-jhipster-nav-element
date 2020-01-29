@@ -17,7 +17,7 @@ function write(generator) {
     generator.useSass = jhipsterAppConfig.useSass;
 
     const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
-    generator.componentI18nKey = _.kebabCase(s).toLowerCase();
+    generator.translationKeyMenu = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
@@ -27,7 +27,7 @@ function write(generator) {
     generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
     generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
-    generator.locationName = _.kebabCase(s).toLowerCase();
+    generator.routerName = _.kebabCase(s).toLowerCase();
     generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
     generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
@@ -48,40 +48,40 @@ function write(generator) {
     const componentName = _.kebabCase(s).toLowerCase();
     const componentDirName = _.kebabCase(s).toLowerCase();
 
-    const ng2TemplateDir = `angular/${generator.templateDir}`;
+    const ng2TemplateDir = `../../../templates/angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
     // HTML TEMPLATE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.html`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.component.html.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.component.html`
     );
 
 
     // COMPONENT
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.component.ts`
     );
 
 
     // MODULE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.module.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.module.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.module.ts`
     );
 
 
     // ROUTE
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.route.ts`
     );
 
 
     // INDEX
     generator.template(
-        `${ng2TemplateDir}src/main/webapp/app/element/index.ts`,
+        `${ng2TemplateDir}src/main/webapp/app/element/index.ts.ejs`,
         `${webappDir}app/${componentDirName}/index.ts`
     );
 
@@ -89,12 +89,12 @@ function write(generator) {
     // STYLE
     if (generator.useSass) {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss`,
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.scss.ejs`,
             `${webappDir}app/${componentDirName}/${componentName}.component.scss`
         );
     } else {
         generator.template(
-            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css`,
+            `${ng2TemplateDir}src/main/webapp/app/element/element.component.css.ejs`,
             `${webappDir}app/${componentDirName}/${componentName}.component.css`
         );
     }
@@ -117,7 +117,7 @@ function write(generator) {
             generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
             generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
             generator.template(
-                `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json`,
+                `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json.ejs`,
                 `${webappDir}i18n/${language}/${componentName}.json`
             );
         }, generator);
@@ -125,30 +125,19 @@ function write(generator) {
 
 
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.componentI18nKey, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
 
 
     // ENTRIES TO NAVBAR.HTML
     // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
     const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-    let navbarCode;
-    if (generator.enableTranslation) {
-        navbarCode = `
+    const navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span jhiTranslate="global.menu.${generator.componentI18nKey}">${generator.tabName}</span>
+                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
+                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
+                    <span${generator.enableTranslation ? ` jhiTranslate="global.menu.${generator.translationKeyMenu}"` : ''}>${generator.tabName}</span>
                 </a>
             </li>`;
-    } else {
-        navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.locationName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span>${generator.tabName}</span>
-                </a>
-            </li>`;
-    }
 
     jhipsterUtils.rewriteFile({
         file: navbarPath,
@@ -158,7 +147,7 @@ function write(generator) {
 
     // TESTS
     generator.template(
-        `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts`,
+        `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts.ejs`,
         `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentName}/${componentName}.component.spec.ts`
     );
 }
