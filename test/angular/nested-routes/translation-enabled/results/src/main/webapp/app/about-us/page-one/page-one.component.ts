@@ -15,7 +15,7 @@ export class PageOneComponent implements OnInit {
     this.message = 'PageOneComponent message';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
