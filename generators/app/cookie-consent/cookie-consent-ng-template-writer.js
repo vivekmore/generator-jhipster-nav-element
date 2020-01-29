@@ -96,7 +96,7 @@ import { Subscription } from 'rxjs';
         this.noCookieLawSubscription.unsubscribe();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // subscribe to cookieconsent observables to react to main events
         this.popupOpenSubscription = this.ngcCookieConsentService.popupOpen$.subscribe(() => {
             // handle your event here
@@ -121,5 +121,5 @@ import { Subscription } from 'rxjs';
         this.noCookieLawSubscription = this.ngcCookieConsentService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
             // handle your event here
         });`;
-    generator.replaceContent(mainComponentPath, 'ngOnInit() {', ngOnDestroyContent);
+    generator.replaceContent(mainComponentPath, 'ngOnInit(): void {', ngOnDestroyContent);
 }

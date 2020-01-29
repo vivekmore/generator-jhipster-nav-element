@@ -15,7 +15,7 @@ export class AboutUsComponent implements OnInit {
     this.message = 'AboutUsComponent message';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
