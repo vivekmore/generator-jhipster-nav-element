@@ -10,7 +10,11 @@ describe('element-id-validator', () => {
             const actual = elementIdValidator.validate(testValue);
 
             const expected = true;
-            assert.strictEqual(actual, expected, `validate() should return [${expected}] for [${testValue}]`);
+            assert.strictEqual(
+                actual,
+                expected,
+                `validate() should return [${expected}] for [${testValue}]`
+            );
         });
 
         it('returns error message for invalid input', () => {
@@ -19,7 +23,11 @@ describe('element-id-validator', () => {
             const actual = elementIdValidator.validate(testValue);
 
             const expected = 'Navigation element may contain only alphanumeric values and underscores';
-            assert.strictEqual(actual, expected, `validate() should return [${expected}] for [${testValue}]`);
+            assert.strictEqual(
+                actual,
+                expected,
+                `validate() should return [${expected}] for [${testValue}]`
+            );
         });
     });
 });

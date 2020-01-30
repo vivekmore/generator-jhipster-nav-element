@@ -14,7 +14,8 @@ function promptToChooseATemplate() {
     this.prompt({
         type: 'list',
         name: 'templateType',
-        message: 'What would you like to generate? (More components will be added soon! Stay tuned...)',
+        message:
+      'What would you like to generate? (More components will be added soon! Stay tuned...)',
         choices: [
             {
                 name: 'A Simple Page (with a corresponding nav element)',

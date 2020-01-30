@@ -1,6 +1,9 @@
 # Generate Navigational Components With Ease !!!
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![Generator Build Status][github-actions-generator-ci-image]][github-actions-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
 # Introduction
 
@@ -9,35 +12,38 @@ This generator scaffolds various navigational elements your [JHipster](http://jh
 Here are the possible components you can generate:
 
 ### 📄 [A Simple Page](docs/features/DEFAULT_NAV_ELEMENT.md)
+
 ### 🧾 [A Page With Nested Routes](docs/features/NESTED_NAV_ELEMENT.md)
+
 ### 🍪 [A Cookie Consent Popup](docs/features/COOKIE_CONSENT_COMPONENT.md)
 
-
 # Installing JHipster
+
 To install this JHipster globally:
+
 ```bash
 npm install -g generator-jhipster
 ```
-[More information on official site](https://jhipster.github.io/installation.html)
 
+[More information on official site](https://jhipster.github.io/installation.html)
 
 # Installing the generator-jhipster-nav-element module
 
 #### with NPM
 
 To install this module globally:
+
 ```bash
 npm install -g generator-jhipster-nav-element
 ```
 
-
 #### with Yarn
 
 To install this module globally:
+
 ```bash
 yarn global add generator-jhipster-nav-element
 ```
-
 
 # Usage
 
@@ -62,16 +68,20 @@ npm update -g generator-jhipster-nav-element
 yarn global upgrade generator-jhipster-nav-element
 ```
 
+# Contributors ✨
+
+Thanks goes to these wonderful people:
+
+<table><tr><td align="center"><a href="https://github.com/vivekmore"><img src="https://avatars1.githubusercontent.com/u/2099329?s=400&v=4" width="100px;" alt="Vivek More (founder)"/><br/><sub><b>Vivek More</b><br/><b>(founder)</b></sub></a></td><td align="center"><a href="https://github.com/amanganiello90"><img src="https://avatars3.githubusercontent.com/u/20536757?s=400&v=4" width="100px;" alt="Angelo Manganiello"/><br /><sub><b>Angelo Manganiello</b></sub></a></td></tr></table>
 
 # License
 
-Apache-2.0 © [Vivek More]
-
+Apache-2.0 © [Vivek More](https://github.com/vivekmore)
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-nav-element.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-nav-element
-[travis-image]: https://travis-ci.org/vivekmore/generator-jhipster-nav-element.svg?branch=master
-[travis-url]: https://travis-ci.org/vivekmore/generator-jhipster-nav-element
+[github-actions-generator-ci-image]: https://github.com/jhipster/jhipster-quarkus/workflows/Generator%20CI/badge.svg
+[github-actions-url]: https://github.com/jhipster/jhipster-quarkus/actions
 [daviddm-image]: https://david-dm.org/vivekmore/generator-jhipster-nav-element.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/vivekmore/generator-jhipster-nav-element
 [coveralls-image]: https://coveralls.io/repos/github/vivekmore/generator-jhipster-nav-element/badge.svg

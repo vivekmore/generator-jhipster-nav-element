@@ -14,7 +14,8 @@ function askQuestions(generator) {
         {
             type: 'input',
             name: 'navElementKey',
-            message: 'What would you like the navigation element id to be? (e.g. aboutUs, about_us)',
+            message:
+        'What would you like the navigation element id to be? (e.g. aboutUs, about_us)',
             validate: elementIdValidator.validate,
             default: 'hi_there'
         }
@@ -22,11 +23,10 @@ function askQuestions(generator) {
 
     const done = generator.async();
 
-    generator.prompt(prompts)
-        .then((props) => {
-            generator.navElementKey = props.navElementKey;
-            generator.createDirective = props.createDirective;
-            // To access props later use this.someOption;
-            done();
-        });
+    generator.prompt(prompts).then((props) => {
+        generator.navElementKey = props.navElementKey;
+        generator.createDirective = props.createDirective;
+        // To access props later use this.someOption;
+        done();
+    });
 }

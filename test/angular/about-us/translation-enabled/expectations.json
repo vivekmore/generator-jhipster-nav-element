@@ -13,8 +13,7 @@
     "addedTests": [
       "src/test/javascript/spec/app/about-us/about-us.component.spec.ts"
     ],
-    "skipped": [
-    ],
+    "skipped": [],
     "changed": [
       "src/main/webapp/app/layouts/navbar/navbar.component.html",
       "src/main/webapp/app/app.module.ts",

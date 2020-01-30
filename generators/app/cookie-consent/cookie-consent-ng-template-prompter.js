@@ -7,5 +7,4 @@ module.exports = {
  *
  * @param {object} generator - generator instance to use
  */
-function askQuestions(generator) {
-}
+function askQuestions(generator) {}

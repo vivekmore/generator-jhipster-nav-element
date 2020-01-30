@@ -19,13 +19,19 @@ module.exports = class extends BaseGenerator {
                 this.printJHipsterLogo();
 
                 // Have Yeoman greet the user.
-                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster Navigation Element')} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`);
+                this.log(
+                    `\nWelcome to the ${chalk.bold.yellow(
+                        'JHipster Navigation Element'
+                    )} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`
+                );
             },
             checkJhipster() {
                 const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
                 const minimumJhipsterVersion = packageJson.dependencies['generator-jhipster'];
                 if (!semver.satisfies(jhipsterVersion, minimumJhipsterVersion)) {
-                    this.warning(`\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`);
+                    this.warning(
+                        `\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`
+                    );
                 }
             }
         };

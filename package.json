@@ -7,7 +7,7 @@
     "generator",
     "yeoman-generator",
     "jhipster",
-    "jhipster-5",
+    "jhipster-6",
     "jhipster-module"
   ],
   "homepage": "https://github.com/vivekmore/generator-jhipster-nav-element",
@@ -16,6 +16,9 @@
     "email": "vivz.thats.me@gmail.com",
     "url": "https://github.com/vivekmore"
   },
+  "contributors": [
+    "Angelo Manganiello <angelo.mang@libero.it> (https://github.com/amanganiello90)"
+  ],
   "engines": {
     "node": ">=10",
     "npm": ">=6.9.0"
@@ -30,6 +33,8 @@
   },
   "dependencies": {
     "chalk": "3.0.0",
+    "ejs": "2.6.1",
+    "glob": "7.1.2",
     "generator-jhipster": "6.6.0",
     "lodash": "4.17.15",
     "mkdirp": "0.5.1",
@@ -40,6 +45,7 @@
   },
   "devDependencies": {
     "coveralls": "3.0.9",
+    "ejs-lint": "0.3.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.20.0",
@@ -47,14 +53,21 @@
     "fs-extra": "8.1.0",
     "istanbul": "0.4.5",
     "mocha": "7.0.0",
+    "pre-commit": "1.2.2",
+    "prettier": "1.14.3",
     "mocha-lcov-reporter": "1.3.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "2.1.0"
   },
   "scripts": {
-    "pretest": "eslint .",
+    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
+    "pretest": "npm run eslint && npm run ejs-lint",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
+    "lint-fix": "npm run prettier:format && npm run eslint -- --fix",
+    "eslint": "eslint . ",
+    "ejs-lint": "npm run test:unit -- test/ejslint.js",
+    "ejslint": "ejslint",
+    "test:unit": "mocha --colors --timeout 20000 --slow 0 --reporter spec",
     "test": "mocha --colors --slow 0 test/**/test.js generators/**/*.spec.js",
     "preversion": "npm i && npm prune && npm test",
     "postversion": "git push --tags",
@@ -64,6 +77,9 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"

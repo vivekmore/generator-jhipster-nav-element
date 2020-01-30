@@ -6,7 +6,8 @@ const helpers = require('yeoman-test');
 
 describe('core', () => {
     before((done) => {
-        helpers.run(path.join(__dirname, '../../../generators/app'))
+        helpers
+            .run(path.join(__dirname, '../../../generators/app'))
             .on('error', (error) => {
                 assert.textEqual(error.message, 'Can\'t read .yo-rc.json');
             })

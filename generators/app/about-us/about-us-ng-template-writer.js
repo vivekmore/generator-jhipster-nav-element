@@ -16,11 +16,16 @@ function write(generator) {
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.useSass = jhipsterAppConfig.useSass;
 
-    const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
+    const s = generator.navElementKey
+        .trim()
+        .replace(' ', '-')
+        .replace('_', '-');
     generator.translationKeyMenu = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
-    const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
+    const prefix = jhipsterAppConfig.jhiPrefix
+        ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-`
+        : '';
     generator.selector = `${prefix}${_.kebabCase(s).toLowerCase()}`;
     generator.templateName = `${_.kebabCase(s).toLowerCase()}.component.html`;
     generator.cssName = `${_.kebabCase(s).toLowerCase()}.component.css`;
@@ -28,10 +33,13 @@ function write(generator) {
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
     generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
     generator.routerName = _.kebabCase(s).toLowerCase();
-    generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
+    generator.routeName = `${_.kebabCase(s)
+        .toUpperCase()
+        .replace('-', '_')}_ROUTE`;
     generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
-    generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s))}Module`;
+    generator.moduleName = `${_.upperFirst(generator.getAngularAppName())
+    + _.upperFirst(_.camelCase(s))}Module`;
     generator.moduleTsNameMinusSuffix = _.kebabCase(s).toLowerCase();
     generator.moduleTsName = `${_.kebabCase(s).toLowerCase()}.module`;
     generator.pageTitle = `${_.kebabCase(s).toLowerCase()}.title`;
@@ -48,7 +56,7 @@ function write(generator) {
     const componentName = _.kebabCase(s).toLowerCase();
     const componentDirName = _.kebabCase(s).toLowerCase();
 
-    const ng2TemplateDir = `../../../templates/angular/${generator.templateDir}`;
+    const ng2TemplateDir = `../templates/angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
     // HTML TEMPLATE
@@ -57,13 +65,11 @@ function write(generator) {
         `${webappDir}app/${componentDirName}/${componentName}.component.html`
     );
 
-
     // COMPONENT
     generator.template(
         `${ng2TemplateDir}src/main/webapp/app/element/element.component.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.component.ts`
     );
-
 
     // MODULE
     generator.template(
@@ -71,20 +77,17 @@ function write(generator) {
         `${webappDir}app/${componentDirName}/${componentName}.module.ts`
     );
 
-
     // ROUTE
     generator.template(
         `${ng2TemplateDir}src/main/webapp/app/element/element.route.ts.ejs`,
         `${webappDir}app/${componentDirName}/${componentName}.route.ts`
     );
 
-
     // INDEX
     generator.template(
         `${ng2TemplateDir}src/main/webapp/app/element/index.ts.ejs`,
         `${webappDir}app/${componentDirName}/index.ts`
     );
-
 
     // STYLE
     if (generator.useSass) {
@@ -99,7 +102,6 @@ function write(generator) {
         );
     }
 
-
     // APP MODULE
     generator.addAngularModule(
         _.upperFirst(generator.getAngularAppName()),
@@ -110,12 +112,16 @@ function write(generator) {
         'angularX'
     );
 
-
     // i18n ELEMENT JSON
     if (generator.enableTranslation) {
         generator.getAllInstalledLanguages().forEach((language) => {
             generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
-            generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
+            generator.log(
+                'processing for ',
+                language,
+                'prefix',
+                generator.currentLanguagePrefix
+            );
             generator.template(
                 `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json.ejs`,
                 `${webappDir}i18n/${language}/${componentName}.json`
@@ -123,31 +129,49 @@ function write(generator) {
         }, generator);
     }
 
-
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
-
+    generator.addTranslationKeyToAllLanguages(
+        generator.translationKeyMenu,
+        generator.navElementKey,
+        'addElementTranslationKey',
+        generator.enableTranslation
+    );
 
     // ENTRIES TO NAVBAR.HTML
     // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
-    const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
+    const navbarPath = `${
+        jhipsterConstants.CLIENT_MAIN_SRC_DIR
+    }app/layouts/navbar/navbar.component.html`;
     const navbarCode = `
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="${
+    generator.routerName
+}" (click)="collapseNavbar()">
                     <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
-                    <span${generator.enableTranslation ? ` jhiTranslate="global.menu.${generator.translationKeyMenu}"` : ''}>${generator.tabName}</span>
+                    <span${
+    generator.enableTranslation
+        ? ` jhiTranslate="global.menu.${
+            generator.translationKeyMenu
+        }"`
+        : ''
+}>${generator.tabName}</span>
                 </a>
             </li>`;
 
-    jhipsterUtils.rewriteFile({
-        file: navbarPath,
-        needle: 'jhipster-needle-add-element-to-menu',
-        splicable: [navbarCode]
-    }, generator);
+    jhipsterUtils.rewriteFile(
+        {
+            file: navbarPath,
+            needle: 'jhipster-needle-add-element-to-menu',
+            splicable: [navbarCode]
+        },
+        generator
+    );
 
     // TESTS
     generator.template(
         `${ng2TemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts.ejs`,
-        `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentName}/${componentName}.component.spec.ts`
+        `${
+            jhipsterConstants.CLIENT_TEST_SRC_DIR
+        }spec/app/${componentName}/${componentName}.component.spec.ts`
     );
 }

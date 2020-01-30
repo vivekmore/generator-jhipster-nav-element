@@ -15,4 +15,4 @@ about: Suggest an improvement.
 
 <!-- Has a similar feature request been asked for before? Please search both closed & open issues -->
 
--   [ ] Checking this box is mandatory (this is just to show you read everything)
+- [ ] Checking this box is mandatory (this is just to show you read everything)

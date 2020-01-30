@@ -32,11 +32,23 @@ function write(generator) {
     // Add changes to app.module.ts
     const modulePath = `${webappDir}app/app.module.ts`;
     const importContent1 = 'import { DEBUG_INFO_ENABLED } from \'app/app.constants\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1);
+    generator.rewriteFile(
+        modulePath,
+        'jhipster-needle-angular-add-module-import',
+        importContent1
+    );
     const importContent2 = 'import { NgcCookieConsentConfig, NgcCookieConsentModule } from \'ngx-cookieconsent\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent2);
+    generator.rewriteFile(
+        modulePath,
+        'jhipster-needle-angular-add-module-import',
+        importContent2
+    );
     const importContent3 = 'import \'cookieconsent/build/cookieconsent.min\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent3);
+    generator.rewriteFile(
+        modulePath,
+        'jhipster-needle-angular-add-module-import',
+        importContent3
+    );
 
     const cookieConsentConfigContent = `
 const cookieConfig: NgcCookieConsentConfig = {
@@ -56,13 +68,24 @@ const cookieConfig: NgcCookieConsentConfig = {
 };
 
 @NgModule(`;
-    generator.replaceContent(modulePath, '@NgModule(', cookieConsentConfigContent);
+    generator.replaceContent(
+        modulePath,
+        '@NgModule(',
+        cookieConsentConfigContent
+    );
 
     const moduleContent = 'NgcCookieConsentModule.forRoot(cookieConfig),';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module', moduleContent);
+    generator.rewriteFile(
+        modulePath,
+        'jhipster-needle-angular-add-module',
+        moduleContent
+    );
 
     // Add changes to vendor.scss
-    generator.addVendorSCSSStyle('@import \'~cookieconsent/build/cookieconsent.min.css\';', 'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent');
+    generator.addVendorSCSSStyle(
+        '@import \'~cookieconsent/build/cookieconsent.min.css\';',
+        'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent'
+    );
 
     // Add changes to main.component.ts
     const mainComponentPath = `${webappDir}app/layouts/main/main.component.ts`;
@@ -71,7 +94,11 @@ import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcSt
 import { Subscription } from 'rxjs';
 
 @Component(`;
-    generator.replaceContent(mainComponentPath, '@Component(', mainComponentImportsContent);
+    generator.replaceContent(
+        mainComponentPath,
+        '@Component(',
+        mainComponentImportsContent
+    );
     const mainComponentSubscriptionsContent = `
     // keep refs to subscriptions to be able to unsubscribe later
     private popupOpenSubscription: Subscription;
@@ -82,7 +109,11 @@ import { Subscription } from 'rxjs';
     private noCookieLawSubscription: Subscription;
 
     constructor(private ngcCookieConsentService: NgcCookieConsentService, `;
-    generator.replaceContent(mainComponentPath, 'constructor(', mainComponentSubscriptionsContent);
+    generator.replaceContent(
+        mainComponentPath,
+        'constructor(',
+        mainComponentSubscriptionsContent
+    );
 
     const ngOnDestroyContent = `
 
@@ -121,5 +152,9 @@ import { Subscription } from 'rxjs';
         this.noCookieLawSubscription = this.ngcCookieConsentService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
             // handle your event here
         });`;
-    generator.replaceContent(mainComponentPath, 'ngOnInit(): void {', ngOnDestroyContent);
+    generator.replaceContent(
+        mainComponentPath,
+        'ngOnInit(): void {',
+        ngOnDestroyContent
+    );
 }
