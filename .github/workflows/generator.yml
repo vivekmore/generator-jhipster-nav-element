@@ -20,4 +20,4 @@ jobs:
         run: git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit
       - run: npm ci
       - run: npm test
-      - run: npm run coveralls
+    #  - run: npm run coveralls
