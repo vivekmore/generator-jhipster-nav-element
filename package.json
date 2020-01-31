@@ -55,17 +55,23 @@
     "pretest": "eslint .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "test": "mocha --colors --slow 0 test/**/test.js generators/**/*.spec.js",
+    "test": "mocha test/**/test.js generators/**/*.spec.js",
     "preversion": "npm i && npm prune && npm test",
     "postversion": "git push --tags",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
     "bump-major": "npm version major",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha test/**/test.js generators/**/*.spec.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec test/**/test.js generators/**/*.spec.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"
+  },
+  "mocha": {
+    "colors": true,
+    "slow": 0,
+    "reporter": "spec",
+    "ui": "bdd"
   }
 }
