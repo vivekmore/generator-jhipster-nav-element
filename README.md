@@ -1,5 +1,9 @@
 # Generate Navigational Components With Ease !!!
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] 
+[![Dependency Status][daviddm-image]][daviddm-url] 
+[![Build Status][travis-image]][travis-url] 
+[![Generator Build Status][github-actions-image]][github-actions-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
 
 # Introduction
@@ -76,3 +80,5 @@ Apache-2.0 © [Vivek More]
 [daviddm-url]: https://david-dm.org/vivekmore/generator-jhipster-nav-element
 [coveralls-image]: https://coveralls.io/repos/github/vivekmore/generator-jhipster-nav-element/badge.svg
 [coveralls-url]: https://coveralls.io/github/vivekmore/generator-jhipster-nav-element
+[github-actions-image]: https://github.com/vivekmore/generator-jhipster-nav-element/workflows/Build/badge.svg
+[github-actions-url]: https://github.com/vivekmore/generator-jhipster-nav-element/actions
