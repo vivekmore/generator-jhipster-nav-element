@@ -85,8 +85,8 @@ function write(generator) {
     ];
     generator.subComponents = subComponents;
 
-    const defaultNg2TemplateDir = '../../../templates/angular/about-us/';
-    const nestedRoutesNg2TemplateDir = `../../../templates/angular/${generator.templateDir}`;
+    const defaultNg2TemplateDir = '../templates/angular/about-us/';
+    const nestedRoutesNg2TemplateDir = `../templates/angular/${generator.templateDir}`;
 
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
