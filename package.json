@@ -7,7 +7,6 @@
     "generator",
     "yeoman-generator",
     "jhipster",
-    "jhipster-5",
     "jhipster-module"
   ],
   "homepage": "https://github.com/vivekmore/generator-jhipster-nav-element",
