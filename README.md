@@ -8,9 +8,9 @@
 
 # Introduction
 
-This generator scaffolds various navigational elements your [JHipster](http://jhipster.github.io/) application.
+This generator scaffolds various navigational elements in your [JHipster](http://jhipster.github.io/) application.
 
-Here are the possible components you can generate:
+Here are the possible things you can generate:
 
 ### 📄 [A Simple Page](docs/features/DEFAULT_NAV_ELEMENT.md)
 ### 🧾 [A Page With Nested Routes](docs/features/NESTED_NAV_ELEMENT.md)
