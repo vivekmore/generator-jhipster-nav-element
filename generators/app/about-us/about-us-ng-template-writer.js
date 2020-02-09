@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -115,7 +114,7 @@ function write(generator) {
     if (generator.enableTranslation) {
         generator.getAllInstalledLanguages().forEach((language) => {
             generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
-            generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
+            generator.log('processing for', language, 'prefix', generator.currentLanguagePrefix);
             generator.template(
                 `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json.ejs`,
                 `${webappDir}i18n/${language}/${componentName}.json`
@@ -129,21 +128,8 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
-    const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-    const navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
-                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
-                    <span${generator.enableTranslation ? ` jhiTranslate="global.menu.${generator.translationKeyMenu}"` : ''}>${generator.tabName}</span>
-                </a>
-            </li>`;
+    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, 'angularX', generator.translationKeyMenu);
 
-    jhipsterUtils.rewriteFile({
-        file: navbarPath,
-        needle: 'jhipster-needle-add-element-to-menu',
-        splicable: [navbarCode]
-    }, generator);
 
     // TESTS
     generator.template(
