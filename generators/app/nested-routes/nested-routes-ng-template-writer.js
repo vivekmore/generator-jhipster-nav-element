@@ -1,4 +1,6 @@
 const _ = require('lodash');
+const chalk = require('chalk');
+const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -213,7 +215,33 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, 'angularX', generator.translationKeyMenu);
+    const iconName = 'hand-spock';
+    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
+    // addIcon(iconName) {
+    const iconsPath = `${webappDir}app/core/icons/font-awesome-icons.ts`;
+    const iconImport = `fa${generator.upperFirstCamelCase(iconName)}`;
+    if (!jhipsterUtils.checkRegexInFile(iconsPath, new RegExp(`\\b${iconImport}\\b`), generator)) {
+        try {
+            jhipsterUtils.replaceContent(
+                {
+                    file: iconsPath,
+                    pattern: /\r\n\s*\/\/ jhipster-needle-add-icon-import/g,
+                    content: `,\r\n  ${iconImport}\r\n  // jhipster-needle-add-icon-import`
+                },
+                generator
+            );
+        } catch (e) {
+            generator.log(
+                chalk.yellow('\nUnable to find ')
+                + iconsPath
+                + chalk.yellow(' or other error. Icon imports not updated with icon ')
+                + iconImport
+                + chalk.yellow('.\n')
+            );
+            generator.debug('Error:', e);
+        }
+    }
+    // }
 
 
     // TESTS
