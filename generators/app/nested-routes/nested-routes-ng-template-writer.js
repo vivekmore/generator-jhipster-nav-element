@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -214,32 +213,8 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
-    const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-    let navbarCode;
-    if (generator.enableTranslation) {
-        navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span jhiTranslate="global.menu.${generator.translationKeyMenu}">${generator.tabName}</span>
-                </a>
-            </li>`;
-    } else {
-        navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span>${generator.tabName}</span>
-                </a>
-            </li>`;
-    }
+    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, 'angularX', generator.translationKeyMenu);
 
-    jhipsterUtils.rewriteFile({
-        file: navbarPath,
-        needle: 'jhipster-needle-add-element-to-menu',
-        splicable: [navbarCode]
-    }, generator);
 
     // TESTS
     generator.template(
