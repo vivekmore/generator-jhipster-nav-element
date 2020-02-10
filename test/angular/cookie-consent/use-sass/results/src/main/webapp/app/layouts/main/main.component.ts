@@ -4,7 +4,7 @@ import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcSt
 import { Subscription } from 'rxjs';
 
 @Component()
-export class MyMainComponent
+export class MyMainComponent implements OnDestroy
 ...
 
 

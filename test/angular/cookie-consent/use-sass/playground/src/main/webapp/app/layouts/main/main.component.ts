@@ -1,6 +1,6 @@
 ...
 @Component()
-export class MyMainComponent
+export class MyMainComponent implements OnDestroy
 ...
 
 constructor(service: Service)
