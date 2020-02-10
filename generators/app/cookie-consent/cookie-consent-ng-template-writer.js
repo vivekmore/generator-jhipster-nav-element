@@ -1,5 +1,5 @@
 // const _ = require('lodash');
-// const jhipsterUtils = require('generator-jhipster/generators/utils');
+const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -122,4 +122,26 @@ import { Subscription } from 'rxjs';
             // handle your event here
         });`;
     generator.replaceContent(mainComponentPath, 'ngOnInit(): void {', ngOnDestroyContent);
+
+    if (!jhipsterUtils.checkRegexInFile(mainComponentPath, /\bOnDestroy\b/g, generator)) {
+        // add import
+        jhipsterUtils.replaceContent(
+            {
+                file: mainComponentPath,
+                pattern: / } from '@angular\/core'/g,
+                content: ', OnDestroy } from \'@angular/core\''
+            },
+            generator
+        );
+
+        // add implements declaration
+        jhipsterUtils.replaceContent(
+            {
+                file: mainComponentPath,
+                pattern: /implements/g,
+                content: 'implements OnDestroy,'
+            },
+            generator
+        );
+    }
 }
