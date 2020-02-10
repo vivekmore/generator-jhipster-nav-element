@@ -1,0 +1,14 @@
+{
+  "client": {
+    "added": [],
+    "addedTests": [],
+    "skipped": [],
+    "changed": [
+      "package.json",
+      "src/main/webapp/app/layouts/main/main.component.ts",
+      "src/main/webapp/app/app.constants.ts",
+      "src/main/webapp/app/app.module.ts",
+      "src/main/webapp/content/scss/vendor.scss"
+    ]
+  }
+}
