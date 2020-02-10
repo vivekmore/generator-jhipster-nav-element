@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const chalk = require('chalk');
 const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
@@ -115,7 +116,7 @@ function write(generator) {
     if (generator.enableTranslation) {
         generator.getAllInstalledLanguages().forEach((language) => {
             generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
-            generator.log('processing for ', language, 'prefix', generator.currentLanguagePrefix);
+            generator.log('processing for', language, 'prefix', generator.currentLanguagePrefix);
             generator.template(
                 `${ng2TemplateDir}src/main/webapp/i18n/lang/element.json.ejs`,
                 `${webappDir}i18n/${language}/${componentName}.json`
@@ -129,21 +130,35 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    // jhipsterFunc.addElementToMenu(componentName, glyphiconName, generator.enableTranslation, 'angular2');
-    const navbarPath = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/layouts/navbar/navbar.component.html`;
-    const navbarCode = `
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="${generator.routerName}" (click)="collapseNavbar()">
-                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
-                    <span${generator.enableTranslation ? ` jhiTranslate="global.menu.${generator.translationKeyMenu}"` : ''}>${generator.tabName}</span>
-                </a>
-            </li>`;
+    const iconName = 'hand-spock';
+    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
 
-    jhipsterUtils.rewriteFile({
-        file: navbarPath,
-        needle: 'jhipster-needle-add-element-to-menu',
-        splicable: [navbarCode]
-    }, generator);
+    // addIcon(iconName) {
+    const iconsPath = `${webappDir}app/core/icons/font-awesome-icons.ts`;
+    const iconImport = `fa${generator.upperFirstCamelCase(iconName)}`;
+    if (!jhipsterUtils.checkRegexInFile(iconsPath, new RegExp(`\\b${iconImport}\\b`), generator)) {
+        try {
+            jhipsterUtils.replaceContent(
+                {
+                    file: iconsPath,
+                    pattern: /\r\n\s*\/\/ jhipster-needle-add-icon-import/g,
+                    content: `,\r\n  ${iconImport}\r\n  // jhipster-needle-add-icon-import`
+                },
+                generator
+            );
+        } catch (e) {
+            generator.log(
+                chalk.yellow('\nUnable to find ')
+                + iconsPath
+                + chalk.yellow(' or other error. Icon imports not updated with icon ')
+                + iconImport
+                + chalk.yellow('.\n')
+            );
+            generator.debug('Error:', e);
+        }
+    }
+    // }
+
 
     // TESTS
     generator.template(
