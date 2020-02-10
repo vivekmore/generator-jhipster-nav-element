@@ -1,10 +1,11 @@
+import { Component, OnInit, RendererFactory2, Renderer2, OnDestroy } from '@angular/core';
 ...
 
 import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
 
 @Component()
-export class MyMainComponent implements OnDestroy
+export class MyMainComponent implements OnDestroy, OnInit {
 ...
 
 
