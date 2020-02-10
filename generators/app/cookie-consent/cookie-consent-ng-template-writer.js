@@ -86,7 +86,7 @@ import { Subscription } from 'rxjs';
 
     const ngOnDestroyContent = `
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         // unsubscribe to cookieconsent observables to prevent memory leaks
         this.popupOpenSubscription.unsubscribe();
         this.popupCloseSubscription.unsubscribe();
