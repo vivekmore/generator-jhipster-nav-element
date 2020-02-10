@@ -215,7 +215,6 @@ function write(generator) {
 
     // ENTRIES TO NAVBAR.HTML
     const iconName = 'hand-spock';
-    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
     // addIcon(iconName) {
     const iconsPath = `${webappDir}app/core/icons/font-awesome-icons.ts`;
     const iconImport = `fa${generator.upperFirstCamelCase(iconName)}`;
@@ -230,6 +229,7 @@ function write(generator) {
         );
     }
     // }
+    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
 
 
     // TESTS
