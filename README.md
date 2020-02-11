@@ -5,6 +5,8 @@
 [![Generator Build Status][github-actions-image]][github-actions-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
+[![Donate][donate-image]][donate-url]
+
 
 # Introduction
 
@@ -82,3 +84,5 @@ Apache-2.0 © [Vivek More]
 [coveralls-url]: https://coveralls.io/github/vivekmore/generator-jhipster-nav-element
 [github-actions-image]: https://img.shields.io/github/workflow/status/vivekmore/generator-jhipster-nav-element/Build?label=github-ci&logo=github
 [github-actions-url]: https://github.com/vivekmore/generator-jhipster-nav-element/actions
+[donate-image]: https://img.shields.io/badge/Donate-PayPal-brightgreen?style=for-the-badge&logo=paypal
+[donate-url]: https://www.paypal.me/vivekdmore
