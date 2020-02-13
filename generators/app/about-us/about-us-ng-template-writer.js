@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const jhipsterUtils = require('generator-jhipster/generators/utils');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -129,22 +128,7 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    const iconName = 'hand-spock';
-    // addIcon(iconName) {
-    const iconsPath = `${webappDir}app/core/icons/font-awesome-icons.ts`;
-    const iconImport = `fa${generator.upperFirstCamelCase(iconName)}`;
-    if (!jhipsterUtils.checkRegexInFile(iconsPath, new RegExp(`\\b${iconImport}\\b`), generator)) {
-        jhipsterUtils.replaceContent(
-            {
-                file: iconsPath,
-                pattern: /\r\n\s*\/\/ jhipster-needle-add-icon-import/g,
-                content: `,\r\n  ${iconImport}\r\n  // jhipster-needle-add-icon-import`
-            },
-            generator
-        );
-    }
-    // }
-    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
+    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, 'angularX', generator.translationKeyMenu);
 
 
     // TESTS
