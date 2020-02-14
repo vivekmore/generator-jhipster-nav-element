@@ -1,5 +1,4 @@
-
-## A Cookie Consent Popup
+# A Cookie Consent Popup
 
 This template creates a cookie consent popup using ngx-cookieconsent module
 The following (client-side) artifacts are modified:
@@ -13,3 +12,11 @@ The following (client-side) artifacts are modified:
 
 ##### 2. React:
  * Not supported currently
+
+
+-----
+
+#💚 this module? [![Donate][donate-image]][donate-url]
+
+[donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
+[donate-url]: https://www.paypal.me/vivekdmore
