@@ -1,5 +1,4 @@
-
-## A Page With Nested Routes
+# A Page With Nested Routes
 
 This template creates a page with 2 tabs (sub components/pages) accessible via nested routes
 The following (client-side) artifacts are generated/modified:
@@ -32,3 +31,10 @@ The following (client-side) artifacts are generated/modified:
 ##### 2. React:
  * Not supported currently
 
+
+-----
+
+#💚 this module? [![Donate][donate-image]][donate-url]
+
+[donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
+[donate-url]: https://www.paypal.me/vivekdmore
