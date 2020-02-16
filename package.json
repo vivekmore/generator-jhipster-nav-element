@@ -54,10 +54,10 @@
     "yeoman-test": "6.3.0"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc",
     "rebuild": "npm run clean && npm run build",
     "watch": "tsc -p . --watch",
-    "clean": "rimraf ./lib coverage",
+    "clean": "rimraf lib coverage",
     "prepare": "npm run rebuild",
     "pretest": "eslint .",
     "lint": "eslint .",
