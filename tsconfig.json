@@ -25,8 +25,8 @@
     "coverage",
     "travis",
     "generators/app/templates",
-    "templates/**/*.[jt]s",
-    "test/**/results/**/*.[jt]s",
-    "test/**/playground/**/*.[jt]s"
+    "templates",
+    "test/**/results",
+    "test/**/playground"
   ]
 }
