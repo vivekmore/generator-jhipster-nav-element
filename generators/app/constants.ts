@@ -1,6 +1,4 @@
-module.exports = {
-    TEMPLATE_TYPE: {
-        DEFAULT: 'ABOUT-US',
-        NESTED_ROUTES: 'NESTED-ROUTES'
-    }
-};
+export enum TemplateType {
+    DEFAULT = 'ABOUT-US',
+    NESTED_ROUTES = 'NESTED-ROUTES'
+}

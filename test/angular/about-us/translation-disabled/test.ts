@@ -5,7 +5,7 @@ import { join } from 'path';
 import * as assert from 'yeoman-assert';
 import * as helpers from 'yeoman-test';
 
-import { TEMPLATE_TYPE } from '../../../../generators/app/constants';
+import { TemplateType } from '../../../../generators/app/constants';
 import { client } from './expectations.json';
 
 const RESULTS_DIR = `${__dirname}/results/`;
@@ -21,7 +21,7 @@ describe('default angular template - translation disabled', () => {
                 skipInstall: true
             })
             .withPrompts({
-                templateType: TEMPLATE_TYPE.DEFAULT,
+                templateType: TemplateType.DEFAULT,
                 navElementKey: 'about_us'
             });
             // .on('end', done);

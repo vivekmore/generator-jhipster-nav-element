@@ -3,7 +3,7 @@
  *
  * @param {string} input - input to validate
  */
-export function validate(input) {
+export function validate(input: string) {
     if (/^([a-zA-Z0-9_]*)$/.test(input)) {
         return true;
     }
