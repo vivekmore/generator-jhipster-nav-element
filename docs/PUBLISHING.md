@@ -32,8 +32,9 @@
     $ npm login
     ```
 
-6. Update the version (patch/minor/major) 
-*e.g. for updating the patch version*
+6. Update the version (patch/minor/major) `only works in Git Bash at the moment`
+    
+    *e.g. for updating the patch version*
 
     **Make sure there are no local changes (stash them if any)**
     ```bash
