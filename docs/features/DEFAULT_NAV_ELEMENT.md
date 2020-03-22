@@ -1,5 +1,4 @@
-
-## A Simple Page (with a corresponding nav element)
+# A Simple Page (with a corresponding nav element)
 
 The following (client-side) artifacts are generated:
 
@@ -19,3 +18,10 @@ The following (client-side) artifacts are generated:
 ##### 2. React:
  * Not supported currently
 
+
+-----
+
+#💚 this module? [![Donate][donate-image]][donate-url]
+
+[donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
+[donate-url]: https://www.paypal.me/vivekdmore

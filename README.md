@@ -74,6 +74,13 @@ yarn global upgrade generator-jhipster-nav-element
 Apache-2.0 © [Vivek More]
 
 
+-----
+
+#💚 this module? [![Donate][donate-image]][donate-url]
+
+[donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
+[donate-url]: https://www.paypal.me/vivekdmore
+
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-nav-element.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-nav-element
 [travis-image]: https://img.shields.io/travis/vivekmore/generator-jhipster-nav-element?label=travis-ci&logo=travis
@@ -84,5 +91,5 @@ Apache-2.0 © [Vivek More]
 [coveralls-url]: https://coveralls.io/github/vivekmore/generator-jhipster-nav-element
 [github-actions-image]: https://img.shields.io/github/workflow/status/vivekmore/generator-jhipster-nav-element/Build?label=github-ci&logo=github
 [github-actions-url]: https://github.com/vivekmore/generator-jhipster-nav-element/actions
-[donate-image]: https://img.shields.io/badge/Donate-PayPal-brightgreen?style=for-the-badge&logo=paypal
+[donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
 [donate-url]: https://www.paypal.me/vivekdmore
