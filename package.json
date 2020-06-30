@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "chalk": "4.1.0",
-    "generator-jhipster": "6.9.0",
+    "generator-jhipster": "6.10.0",
     "kind-of": ">=6.0.3",
     "lodash": "4.17.15",
     "minimist": "1.2.5",
