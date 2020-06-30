@@ -72,7 +72,7 @@
   },
   "mocha": {
     "colors": true,
-    "slow": 0,
+    "slow": 5,
     "reporter": "spec",
     "ui": "bdd"
   }
