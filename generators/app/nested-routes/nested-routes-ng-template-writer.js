@@ -1,3 +1,4 @@
+/* eslint no-multiple-empty-lines: "off" */
 const _ = require('lodash');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 

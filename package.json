@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "2.4.6",
+  "version": "2.4.7",
   "description": "Client Side Angular Components For your JHipster App",
   "keywords": [
     "scaffold",
@@ -29,8 +29,8 @@
     "url": "git+https://github.com/vivekmore/generator-jhipster-nav-element.git"
   },
   "dependencies": {
-    "chalk": "4.0.0",
-    "generator-jhipster": "6.9.0",
+    "chalk": "4.1.0",
+    "generator-jhipster": "6.10.0",
     "kind-of": ">=6.0.3",
     "lodash": "4.17.15",
     "minimist": "1.2.5",
@@ -38,17 +38,17 @@
     "semver": "7.3.2",
     "shelljs": "0.8.4",
     "tabtab": "3.0.2",
-    "yeoman-generator": "4.10.1"
+    "yeoman-generator": "4.11.0"
   },
   "devDependencies": {
     "coveralls": "3.1.0",
-    "eslint": "7.0.0",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "2.20.2",
+    "eslint": "7.3.1",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.0",
     "fs": "0.0.1-security",
-    "fs-extra": "9.0.0",
+    "fs-extra": "9.0.1",
     "istanbul": "0.4.5",
-    "mocha": "7.1.2",
+    "mocha": "8.0.1",
     "mocha-lcov-reporter": "1.3.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "2.6.0"
@@ -72,7 +72,7 @@
   },
   "mocha": {
     "colors": true,
-    "slow": 0,
+    "slow": 5,
     "reporter": "spec",
     "ui": "bdd"
   }
