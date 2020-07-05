@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Client Side Angular Components For your JHipster App",
   "keywords": [
     "scaffold",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "chalk": "4.1.0",
-    "generator-jhipster": "6.10.0",
+    "generator-jhipster": "6.10.1",
     "kind-of": ">=6.0.3",
     "lodash": "4.17.15",
     "minimist": "1.2.5",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "coveralls": "3.1.0",
-    "eslint": "7.3.1",
+    "eslint": "7.4.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "2.22.0",
     "fs": "0.0.1-security",
