@@ -71,6 +71,7 @@
     "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"
   },
   "jest": {
+    "testEnvironment": "node",
     "verbose": true,
     "maxConcurrency": 1,
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
