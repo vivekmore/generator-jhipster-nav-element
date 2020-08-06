@@ -1,5 +1,4 @@
-// const _ = require('lodash');
-const jhipsterUtils = require('generator-jhipster/generators/utils');
+const _ = require('lodash');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = {
@@ -15,133 +14,72 @@ function write(generator) {
     generator.enableTranslation = jhipsterAppConfig.enableTranslation;
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
     generator.useSass = jhipsterAppConfig.useSass;
+    generator.jhiPrefixCapitalized = generator.upperFirstCamelCase(jhipsterAppConfig.jhiPrefix);
+    generator.jhiPrefixDashed = _.kebabCase(jhipsterAppConfig.jhiPrefix);
 
     generator.log('------------------------------------------------------------');
     generator.log(`baseName=${generator.baseName}`);
     generator.log(`packageName=${generator.packageName}`);
-    generator.log(`angularAppName=${generator.angularAppName}`);
+    generator.log(`angularXAppName=${generator.angularXAppName}`);
     generator.log(`enableTranslation=${generator.enableTranslation}`);
+    generator.log(`jhiPrefixDashed=${generator.jhiPrefixDashed}`);
+    generator.log(`jhiPrefixCapitalized=${generator.jhiPrefixCapitalized}`);
     generator.log('------------------------------------------------------------');
 
+    const templateDir = `../templates/angular/${generator.templateDir}`;
     const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
-    // Add required dependencies to package.json
+    // add required dependencies to package.json
     generator.addNpmDependency('cookieconsent', '3.1.1');
     generator.addNpmDependency('ngx-cookieconsent', '2.2.3');
 
-    // Add changes to app.module.ts
-    const modulePath = `${webappDir}app/app.module.ts`;
-    const importContent1 = 'import { DEBUG_INFO_ENABLED } from \'app/app.constants\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent1);
-    const importContent2 = 'import { NgcCookieConsentConfig, NgcCookieConsentModule } from \'ngx-cookieconsent\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent2);
-    const importContent3 = 'import \'cookieconsent/build/cookieconsent.min\';';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module-import', importContent3);
+    // update app.module.ts
+    const appModule = `${webappDir}app/app.module.ts`;
+    const importCookieConsentMin = 'import \'cookieconsent/build/cookieconsent.min\';';
+    generator.rewriteFile(appModule, 'jhipster-needle-angular-add-module-import', importCookieConsentMin);
 
-    const cookieConsentConfigContent = `
-const cookieConfig: NgcCookieConsentConfig = {
-  cookie: {
-    domain: DEBUG_INFO_ENABLED ? 'localhost' : 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
-  },
-  palette: {
-    popup: {
-      background: '#000'
-    },
-    button: {
-      background: '#f1d600'
-    }
-  },
-  theme: 'edgeless',
-  type: 'opt-out'
-};
+    // update shared-libs.module.ts
+    const sharedLibsModule = `${webappDir}app/shared/shared-libs.module.ts`;
+    const cookieConsentModule = `${generator.jhiPrefixCapitalized}CookieConsentModule`;
+    const importCookieConsentModule = `import { ${cookieConsentModule} } from 'app/shared/cookie-consent/cookie-consent.module';`
+        + '\n\n@NgModule';
+    generator.replaceContent(sharedLibsModule, '@NgModule', importCookieConsentModule);
+    const exportCookieConsentModule = `exports: [\n    ${cookieConsentModule},`;
+    generator.replaceContent(sharedLibsModule, 'exports: [', exportCookieConsentModule);
 
-@NgModule(`;
-    generator.replaceContent(modulePath, '@NgModule(', cookieConsentConfigContent);
-
-    const moduleContent = 'NgcCookieConsentModule.forRoot(cookieConfig),';
-    generator.rewriteFile(modulePath, 'jhipster-needle-angular-add-module', moduleContent);
-
-    // Add changes to vendor.scss
+    // update vendor.scss
     generator.addVendorSCSSStyle('@import \'~cookieconsent/build/cookieconsent.min.css\';', 'For more customization see: https://www.npmjs.com/package/ngx-cookieconsent');
 
-    // Add changes to main.component.ts
-    const mainComponentPath = `${webappDir}app/layouts/main/main.component.ts`;
-    const mainComponentImportsContent = `
-import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
-import { Subscription } from 'rxjs';
+    // update main.component.html
+    const mainComponentHtml = `${webappDir}app/layouts/main/main.component.html`;
+    const prefix = generator.jhiPrefixDashed;
+    const originalContent = generator.fs.read(mainComponentHtml);
+    generator.fs.write(mainComponentHtml, `${originalContent}\n<${prefix}-cookie-consent></${prefix}-cookie-consent>\n`);
 
-@Component(`;
-    generator.replaceContent(mainComponentPath, '@Component(', mainComponentImportsContent);
-    const mainComponentSubscriptionsContent = `
-    // keep refs to subscriptions to be able to unsubscribe later
-    private popupOpenSubscription: Subscription;
-    private popupCloseSubscription: Subscription;
-    private initializeSubscription: Subscription;
-    private statusChangeSubscription: Subscription;
-    private revokeChoiceSubscription: Subscription;
-    private noCookieLawSubscription: Subscription;
-
-    constructor(private ngcCookieConsentService: NgcCookieConsentService, `;
-    generator.replaceContent(mainComponentPath, 'constructor(', mainComponentSubscriptionsContent);
-
-    const ngOnDestroyContent = `
-
-    ngOnDestroy(): void {
-        // unsubscribe to cookieconsent observables to prevent memory leaks
-        this.popupOpenSubscription.unsubscribe();
-        this.popupCloseSubscription.unsubscribe();
-        this.initializeSubscription.unsubscribe();
-        this.statusChangeSubscription.unsubscribe();
-        this.revokeChoiceSubscription.unsubscribe();
-        this.noCookieLawSubscription.unsubscribe();
-    }
-
-    ngOnInit(): void {
-        // subscribe to cookieconsent observables to react to main events
-        this.popupOpenSubscription = this.ngcCookieConsentService.popupOpen$.subscribe(() => {
-            // handle your event here
-        });
-
-        this.popupCloseSubscription = this.ngcCookieConsentService.popupClose$.subscribe(() => {
-            // handle your event here
-        });
-
-        this.initializeSubscription = this.ngcCookieConsentService.initialize$.subscribe((event: NgcInitializeEvent) => {
-            // handle your event here
-        });
-
-        this.statusChangeSubscription = this.ngcCookieConsentService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
-            // handle your event here
-        });
-
-        this.revokeChoiceSubscription = this.ngcCookieConsentService.revokeChoice$.subscribe(() => {
-            // handle your event here
-        });
-
-        this.noCookieLawSubscription = this.ngcCookieConsentService.noCookieLaw$.subscribe((event: NgcNoCookieLawEvent) => {
-            // handle your event here
-        });`;
-    generator.replaceContent(mainComponentPath, 'ngOnInit(): void {', ngOnDestroyContent);
-
-    if (!jhipsterUtils.checkRegexInFile(mainComponentPath, /\bOnDestroy\b/g, generator)) {
-        // add import
-        jhipsterUtils.replaceContent(
-            {
-                file: mainComponentPath,
-                pattern: / } from '@angular\/core'/g,
-                content: ', OnDestroy } from \'@angular/core\''
-            },
-            generator
+    // add cookie-consent module
+    [
+        'cookie-consent.component.ts',
+        'cookie-consent.constants.ts',
+        'cookie-consent.module.ts',
+        'cookie-consent.service.ts'
+    ].forEach((file) => {
+        generator.log(`${webappDir}app/shared/cookie-consent/${file}`);
+        generator.template(
+            `${templateDir}src/main/webapp/app/shared/cookie-consent/${file}.ejs`,
+            `${webappDir}app/shared/cookie-consent/${file}`
         );
+    });
 
-        // add implements declaration
-        jhipsterUtils.replaceContent(
-            {
-                file: mainComponentPath,
-                pattern: /implements/g,
-                content: 'implements OnDestroy,'
-            },
-            generator
-        );
+    // add i18n COOKIE-CONSENT JSON
+    if (generator.enableTranslation) {
+        generator.getAllInstalledLanguages()
+            .forEach((language) => {
+                generator.currentLanguagePrefix = language === generator.nativeLanguage ? '' : `[${language}] `;
+                generator.log(`adding cookie consent content for ${language} language ${generator.currentLanguagePrefix}`);
+                generator.template(
+                    `${templateDir}src/main/webapp/i18n/lang/cookie-consent.json.ejs`,
+                    `${webappDir}i18n/${language}/cookie-consent.json`
+                );
+            }, generator);
     }
 }
