@@ -16,7 +16,6 @@ Here are the possible things you can generate:
 
 ### 📄 [A Simple Page](docs/features/DEFAULT_NAV_ELEMENT.md)
 ### 🧾 [A Page With Nested Routes](docs/features/NESTED_NAV_ELEMENT.md)
-### 🍪 [A Cookie Consent Popup](docs/features/COOKIE_CONSENT_COMPONENT.md)
 
 
 # Installing JHipster
