@@ -1,0 +1,23 @@
+{
+  "client": {
+    "added": [
+      "src/main/webapp/app/shared/cookie-consent/cookie-consent.component.ts",
+      "src/main/webapp/app/shared/cookie-consent/cookie-consent.constants.ts",
+      "src/main/webapp/app/shared/cookie-consent/cookie-consent.module.ts",
+      "src/main/webapp/app/shared/cookie-consent/cookie-consent.service.ts",
+      "src/main/webapp/i18n/en/cookie-consent.json",
+      "src/main/webapp/i18n/al/cookie-consent.json",
+      "src/main/webapp/i18n/ar-ly/cookie-consent.json",
+      "src/main/webapp/i18n/hy/cookie-consent.json"
+    ],
+    "addedTests": [],
+    "skipped": [],
+    "changed": [
+      "package.json",
+      "src/main/webapp/app/app.module.ts",
+      "src/main/webapp/app/layouts/main/main.component.html",
+      "src/main/webapp/app/shared/shared-libs.module.ts",
+      "src/main/webapp/content/scss/vendor.scss"
+    ]
+  }
+}

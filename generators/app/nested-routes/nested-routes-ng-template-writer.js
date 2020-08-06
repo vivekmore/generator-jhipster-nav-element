@@ -42,7 +42,7 @@ function write(generator) {
     generator.log('------------------------------------------------------------');
     generator.log(`baseName=${generator.baseName}`);
     generator.log(`packageName=${generator.packageName}`);
-    generator.log(`angularAppName=${generator.angularAppName}`);
+    generator.log(`angularXAppName=${generator.angularXAppName}`);
     generator.log(`enableTranslation=${generator.enableTranslation}`);
     generator.log(`navElementKey=${generator.navElementKey}`);
     generator.log('------------------------------------------------------------');
