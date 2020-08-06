@@ -1,7 +1,6 @@
 const constants = require('./constants');
 const defaultNg2TemplatePrompter = require('./about-us/about-us-ng-template-prompter');
 const nestedRoutesNg2TemplatePrompter = require('./nested-routes/nested-routes-ng-template-prompter');
-const cookieConsentNg2TemplatePrompter = require('./cookie-consent/cookie-consent-ng-template-prompter');
 
 module.exports = {
     promptToChooseATemplate,
@@ -23,10 +22,6 @@ function promptToChooseATemplate() {
             {
                 name: 'A Page With Nested Routes',
                 value: constants.TEMPLATE_TYPE.NESTED_ROUTES
-            },
-            {
-                name: 'A Cookie Consent Popup',
-                value: constants.TEMPLATE_TYPE.COOKIE_CONSENT
             }
         ]
     }).then((prompt) => {
@@ -44,9 +39,6 @@ function promptTemplateSpecificQuestions() {
     case constants.TEMPLATE_TYPE.NESTED_ROUTES:
         askNestedRoutesTemplateQuestions(this);
         break;
-    case constants.TEMPLATE_TYPE.COOKIE_CONSENT:
-        askCookieConsentTemplateQuestions(this);
-        break;
     default:
         break;
     }
@@ -60,10 +52,5 @@ function askDefaultTemplateQuestions(generator) {
 function askNestedRoutesTemplateQuestions(generator) {
     if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
         nestedRoutesNg2TemplatePrompter.askQuestions(generator);
-    }
-}
-function askCookieConsentTemplateQuestions(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
-        cookieConsentNg2TemplatePrompter.askQuestions(generator);
     }
 }
