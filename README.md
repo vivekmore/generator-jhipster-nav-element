@@ -19,7 +19,7 @@ Here are the possible things you can generate:
 
 
 # Installing JHipster
-To install this JHipster globally:
+To install JHipster globally:
 ```bash
 npm install -g generator-jhipster
 ```
