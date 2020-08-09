@@ -107,7 +107,7 @@ function write(generator) {
         componentDirName,
         generator.moduleTsNameMinusSuffix,
         generator.enableTranslation,
-        'angularX'
+        jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR
     );
 
 
@@ -129,7 +129,7 @@ function write(generator) {
 
 
     // ENTRIES TO NAVBAR.HTML
-    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, 'angularX', generator.translationKeyMenu);
+    generator.addElementToMenu(generator.routerName, 'hand-spock', generator.enableTranslation, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR, generator.translationKeyMenu);
 
 
     // TESTS

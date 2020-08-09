@@ -1,3 +1,4 @@
+const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 const constants = require('./constants');
 const defaultNg2TemplatePrompter = require('./about-us/about-us-ng-template-prompter');
 const nestedRoutesNg2TemplatePrompter = require('./nested-routes/nested-routes-ng-template-prompter');
@@ -45,12 +46,12 @@ function promptTemplateSpecificQuestions() {
 }
 
 function askDefaultTemplateQuestions(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         defaultNg2TemplatePrompter.askQuestions(generator);
     }
 }
 function askNestedRoutesTemplateQuestions(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         nestedRoutesNg2TemplatePrompter.askQuestions(generator);
     }
 }

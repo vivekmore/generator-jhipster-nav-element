@@ -1,3 +1,4 @@
+const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 const constants = require('./constants');
 const defaultNg2TemplateWriter = require('./about-us/about-us-ng-template-writer');
 const nestedRoutesNg2TemplateWriter = require('./nested-routes/nested-routes-ng-template-writer');
@@ -20,12 +21,12 @@ function writeTemplate(generator) {
 }
 
 function writeDefaultTemplate(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         defaultNg2TemplateWriter.write(generator);
     }
 }
 function writeNestedRoutesTemplate(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         nestedRoutesNg2TemplateWriter.write(generator);
     }
 }
