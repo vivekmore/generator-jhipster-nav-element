@@ -181,7 +181,7 @@ function write(generator) {
         componentDirName,
         generator.moduleTsNameMinusSuffix,
         generator.enableTranslation,
-        'angularX'
+        jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR
     );
 
 
@@ -215,7 +215,7 @@ function write(generator) {
 
     // ENTRIES TO NAVBAR.HTML
     const iconName = 'hand-spock';
-    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, 'angularX', generator.translationKeyMenu);
+    generator.addElementToMenu(generator.routerName, iconName, generator.enableTranslation, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR, generator.translationKeyMenu);
 
 
     // TESTS
