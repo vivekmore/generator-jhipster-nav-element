@@ -1,0 +1,20 @@
+{
+  "client": {
+    "added": [
+      "src/main/webapp/app/modules/about-us/about-us.css",
+      "src/main/webapp/app/modules/about-us/about-us.tsx"
+    ],
+    "addedTests": [
+    ],
+    "skipped": [
+      "src/main/webapp/i18n/en/about-us.json",
+      "src/main/webapp/i18n/fr/about-us.json"
+    ],
+    "changed": [
+      "src/main/webapp/app/config/icon-loader.ts",
+      "src/main/webapp/app/routes.tsx",
+      "src/main/webapp/app/shared/layout/header/header-components.tsx",
+      "src/main/webapp/app/shared/layout/header/header.tsx"
+    ]
+  }
+}
