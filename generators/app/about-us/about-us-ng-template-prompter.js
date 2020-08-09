@@ -25,7 +25,6 @@ function askQuestions(generator) {
     generator.prompt(prompts)
         .then((props) => {
             generator.navElementKey = props.navElementKey;
-            generator.createDirective = props.createDirective;
             // To access props later use this.someOption;
             done();
         });
