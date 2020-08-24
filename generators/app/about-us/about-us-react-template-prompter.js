@@ -13,10 +13,10 @@ function askQuestions(generator) {
     const prompts = [
         {
             type: 'input',
-            name: 'navElementKey',
-            message: 'What title do you want for your new page? (e.g. newPage, new_page)',
-            validate: elementIdValidator.validate,
-            default: 'new_page'
+            name: 'titleText',
+            message: 'What title do you want for your new page? (e.g. "About Us", "Blog")',
+            validate: elementIdValidator.validateTitle,
+            default: 'About Us'
         }
     ];
 
@@ -24,7 +24,7 @@ function askQuestions(generator) {
 
     generator.prompt(prompts)
         .then((props) => {
-            generator.navElementKey = props.navElementKey;
+            generator.titleText = props.titleText;
             // To access props later use this.someOption;
             done();
         });

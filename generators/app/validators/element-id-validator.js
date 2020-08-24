@@ -1,5 +1,6 @@
 module.exports = {
-    validate
+    validate,
+    validateTitle
 };
 
 /**
@@ -12,4 +13,11 @@ function validate(input) {
         return true;
     }
     return 'Navigation element may contain only alphanumeric values and underscores';
+}
+
+function validateTitle(input) {
+    if (/^([a-zA-Z0-9 ]*)$/.test(input)) {
+        return true;
+    }
+    return 'Title may contain only alphanumeric values and spaces';
 }
