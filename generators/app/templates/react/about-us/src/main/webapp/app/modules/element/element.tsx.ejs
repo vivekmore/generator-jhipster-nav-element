@@ -1,13 +1,13 @@
-import './<%=_.camelCase(element)%>.scss';
+import './<%=styleSheetName%>';
 
 import React from 'react';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 
-export type I<%=_.upperFirst(_.camelCase(element))%>Prop = StateProps;
+export type <%=statePropName%> = StateProps;
 
-export const <%=_.upperFirst(_.camelCase(element))%> = (props: I<%=_.upperFirst(_.camelCase(element))%>Prop) => {
+export const <%=reactComponentName%> = (props: <%=statePropName%>) => {
   const { message } = props;
 
   return (
@@ -16,14 +16,14 @@ export const <%=_.upperFirst(_.camelCase(element))%> = (props: I<%=_.upperFirst(
       <Col md="10">
         <h6 className="text-right">{message}</h6>
         <h1 className="text-capitalize text-center">
-          <Translate contentKey="<%=_.camelCase(element)%>.title">Title</Translate>
+          <Translate contentKey="<%=translationKeyMenu%>.title">Title</Translate>
         </h1>
         <h5 className="text-center">
-          <Translate contentKey="<%=_.camelCase(element)%>.subtitle">Subtitle</Translate>
+          <Translate contentKey="<%=translationKeyMenu%>.subtitle">Subtitle</Translate>
         </h5>
         <hr/>
         <p className="text-justify">
-          <Translate contentKey="<%=_.camelCase(element)%>.content">Content</Translate>
+          <Translate contentKey="<%=translationKeyMenu%>.content">Content</Translate>
         </p>
       </Col>
       <Col md="1"/>
@@ -37,4 +37,4 @@ const mapStateToProps = storeState => ({
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 
-export default connect(mapStateToProps)(<%=_.upperFirst(_.camelCase(element))%>);
+export default connect(mapStateToProps)(<%=reactComponentName%>);
