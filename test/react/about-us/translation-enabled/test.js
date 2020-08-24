@@ -23,7 +23,7 @@ describe('default react template - translation enabled', () => {
             })
             .withPrompts({
                 templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
-                navElementKey: 'about_us'
+                titleText: 'About Us'
             })
             .on('end', done);
     });
