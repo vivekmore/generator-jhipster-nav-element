@@ -1,7 +1,7 @@
 {
   "global": {
     "menu": {
-      "about-us": "About Us",
+      "aboutUs": "About Us",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)"
     }
   }
