@@ -1,13 +1,13 @@
-import './asdf.scss';
+import './about-us.css';
 
 import React from 'react';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 
-export type IAsdfProp = StateProps;
+export type IAboutUsProp = StateProps;
 
-export const Asdf = (props: IAsdfProp) => {
+export const AboutUs = (props: IAboutUsProp) => {
   const { message } = props;
 
   return (
@@ -16,14 +16,14 @@ export const Asdf = (props: IAsdfProp) => {
       <Col md="10">
         <h6 className="text-right">{message}</h6>
         <h1 className="text-capitalize text-center">
-          <Translate contentKey="asdf.title">Title</Translate>
+          <Translate contentKey="aboutUs.title">Title</Translate>
         </h1>
         <h5 className="text-center">
-          <Translate contentKey="asdf.subtitle">Subtitle</Translate>
+          <Translate contentKey="aboutUs.subtitle">Subtitle</Translate>
         </h5>
         <hr/>
         <p className="text-justify">
-          <Translate contentKey="asdf.content">Content</Translate>
+          <Translate contentKey="aboutUs.content">Content</Translate>
         </p>
       </Col>
       <Col md="1"/>
@@ -37,4 +37,4 @@ const mapStateToProps = storeState => ({
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 
-export default connect(mapStateToProps)(Asdf);
+export default connect(mapStateToProps)(AboutUs);
