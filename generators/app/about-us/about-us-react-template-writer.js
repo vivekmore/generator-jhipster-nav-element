@@ -30,7 +30,7 @@ function write(generator) {
     const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
     generator.selector = `${prefix}${_.kebabCase(titleTextKebabCase).toLowerCase()}`;
     generator.templateName = `${_.kebabCase(titleTextKebabCase).toLowerCase()}.component.html`;
-    generator.componentName = `${_.upperFirst(_.camelCase(titleTextKebabCase))}Component`;
+    generator.componentName = `${_.upperFirst(_.camelCase(titleTextKebabCase))}`;
 
     generator.componentKebabCase = `${_.kebabCase(titleTextKebabCase).toLowerCase()}`;
     generator.componentCamelCase = `${_.camelCase(titleTextKebabCase)}`;
@@ -87,21 +87,21 @@ function write(generator) {
         );
     }
 
-    // // ROUTE
-    // generator.replaceContent(
-    //     `${webappDir}app/routes.tsx`,
-    //     /import React/,
-    //     `import ${generator.componentPascalCase} from 'app/modules/${generator.componentKebabCase}/${generator.componentKebabCase}';\nimport React`,
-    //     true
-    // );
-    // generator.replaceContent(
-    //     `${webappDir}app/routes.tsx`,
-    //     /<Switch>/,
-    //     `<Switch>\n      <ErrorBoundaryRoute path="/${generator.componentKebabCase}" exact component={${generator.componentPascalCase}} />`,
-    //     true
-    // );
-    //
-    //
+    // ROUTE
+    generator.replaceContent(
+        `${webappDir}app/routes.tsx`,
+        /import React/,
+        `import ${generator.componentName} from 'app/modules/${generator.componentKebabCase}/${generator.componentKebabCase}';\nimport React`,
+        true
+    );
+    generator.replaceContent(
+        `${webappDir}app/routes.tsx`,
+        /<Switch>/,
+        `<Switch>\n      <ErrorBoundaryRoute path="/${generator.componentKebabCase}" exact component={${generator.componentName}} />`,
+        true
+    );
+
+
     // // i18n ELEMENT JSON
     // if (generator.enableTranslation) {
     //     generator.getAllInstalledLanguages()
