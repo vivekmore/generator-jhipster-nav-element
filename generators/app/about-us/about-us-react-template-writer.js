@@ -143,7 +143,15 @@ function write(generator) {
 
 
     // ENTRIES TO HEADER.TSX
-    addElementToMenu(generator, generator.routerName, 'hand-spock', generator.enableTranslation, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
+    updateHeaderTsx(generator, generator.routerName, generator.enableTranslation, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
+
+
+    // ENTRIES TO ICON-LOADER.TSX
+    updateIconLoaderTsx(generator, generator.routerName, 'hand-spock', jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
+
+
+    // ENTRIES TO HEADER-COMPONENTS.TSX
+    updateHeaderComponentsTsx(generator, generator.componentPascalCase, generator.translationKeyMenu, generator.titleText, generator.routerName, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
 
 
     // // TESTS
@@ -153,34 +161,41 @@ function write(generator) {
     // );
 }
 
-function addElementToMenu(generator, elementName, iconName) {
+function updateHeaderTsx(generator, elementName) {
     const errorMessage = `${chalk.yellow('Reference to ') + elementName} ${chalk.yellow('not added to menu.\n')}`;
     const headerTsx = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/shared/layout/header/header.tsx`;
     const reactElementName = _.upperFirst(_.camelCase(elementName));
+    addBlock(generator, headerTsx, 'import ', `import { ${reactElementName} } from './header-components';`, errorMessage);
+    addBlock(generator, headerTsx, '<Home', `<${reactElementName} />`, errorMessage);
+}
 
-    const elementImportEntry = `import { ${reactElementName} } from './header-components';`;
-    const headerWithNewElementImport = generator.needleApi.clientReact.generateFileModel(
-        headerTsx,
-        'import ',
-        elementImportEntry
-    );
-    generator.needleApi.clientReact.addBlockContentToFile(headerWithNewElementImport, errorMessage);
+function updateHeaderComponentsTsx(generator, componentPascalCase, elementI18nKey, elementLabel, elementPath) {
+    const errorMessage = `${chalk.yellow('Reference to ') + componentPascalCase} ${chalk.yellow('not added to header-components.tsx.\n')}`;
+    const headerComponentsTsx = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/shared/layout/header/header-components.tsx`;
+    const label = generator.enableTranslation ? `<Translate contentKey="global.menu.${elementI18nKey}">${elementLabel}</Translate>` : elementLabel;
+    const exportContent = `
+  export const ${componentPascalCase} = props => (
+  <NavItem>
+    <NavLink tag={Link} to="/${elementPath}" className="d-flex align-items-center">
+      <FontAwesomeIcon icon="hand-spock" />
+      <span>
+        ${label}
+      </span>
+    </NavLink>
+  </NavItem>
+);`;
+    addBlock(generator, headerComponentsTsx, 'export ', exportContent, errorMessage);
+}
 
-    const elementEntry = `<${reactElementName} />`;
-    const headerWithNewElement = generator.needleApi.clientReact.generateFileModel(headerTsx, '<Home', elementEntry);
-    generator.needleApi.clientReact.addBlockContentToFile(headerWithNewElement, errorMessage);
-
+function updateIconLoaderTsx(generator, elementName, iconName) {
+    const errorMessage = `${chalk.yellow('Reference to ') + elementName} ${chalk.yellow('not added to icon-loader.tsx.\n')}`;
     const iconLoader = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/config/icon-loader.ts`;
     const icon = _.upperFirst(_.camelCase(iconName));
-    const iconImportEntry = `import { fa${icon} } from '@fortawesome/free-solid-svg-icons/fa${icon}';`;
-    const iconLoaderWithIconImport = generator.needleApi.clientReact.generateFileModel(
-        iconLoader,
-        'import ',
-        iconImportEntry
-    );
-    generator.needleApi.clientReact.addBlockContentToFile(iconLoaderWithIconImport, errorMessage);
+    addBlock(generator, iconLoader, 'import ', `import { fa${icon} } from '@fortawesome/free-solid-svg-icons/fa${icon}';`, errorMessage);
+    addBlock(generator, iconLoader, 'fa', `fa${icon},`, errorMessage);
+}
 
-    const iconEntry = `fa${icon},`;
-    const iconLoaderWithNewIcon = generator.needleApi.clientReact.generateFileModel(iconLoader, 'fa', iconEntry);
+function addBlock(generator, file, needle, splice, errorMessage) {
+    const iconLoaderWithNewIcon = generator.needleApi.clientReact.generateFileModel(file, needle, splice);
     generator.needleApi.clientReact.addBlockContentToFile(iconLoaderWithNewIcon, errorMessage);
 }
