@@ -154,11 +154,8 @@ function write(generator) {
     updateHeaderComponentsTsx(generator, generator.componentPascalCase, generator.translationKeyMenu, generator.titleText, generator.routerName, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
 
 
-    // // TESTS
-    // generator.template(
-    //     `${reactTemplateDir}src/test/javascript/spec/app/element/element.component.spec.ts.ejs`,
-    //     `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/${componentName}/${componentName}.component.spec.ts`
-    // );
+    // TESTS
+    updateHeaderSpecTsx(generator, generator.componentPascalCase);
 }
 
 function updateHeaderTsx(generator, elementName) {
@@ -173,17 +170,18 @@ function updateHeaderComponentsTsx(generator, componentPascalCase, elementI18nKe
     const errorMessage = `${chalk.yellow('Reference to ') + componentPascalCase} ${chalk.yellow('not added to header-components.tsx.\n')}`;
     const headerComponentsTsx = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/shared/layout/header/header-components.tsx`;
     const label = generator.enableTranslation ? `<Translate contentKey="global.menu.${elementI18nKey}">${elementLabel}</Translate>` : elementLabel;
-    const exportContent = `
-  export const ${componentPascalCase} = props => (
-  <NavItem>
-    <NavLink tag={Link} to="/${elementPath}" className="d-flex align-items-center">
-      <FontAwesomeIcon icon="hand-spock" />
-      <span>
-        ${label}
-      </span>
-    </NavLink>
-  </NavItem>
-);`;
+    const exportContent = generator.stripMargin(
+        `|export const ${componentPascalCase} = props => (
+         |  <NavItem>
+         |    <NavLink tag={Link} to="/${elementPath}" className="d-flex align-items-center">
+         |      <FontAwesomeIcon icon="hand-spock" />
+         |      <span>
+         |        ${label}
+         |      </span>
+         |    </NavLink>
+         |  </NavItem>
+         |);`
+    );
     addBlock(generator, headerComponentsTsx, 'export ', exportContent, errorMessage);
 }
 
@@ -193,6 +191,22 @@ function updateIconLoaderTsx(generator, elementName, iconName) {
     const icon = _.upperFirst(_.camelCase(iconName));
     addBlock(generator, iconLoader, 'import ', `import { fa${icon} } from '@fortawesome/free-solid-svg-icons/fa${icon}';`, errorMessage);
     addBlock(generator, iconLoader, 'fa', `fa${icon},`, errorMessage);
+}
+
+function updateHeaderSpecTsx(generator, componentPascalCase) {
+    const errorMessage = `${chalk.yellow('Test for ') + componentPascalCase} ${chalk.yellow('not added to header.spec.tsx.\n')}`;
+    const headerSpecTsx = `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/shared/layout/header/header.spec.tsx`;
+    const testContent = generator.stripMargin(
+        `|  it('Renders ${componentPascalCase} component.', () => {
+         |    const component = wrapper(prodProps);
+         |    expect(component).toMatchSnapshot();
+         |    const navbar = component.find(Navbar);
+         |    const nav = component.find(Nav);
+         |    expect(nav.find(${componentPascalCase}).length).toEqual(1);
+         |  });`
+    );
+    addBlock(generator, headerSpecTsx, 'import ', `import { ${componentPascalCase} } from 'app/shared/layout/header/header-components';`, errorMessage);
+    addBlock(generator, headerSpecTsx, 'it(', testContent, errorMessage);
 }
 
 function addBlock(generator, file, needle, splice, errorMessage) {
