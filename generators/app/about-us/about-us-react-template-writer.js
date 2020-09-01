@@ -197,19 +197,21 @@ function updateHeaderSpecTsx(generator, componentPascalCase) {
     const errorMessage = `${chalk.yellow('Test for ') + componentPascalCase} ${chalk.yellow('not added to header.spec.tsx.\n')}`;
     const headerSpecTsx = `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/shared/layout/header/header.spec.tsx`;
     const testContent = generator.stripMargin(
-        `|  it('Renders ${componentPascalCase} component.', () => {
-         |    const component = wrapper(prodProps);
-         |    expect(component).toMatchSnapshot();
-         |    const navbar = component.find(Navbar);
-         |    const nav = component.find(Nav);
-         |    expect(nav.find(${componentPascalCase}).length).toEqual(1);
-         |  });`
-    );
+        `|it('Renders ${componentPascalCase} component.', () => {
+         |  const component = wrapper(prodProps);
+         |  expect(component).toMatchSnapshot();
+         |  const navbar = component.find(Navbar);
+         |  const nav = component.find(Nav);
+         |  expect(nav.find(${componentPascalCase}).length).toEqual(1);
+         |});`
+    ).split(/\r?\n/);
     addBlock(generator, headerSpecTsx, 'import ', `import { ${componentPascalCase} } from 'app/shared/layout/header/header-components';`, errorMessage);
     addBlock(generator, headerSpecTsx, 'it(', testContent, errorMessage);
 }
 
 function addBlock(generator, file, needle, splice, errorMessage) {
-    const iconLoaderWithNewIcon = generator.needleApi.clientReact.generateFileModel(file, needle, splice);
+    const iconLoaderWithNewIcon = _.isArray(splice)
+        ? generator.needleApi.clientReact.generateFileModel(file, needle, ...splice)
+        : generator.needleApi.clientReact.generateFileModel(file, needle, splice);
     generator.needleApi.clientReact.addBlockContentToFile(iconLoaderWithNewIcon, errorMessage);
 }
