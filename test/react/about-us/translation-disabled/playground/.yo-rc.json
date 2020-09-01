@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "jhipsterVersion": "6.10.1",
-    "baseName": "someProject",
+    "baseName": "myApp",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
     "authenticationType": "session",
@@ -20,7 +20,6 @@
     "testFrameworks": [
       "gatling"
     ],
-    "clientFramework": "react",
-    "jhiPrefix": "kBab"
+    "clientFramework": "react"
   }
 }

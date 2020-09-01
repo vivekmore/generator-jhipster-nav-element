@@ -33,14 +33,3 @@ export const Home = props => (
     </NavLink>
   </NavItem>
 );
-
-export const Asdf = props => (
-  <NavItem>
-    <NavLink tag={Link} to="/asdf" className="d-flex align-items-center">
-      <FontAwesomeIcon icon="hand-spock" />
-      <span>
-        <Translate contentKey="global.menu.asdf">Asdf</Translate>
-      </span>
-    </NavLink>
-  </NavItem>
-);
