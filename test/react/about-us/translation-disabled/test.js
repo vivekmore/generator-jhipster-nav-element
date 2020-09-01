@@ -1,4 +1,4 @@
-/* global describe, xdescribe, before, it */
+/* global describe, before, it */
 
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -11,7 +11,7 @@ const expectedFiles = require('./expectations.json');
 
 const RESULTS_DIR = `${__dirname}/results/`;
 
-xdescribe('default react template - translation disabled', () => {
+describe('default react template - translation disabled', () => {
     before((done) => {
         helpers
             .run(path.join(__dirname, '../../../../generators/app'))
@@ -23,7 +23,7 @@ xdescribe('default react template - translation disabled', () => {
             })
             .withPrompts({
                 templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
-                navElementKey: 'about_us'
+                titleText: 'About Us'
             })
             .on('end', done);
     });
