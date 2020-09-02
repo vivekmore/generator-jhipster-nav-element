@@ -2,7 +2,7 @@
 const assert = require('yeoman-assert');
 const elementIdValidator = require('./element-id-validator');
 
-describe('element-id-validator', () => {
+describe('🛠 element-id-validator', () => {
     describe('.validate()', () => {
         it('returns true for valid input', () => {
             const testValue = 'about_us';
