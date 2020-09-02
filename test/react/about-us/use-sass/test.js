@@ -23,7 +23,7 @@ xdescribe('default react template - useSass: true', () => {
             })
             .withPrompts({
                 templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT,
-                navElementKey: 'about_us'
+                titleText: 'about_us'
             })
             .on('end', done);
     });
