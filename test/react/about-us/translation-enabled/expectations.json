@@ -7,6 +7,7 @@
       "src/main/webapp/i18n/fr/about-us.json"
     ],
     "addedTests": [
+      "src/test/javascript/spec/app/shared/layout/header/header.spec.tsx"
     ],
     "skipped": [
     ],
@@ -15,7 +16,6 @@
       "src/main/webapp/app/routes.tsx",
       "src/main/webapp/app/shared/layout/header/header-components.tsx",
       "src/main/webapp/app/shared/layout/header/header.tsx",
-      "src/test/javascript/spec/app/shared/layout/header/header.spec.tsx",
       "src/main/webapp/i18n/en/global.json",
       "src/main/webapp/i18n/fr/global.json"
     ]
