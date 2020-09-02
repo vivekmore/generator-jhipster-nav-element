@@ -16,14 +16,14 @@ export const AboutUs = (props: IAboutUsProp) => {
       <Col md="10">
         <h6 className="text-right">{message}</h6>
         <h1 className="text-capitalize text-center">
-          <Translate contentKey="aboutUs.title">Title</Translate>
+          Title
         </h1>
         <h5 className="text-center">
-          <Translate contentKey="aboutUs.subtitle">Subtitle</Translate>
+          Subtitle
         </h5>
         <hr/>
         <p className="text-justify">
-          <Translate contentKey="aboutUs.content">Content</Translate>
+          Content
         </p>
       </Col>
       <Col md="1"/>
