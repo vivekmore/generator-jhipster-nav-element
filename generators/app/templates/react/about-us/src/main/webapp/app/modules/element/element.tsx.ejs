@@ -16,14 +16,17 @@ export const <%=reactComponentName%> = (props: <%=statePropName%>) => {
       <Col md="10">
         <h6 className="text-right">{message}</h6>
         <h1 className="text-capitalize text-center">
-          <Translate contentKey="<%=translationKeyMenu%>.title">Title</Translate>
+          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.title">Title</Translate><%
+          } else { %>Title<% } %>
         </h1>
         <h5 className="text-center">
-          <Translate contentKey="<%=translationKeyMenu%>.subtitle">Subtitle</Translate>
+          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.subtitle">Subtitle</Translate><%
+          } else { %>Subtitle<% } %>
         </h5>
         <hr/>
         <p className="text-justify">
-          <Translate contentKey="<%=translationKeyMenu%>.content">Content</Translate>
+          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.content">Content</Translate><%
+          } else { %>Content<% } %>
         </p>
       </Col>
       <Col md="1"/>
