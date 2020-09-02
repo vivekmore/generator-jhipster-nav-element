@@ -15,28 +15,19 @@ function write(generator) {
     generator.packageName = jhipsterAppConfig.packageName;
     generator.enableTranslation = jhipsterAppConfig.enableTranslation;
     generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
-    generator.useSass = jhipsterAppConfig.useSass;
 
     generator.titleText = _.startCase(generator.titleText);
-    generator.navElementKey = _.lowerCase(_.trim(generator.titleText))
-        .replace(' ', '-')
-        .replace('_', '-');
-    const titleTextKebabCase = generator.navElementKey.trim()
+    const titleTextKebabCase = _.lowerCase(_.trim(generator.titleText))
         .replace(' ', '-')
         .replace('_', '-');
     generator.cssName = `${_.kebabCase(titleTextKebabCase)
         .toLowerCase()}.css`;
     generator.scssName = `${_.kebabCase(titleTextKebabCase)
         .toLowerCase()}.scss`;
-    generator.reactComponentName = `${_.upperFirst(_.camelCase(generator.navElementKey))}`;
-    generator.statePropName = `I${_.upperFirst(_.camelCase(generator.navElementKey))}Prop`;
+    generator.reactComponentName = `${_.upperFirst(_.camelCase(titleTextKebabCase))}`;
+    generator.statePropName = `I${_.upperFirst(_.camelCase(titleTextKebabCase))}Prop`;
     generator.translationKeyMenu = _.camelCase(titleTextKebabCase);
 
-    generator.componentStartCase = _.startCase(titleTextKebabCase);
-
-    const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
-    generator.selector = `${prefix}${_.kebabCase(titleTextKebabCase)
-        .toLowerCase()}`;
     generator.templateName = `${_.kebabCase(titleTextKebabCase)
         .toLowerCase()}.component.html`;
     generator.componentName = `${_.upperFirst(_.camelCase(titleTextKebabCase))}`;
@@ -46,38 +37,18 @@ function write(generator) {
     generator.componentCamelCase = `${_.camelCase(titleTextKebabCase)}`;
     generator.componentPascalCase = `${_.upperFirst(generator.componentCamelCase)}`;
 
-    if (generator.useSass) {
+    if (jhipsterAppConfig.useSass) {
         generator.styleSheetName = generator.scssName;
     } else {
         generator.styleSheetName = generator.cssName;
     }
 
-    generator.componentTsName = `${_.kebabCase(titleTextKebabCase)
-        .toLowerCase()}.component`;
     generator.routerName = _.kebabCase(titleTextKebabCase)
         .toLowerCase();
-    generator.routeName = `${_.kebabCase(titleTextKebabCase)
-        .toUpperCase()
-        .replace('-', '_')}_ROUTE`;
-    generator.routeTsName = `${_.kebabCase(titleTextKebabCase)
-        .toLowerCase()}.route`;
-    generator.angularName = _.upperFirst(_.camelCase(titleTextKebabCase));
-    generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(titleTextKebabCase))}Module`;
-    generator.moduleTsNameMinusSuffix = _.kebabCase(titleTextKebabCase)
-        .toLowerCase();
-    generator.moduleTsName = `${_.kebabCase(titleTextKebabCase)
-        .toLowerCase()}.module`;
-    generator.pageTitle = `${_.kebabCase(titleTextKebabCase)
-        .toLowerCase()}.title`;
-    generator.tabName = _.upperFirst(_.kebabCase(titleTextKebabCase)
-        .replace('-', ' '));
 
     generator.log('------------------------------------------------------------');
-    generator.log(`baseName=${generator.baseName}`);
-    generator.log(`packageName=${generator.packageName}`);
-    generator.log(`angularXAppName=${generator.angularXAppName}`);
+    generator.log(`titleText=${generator.titleText}`);
     generator.log(`enableTranslation=${generator.enableTranslation}`);
-    generator.log(`navElementKey=${generator.navElementKey}`);
     generator.log('------------------------------------------------------------');
 
     const reactComponentFilename = _.kebabCase(titleTextKebabCase)
@@ -96,7 +67,7 @@ function write(generator) {
 
 
     // STYLE
-    if (generator.useSass) {
+    if (jhipsterAppConfig.useSass) {
         generator.template(
             `${reactTemplateDir}src/main/webapp/app/modules/element/element.scss.ejs`,
             `${webappDir}app/modules/${moduleDirName}/${reactComponentFilename}.scss`
@@ -139,7 +110,7 @@ function write(generator) {
 
     // GLOBAL JSON
     generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu,
-        generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+        titleTextKebabCase, 'addElementTranslationKey', generator.enableTranslation);
 
 
     // ENTRIES TO HEADER.TSX
@@ -210,8 +181,9 @@ function updateHeaderSpecTsx(generator, componentPascalCase) {
 }
 
 function addBlock(generator, file, needle, splice, errorMessage) {
+    const { clientReact } = generator.needleApi;
     const iconLoaderWithNewIcon = _.isArray(splice)
-        ? generator.needleApi.clientReact.generateFileModel(file, needle, ...splice)
-        : generator.needleApi.clientReact.generateFileModel(file, needle, splice);
-    generator.needleApi.clientReact.addBlockContentToFile(iconLoaderWithNewIcon, errorMessage);
+        ? clientReact.generateFileModel(file, needle, ...splice)
+        : clientReact.generateFileModel(file, needle, splice);
+    clientReact.addBlockContentToFile(iconLoaderWithNewIcon, errorMessage);
 }
