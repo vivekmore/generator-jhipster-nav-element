@@ -5,6 +5,7 @@
       "src/main/webapp/app/modules/about-us/about-us.tsx"
     ],
     "addedTests": [
+      "src/test/javascript/spec/app/shared/layout/header/header.spec.tsx"
     ],
     "skipped": [
       "src/main/webapp/i18n/en/about-us.json",
