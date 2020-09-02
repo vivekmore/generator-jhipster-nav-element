@@ -1,22 +1,21 @@
 {
   "client": {
     "added": [
-      "src/main/webapp/app/modules/about-us/about-us.tsx",
       "src/main/webapp/app/modules/about-us/about-us.scss",
-      "src/main/webapp/i18n/en/about-us.json",
-      "src/main/webapp/i18n/fr/about-us.json"
+      "src/main/webapp/app/modules/about-us/about-us.tsx"
     ],
     "addedTests": [
+      "src/test/javascript/spec/app/shared/layout/header/header.spec.tsx"
     ],
     "skipped": [
+      "src/main/webapp/i18n/en/about-us.json",
+      "src/main/webapp/i18n/fr/about-us.json"
     ],
     "changed": [
       "src/main/webapp/app/config/icon-loader.ts",
       "src/main/webapp/app/routes.tsx",
       "src/main/webapp/app/shared/layout/header/header-components.tsx",
-      "src/main/webapp/app/shared/layout/header/header.tsx",
-      "src/main/webapp/i18n/en/global.json",
-      "src/main/webapp/i18n/fr/global.json"
+      "src/main/webapp/app/shared/layout/header/header.tsx"
     ]
   }
 }
