@@ -1,7 +1,7 @@
 import './<%=styleSheetName%>';
 
-import React from 'react';
-import { Translate } from 'react-jhipster';
+import React from 'react';<% if (enableTranslation) { %>
+import { Translate } from 'react-jhipster';<% } %>
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 
@@ -16,16 +16,16 @@ export const <%=reactComponentName%> = (props: <%=statePropName%>) => {
       <Col md="10">
         <h6 className="text-right">{message}</h6>
         <h1 className="text-capitalize text-center">
-          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.title">Title</Translate><%
+          <% if (enableTranslation) { %><Translate contentKey="<%=translationKeyMenu%>.title">Title</Translate><%
           } else { %>Title<% } %>
         </h1>
         <h5 className="text-center">
-          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.subtitle">Subtitle</Translate><%
+          <% if (enableTranslation) { %><Translate contentKey="<%=translationKeyMenu%>.subtitle">Subtitle</Translate><%
           } else { %>Subtitle<% } %>
         </h5>
         <hr/>
         <p className="text-justify">
-          <% if (enableTranslation) {  %><Translate contentKey="<%=translationKeyMenu%>.content">Content</Translate><%
+          <% if (enableTranslation) { %><Translate contentKey="<%=translationKeyMenu%>.content">Content</Translate><%
           } else { %>Content<% } %>
         </p>
       </Col>

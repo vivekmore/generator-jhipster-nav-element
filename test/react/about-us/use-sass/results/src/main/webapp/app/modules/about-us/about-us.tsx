@@ -1,7 +1,6 @@
 import './about-us.scss';
 
 import React from 'react';
-import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 
