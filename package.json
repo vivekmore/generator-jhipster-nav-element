@@ -55,7 +55,17 @@
     "yeoman-test": "6.3.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec test/test-*.js "
+    "pretest": "eslint .",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "test": "mocha test/**/test.js generators/**/*.spec.js",
+    "preversion": "npm i && npm test",
+    "postversion": "git push --tags",
+    "bump-patch": "npm version patch -m \":camera_flash: %s\"",
+    "bump-minor": "npm version minor -m \":camera_flash: %s\"",
+    "bump-major": "npm version major -m \":camera_flash: %s\"",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha test/**/test.js generators/**/*.spec.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec test/**/test.js generators/**/*.spec.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "license": "Apache-2.0",
   "bugs": {
