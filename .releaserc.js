@@ -14,7 +14,7 @@ module.exports = {
       prerelease: true
     }
   ],
-  ci: false,
+  ci: true,
   dryRun: false,
   debug: true,
   plugins: [
@@ -42,22 +42,15 @@ module.exports = {
           release: 'patch'
         }
       ],
-      analyzeCommits: {
-        parserOpts: {
-          // Optional, only you want to have emoji commit support
-          headerPattern: /^(?:[\w-]*)?\s*(\w*)(?:\(\w+\):)?\s*(.*)$/,
-          headerCorrespondence: ['type', 'scope', 'message']
-        }
-      },
       parserOpts: {
         // Optional, only you want to have emoji commit support
-        headerPattern: /^(?:[\w-]*)?\s*(\w*)(?:\(\w+\):)?\s*(.*)$/,
-        headerCorrespondence: ['type', 'scope', 'message'],
+        headerPattern: /^(?:\S*)?\s*(\w*)(?:\(\w+\):[\s\w]*)?$/,
+        headerCorrespondence: ['type'],
         noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES']
       }
     }],
     '@semantic-release/release-notes-generator',
     '@semantic-release/npm',
-    '@semantic-release/github'
+    '@semantic-release/github',
   ]
 };
