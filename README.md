@@ -4,6 +4,7 @@
 [![Build Status][travis-image]][travis-url] 
 [![Generator Build Status][github-actions-image]][github-actions-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Commitizen friendly][commitizen-image]][commitizen-url]
 
 [![Donate][donate-image]][donate-url]
 
@@ -95,3 +96,5 @@ Apache-2.0 © [Vivek More]
 [github-actions-url]: https://github.com/vivekmore/generator-jhipster-nav-element/actions
 [donate-image]: https://img.shields.io/badge/buy%20me%20a%20coffee-brightgreen?style=for-the-badge&logo=paypal
 [donate-url]: https://www.paypal.me/vivekdmore
+[commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[commitizen-url]: http://commitizen.github.io/cz-cli/
