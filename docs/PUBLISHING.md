@@ -46,14 +46,14 @@
 7. Merge the upgrade branch to develop
     ```bash
     git co develop
-    git merge upgrade --no-ff
+    git merge upgrade --ff-only
     git push origin develop
     ```
 
 8. Merge the tag to master (e.g. to merge a newly created v1.0.0 tag to master)
     ```bash
     git co master
-    git merge v1.0.0
+    git merge v1.0.0 --ff-only
     git push origin master
     ```
 
