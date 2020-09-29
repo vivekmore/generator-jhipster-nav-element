@@ -69,11 +69,5 @@
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/vivekmore/generator-jhipster-nav-element/issues"
-  },
-  "mocha": {
-    "colors": true,
-    "slow": 5,
-    "reporter": "spec",
-    "ui": "bdd"
   }
 }
