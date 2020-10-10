@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   generator-jhipster-nav-element:
-    name: npm test
+    name: CI Build
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     strategy:
@@ -17,12 +17,16 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run git history
+
+      - name: Git History
         run: git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit
+
+      - name: Code Coverage
       - run: npm ci
       - run: npm test
       - run: npm run coverage
-      - name: Coveralls
-        uses: coverallsapp/github-action@v1
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
