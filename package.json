@@ -58,7 +58,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "test": "mocha test/**/test.js generators/**/*.spec.js",
-    "preversion": "npm i && npm prune && npm test",
+    "preversion": "npm i && npm test",
     "postversion": "git push --tags",
     "bump-patch": "npm version patch",
     "bump-minor": "npm version minor",
