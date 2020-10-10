@@ -1,5 +1,7 @@
 name: Build
+
 on: [push, pull_request]
+
 jobs:
   generator-jhipster-nav-element:
     name: npm test
@@ -11,7 +13,7 @@ jobs:
         node_version: [12.18.3]
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -21,6 +23,6 @@ jobs:
       - run: npm test
       - run: npm run coverage
       - name: Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
