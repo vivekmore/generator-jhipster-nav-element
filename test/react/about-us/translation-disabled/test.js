@@ -1,4 +1,3 @@
-/* global describe */
 const path = require('path');
 const testUtil = require('../../../test-util');
 const navElementConstants = require('../../../../generators/app/constants');

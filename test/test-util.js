@@ -1,4 +1,3 @@
-/* global before, it */
 const path = require('path');
 const assert = require('yeoman-assert');
 const { createHelpers } = require('yeoman-test');
@@ -19,7 +18,7 @@ function commonSetup(setupConfig) {
         playgroundDir
     } = setupConfig;
 
-    before(async () => {
+    beforeAll(async () => {
         await helpers
             .create(path.join(__dirname, '../generators/app'))
             .inTmpDir((dir) => {
