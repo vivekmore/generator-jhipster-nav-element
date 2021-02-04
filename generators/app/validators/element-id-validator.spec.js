@@ -2,7 +2,7 @@ const elementIdValidator = require('./element-id-validator');
 
 describe('🛠 element-id-validator', () => {
     describe('.validate()', () => {
-        it('returns true for valid input', () => {
+        test('returns true for valid input', () => {
             const testValue = 'about_us';
 
             const actual = elementIdValidator.validate(testValue);
@@ -11,7 +11,7 @@ describe('🛠 element-id-validator', () => {
             expect(actual).toBe(expected);
         });
 
-        it('returns error message for invalid input', () => {
+        test('returns error message for invalid input', () => {
             const testValue = 'about-us';
 
             const actual = elementIdValidator.validate(testValue);
@@ -21,7 +21,7 @@ describe('🛠 element-id-validator', () => {
         });
     });
     describe('.validateTitle()', () => {
-        it('returns true for valid input', () => {
+        test('returns true for valid input', () => {
             const testValue = 'New Page';
 
             const actual = elementIdValidator.validateTitle(testValue);
@@ -30,7 +30,7 @@ describe('🛠 element-id-validator', () => {
             expect(actual).toBe(expected);
         });
 
-        it('returns error message for invalid input', () => {
+        test('returns error message for invalid input', () => {
             const testValue = 'about-us';
 
             const actual = elementIdValidator.validateTitle(testValue);
