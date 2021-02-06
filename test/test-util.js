@@ -1,8 +1,7 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const { createHelpers } = require('yeoman-test');
-// const fs = require('fs');
-const fse = require('fs-extra');
+const fs = require('fs-extra');
 const _ = require('lodash');
 
 module.exports = {
