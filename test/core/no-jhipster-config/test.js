@@ -5,9 +5,14 @@ const navElementConstants = require('../../../generators/app/constants');
 
 describe('☯ core', () => {
     beforeAll(async () => {
+        jest.useFakeTimers();
         await helpers.create(path.join(__dirname, '../../../generators/app'))
             .withPrompts({ templateType: navElementConstants.TEMPLATE_TYPE.DEFAULT })
-            .on('error', (error) => {
+            // .on('error', (error) => {
+            //     assert.textEqual(error.message, 'Can\'t read .yo-rc.json');
+            // })
+            .toPromise()
+            .then(() => done(), (error) => {
                 assert.textEqual(error.message, 'Can\'t read .yo-rc.json');
             })
             .run();
