@@ -1,4 +1,4 @@
-# Generate Navigational Components With Ease !!!
+# Generate <code>\<Nav Element /></code>s With Ease !!!
 [![NPM version][npm-image]][npm-url] 
 [![Dependency Status][daviddm-image]][daviddm-url] 
 [![Build Status][travis-image]][travis-url] 
