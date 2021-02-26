@@ -29,6 +29,7 @@
     "url": "git+https://github.com/vivekmore/generator-jhipster-nav-element.git"
   },
   "dependencies": {
+    "axios": ">=0.21.1",
     "chalk": "4.1.0",
     "generator-jhipster": "6.10.5",
     "kind-of": ">=6.0.3",
