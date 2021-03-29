@@ -12,10 +12,11 @@ export class <%=currentSubComponent.componentName%> implements OnInit {
   message: string;
 
   constructor() {
-    this.message = '<%=currentSubComponent.componentName%> message';
+    this.message = '';
   }
 
   ngOnInit(): void {
+    this.message = '<%=currentSubComponent.componentName%> message';
   }
 
 }
