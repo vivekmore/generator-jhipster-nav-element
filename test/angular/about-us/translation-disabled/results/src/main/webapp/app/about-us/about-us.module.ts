@@ -1,13 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SomeProjectSharedModule } from '../shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 import { ABOUT_US_ROUTE, AboutUsComponent } from './';
 
 @NgModule({
     imports: [
-      SomeProjectSharedModule,
+      SharedModule,
       RouterModule.forRoot([ ABOUT_US_ROUTE ], { useHash: true })
     ],
     declarations: [

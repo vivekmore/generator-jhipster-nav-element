@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { <%=angularXAppName%>SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 import { <%=routeName%>, <%=componentName%> } from './';
 <%_ for(let i in subComponents) { _%>
@@ -10,7 +10,7 @@ import { <%=subComponents[i].componentName%> } from './<%=subComponents[i].compo
 
 @NgModule({
     imports: [
-      <%=angularXAppName%>SharedModule,
+      SharedModule,
       RouterModule.forRoot([ <%=routeName%> ], { useHash: true })
     ],
     declarations: [<%=componentName%><%_ for(let i in subComponents) { _%>, <%= subComponents[i].componentName %><%_ } _%>],
