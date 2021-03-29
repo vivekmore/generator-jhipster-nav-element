@@ -12,10 +12,11 @@ export class PageOneComponent implements OnInit {
   message: string;
 
   constructor() {
-    this.message = 'PageOneComponent message';
+    this.message = '';
   }
 
   ngOnInit(): void {
+    this.message = 'PageOneComponent message';
   }
 
 }

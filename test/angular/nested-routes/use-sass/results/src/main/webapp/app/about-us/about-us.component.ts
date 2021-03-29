@@ -12,10 +12,11 @@ export class AboutUsComponent implements OnInit {
   message: string;
 
   constructor() {
-    this.message = 'AboutUsComponent message';
+    this.message = '';
   }
 
   ngOnInit(): void {
+    this.message = 'AboutUsComponent message';
   }
 
 }
