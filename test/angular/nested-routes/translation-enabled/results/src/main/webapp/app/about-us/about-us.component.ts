@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
   selector: 'xyz-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: [
-    'about-us.component.css'
+    './about-us.component.css'
   ]
 })
 export class AboutUsComponent implements OnInit {
