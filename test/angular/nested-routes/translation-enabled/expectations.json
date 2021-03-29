@@ -6,7 +6,6 @@
       "src/main/webapp/app/about-us/about-us.module.ts",
       "src/main/webapp/app/about-us/about-us.route.ts",
       "src/main/webapp/app/about-us/about-us.component.css",
-      "src/main/webapp/app/about-us/index.ts",
 
       "src/main/webapp/app/about-us/page-one/page-one.component.html",
       "src/main/webapp/app/about-us/page-one/page-one.component.ts",

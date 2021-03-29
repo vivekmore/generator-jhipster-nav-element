@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 
-import { <%=routeName%>, <%=componentName%> } from './';
+import { <%=routeName%> } from './<%=componentDirName%>/<%=routeTsName%>';
+import { <%=componentName%> } from './<%=componentDirName%>/<%=componentTsName%>';
 
 @NgModule({
     imports: [

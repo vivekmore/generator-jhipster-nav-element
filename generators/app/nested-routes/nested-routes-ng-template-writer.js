@@ -29,6 +29,7 @@ function write(generator) {
     generator.scssName = `${_.kebabCase(s).toLowerCase()}.component.scss`;
     generator.componentName = `${_.upperFirst(_.camelCase(s))}Component`;
     generator.componentTsName = `${_.kebabCase(s).toLowerCase()}.component`;
+    generator.componentDirName = _.kebabCase(s).toLowerCase();
     generator.routerName = _.kebabCase(s).toLowerCase();
     generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
     generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
@@ -137,13 +138,6 @@ function write(generator) {
             `${webappDir}app/${componentDirName}/${subComponent.componentDirName}/${subComponent.componentFileNamePrefix}.route.ts`
         );
     });
-
-
-    // INDEX
-    generator.template(
-        `${nestedRoutesNg2TemplateDir}src/main/webapp/app/element/index.ts.ejs`,
-        `${webappDir}app/${componentDirName}/index.ts`
-    );
 
 
     // STYLE

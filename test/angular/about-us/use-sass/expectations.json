@@ -5,8 +5,7 @@
       "src/main/webapp/app/about-us/about-us.component.ts",
       "src/main/webapp/app/about-us/about-us.module.ts",
       "src/main/webapp/app/about-us/about-us.route.ts",
-      "src/main/webapp/app/about-us/about-us.component.scss",
-      "src/main/webapp/app/about-us/index.ts"
+      "src/main/webapp/app/about-us/about-us.component.scss"
     ],
     "addedTests": [
       "src/test/javascript/spec/app/about-us/about-us.component.spec.ts"
