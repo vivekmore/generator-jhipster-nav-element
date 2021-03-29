@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
   selector: 'k-bab-page-two',
   templateUrl: './page-two.component.html',
   styleUrls: [
-    'page-two.component.css'
+    './page-two.component.css'
   ]
 })
 export class PageTwoComponent implements OnInit {
