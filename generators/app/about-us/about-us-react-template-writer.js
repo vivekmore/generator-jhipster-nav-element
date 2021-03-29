@@ -9,12 +9,12 @@ module.exports = {
 };
 
 function write(generator) {
-    const jhipsterAppConfig = generator.jhipsterAppConfig;
+    const jhipsterConfig = generator.jhipsterConfig;
 
-    generator.baseName = jhipsterAppConfig.baseName;
-    generator.packageName = jhipsterAppConfig.packageName;
-    generator.enableTranslation = jhipsterAppConfig.enableTranslation;
-    generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
+    generator.baseName = jhipsterConfig.baseName;
+    generator.packageName = jhipsterConfig.packageName;
+    generator.enableTranslation = jhipsterConfig.enableTranslation;
+    generator.nativeLanguage = jhipsterConfig.nativeLanguage;
 
     generator.titleText = _.startCase(generator.titleText);
     const titleTextKebabCase = _.lowerCase(_.trim(generator.titleText))
@@ -36,8 +36,9 @@ function write(generator) {
         .toLowerCase()}`;
     generator.componentCamelCase = `${_.camelCase(titleTextKebabCase)}`;
     generator.componentPascalCase = `${_.upperFirst(generator.componentCamelCase)}`;
+    generator.componentStartCase = _.startCase(titleTextKebabCase);
 
-    if (jhipsterAppConfig.useSass) {
+    if (jhipsterConfig.useSass) {
         generator.styleSheetName = generator.scssName;
     } else {
         generator.styleSheetName = generator.cssName;
@@ -67,7 +68,7 @@ function write(generator) {
 
 
     // STYLE
-    if (jhipsterAppConfig.useSass) {
+    if (jhipsterConfig.useSass) {
         generator.template(
             `${reactTemplateDir}src/main/webapp/app/modules/element/element.scss.ejs`,
             `${webappDir}app/modules/${moduleDirName}/${reactComponentFilename}.scss`
@@ -110,7 +111,7 @@ function write(generator) {
 
     // GLOBAL JSON
     generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu,
-        titleTextKebabCase, 'addElementTranslationKey', generator.enableTranslation);
+        generator.componentStartCase, 'addElementTranslationKey', generator.enableTranslation);
 
 
     // ENTRIES TO HEADER.TSX

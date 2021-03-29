@@ -1,7 +1,7 @@
 /* global before, it */
 const path = require('path');
 const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
+const { createHelpers } = require('yeoman-test');
 const fs = require('fs');
 const fse = require('fs-extra');
 const _ = require('lodash');
@@ -11,12 +11,17 @@ module.exports = {
     commonTests
 };
 
-function commonSetup(setupConfig) {
-    const { answers, playgroundDir } = setupConfig;
+const helpers = createHelpers({ generatorOptions: { skipPrettier: true } });
 
-    before((done) => {
-        helpers
-            .run(path.join(__dirname, '../generators/app'))
+function commonSetup(setupConfig) {
+    const {
+        answers,
+        playgroundDir
+    } = setupConfig;
+
+    before(async () => {
+        await helpers
+            .create(path.join(__dirname, '../generators/app'))
             .inTmpDir((dir) => {
                 fse.copySync(playgroundDir, dir);
             })
@@ -24,12 +29,15 @@ function commonSetup(setupConfig) {
                 skipInstall: true
             })
             .withPrompts(answers)
-            .on('end', done);
+            .run();
     });
 }
 
 function commonTests(testConfig) {
-    const { expectedFiles, resultsDir } = testConfig;
+    const {
+        expectedFiles,
+        resultsDir
+    } = testConfig;
 
     _.forEach(expectedFiles.client.added, (file) => {
         it(`creates expected production file: ${file}`, () => {

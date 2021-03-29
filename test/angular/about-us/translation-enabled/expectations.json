@@ -20,7 +20,7 @@
       "src/main/webapp/app/app.module.ts",
       "src/main/webapp/i18n/en/global.json",
       "src/main/webapp/i18n/fr/global.json",
-      "src/main/webapp/app/core/icons/font-awesome-icons.ts"
+      "src/main/webapp/app/config/font-awesome-icons.ts"
     ]
   }
 }

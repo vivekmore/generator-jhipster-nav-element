@@ -47,7 +47,7 @@ function promptTemplateSpecificQuestions() {
 }
 
 function askDefaultTemplateQuestions(generator) {
-    const clientFramework = generator.jhipsterAppConfig.clientFramework;
+    const clientFramework = generator.jhipsterConfig.clientFramework;
     if (clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         defaultNg2TemplatePrompter.askQuestions(generator);
     } else if (clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT) {
@@ -55,7 +55,7 @@ function askDefaultTemplateQuestions(generator) {
     }
 }
 function askNestedRoutesTemplateQuestions(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
+    if (generator.jhipsterConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         nestedRoutesNg2TemplatePrompter.askQuestions(generator);
     }
 }

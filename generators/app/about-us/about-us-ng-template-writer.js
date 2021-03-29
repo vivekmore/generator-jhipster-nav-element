@@ -7,20 +7,20 @@ module.exports = {
 };
 
 function write(generator) {
-    const jhipsterAppConfig = generator.jhipsterAppConfig;
+    const jhipsterConfig = generator.jhipsterConfig;
 
-    generator.baseName = jhipsterAppConfig.baseName;
-    generator.packageName = jhipsterAppConfig.packageName;
-    generator.angularXAppName = generator.getAngularXAppName();
-    generator.enableTranslation = jhipsterAppConfig.enableTranslation;
-    generator.nativeLanguage = jhipsterAppConfig.nativeLanguage;
-    generator.useSass = jhipsterAppConfig.useSass;
+    generator.baseName = jhipsterConfig.baseName;
+    generator.packageName = jhipsterConfig.packageName;
+    generator.angularXAppName = _.upperFirst(generator.getFrontendAppName());
+    generator.enableTranslation = jhipsterConfig.enableTranslation;
+    generator.nativeLanguage = jhipsterConfig.nativeLanguage;
+    generator.useSass = jhipsterConfig.useSass;
 
     const s = generator.navElementKey.trim().replace(' ', '-').replace('_', '-');
     generator.translationKeyMenu = _.kebabCase(s).toLowerCase();
     generator.componentStartCase = _.startCase(s);
 
-    const prefix = jhipsterAppConfig.jhiPrefix ? `${_.kebabCase(jhipsterAppConfig.jhiPrefix)}-` : '';
+    const prefix = jhipsterConfig.jhiPrefix ? `${_.kebabCase(jhipsterConfig.jhiPrefix)}-` : '';
     generator.selector = `${prefix}${_.kebabCase(s).toLowerCase()}`;
     generator.templateName = `${_.kebabCase(s).toLowerCase()}.component.html`;
     generator.cssName = `${_.kebabCase(s).toLowerCase()}.component.css`;
@@ -31,7 +31,7 @@ function write(generator) {
     generator.routeName = `${_.kebabCase(s).toUpperCase().replace('-', '_')}_ROUTE`;
     generator.routeTsName = `${_.kebabCase(s).toLowerCase()}.route`;
     generator.angularName = _.upperFirst(_.camelCase(s));
-    generator.moduleName = `${_.upperFirst(generator.getAngularAppName()) + _.upperFirst(_.camelCase(s))}Module`;
+    generator.moduleName = `${_.upperFirst(generator.getFrontendAppName()) + _.upperFirst(_.camelCase(s))}Module`;
     generator.moduleTsNameMinusSuffix = _.kebabCase(s).toLowerCase();
     generator.moduleTsName = `${_.kebabCase(s).toLowerCase()}.module`;
     generator.pageTitle = `${_.kebabCase(s).toLowerCase()}.title`;
@@ -102,7 +102,7 @@ function write(generator) {
 
     // APP MODULE
     generator.addAngularModule(
-        _.upperFirst(generator.getAngularAppName()),
+        _.upperFirst(generator.getFrontendAppName()),
         generator.angularName,
         componentDirName,
         generator.moduleTsNameMinusSuffix,
@@ -125,7 +125,7 @@ function write(generator) {
 
 
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.navElementKey, 'addElementTranslationKey', generator.enableTranslation);
+    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu, generator.componentStartCase, 'addElementTranslationKey', generator.enableTranslation);
 
 
     // ENTRIES TO NAVBAR.HTML

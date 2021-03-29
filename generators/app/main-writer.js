@@ -22,7 +22,7 @@ function writeTemplate(generator) {
 }
 
 function writeDefaultTemplate(generator) {
-    const clientFramework = generator.jhipsterAppConfig.clientFramework;
+    const clientFramework = generator.jhipsterConfig.clientFramework;
     if (clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         defaultNg2TemplateWriter.write(generator);
     } else if (clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT) {
@@ -30,7 +30,7 @@ function writeDefaultTemplate(generator) {
     }
 }
 function writeNestedRoutesTemplate(generator) {
-    if (generator.jhipsterAppConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
+    if (generator.jhipsterConfig.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
         nestedRoutesNg2TemplateWriter.write(generator);
     }
 }
