@@ -1,10 +1,11 @@
 {
   "name": "generator-jhipster-nav-element",
   "version": "3.1.7",
-  "description": "Client Side Angular Components For your JHipster App",
+  "description": "Add simple and nested pages to your JHipster app",
   "keywords": [
     "scaffold",
     "angular",
+    "react",
     "generator",
     "yeoman-generator",
     "jhipster",
@@ -13,7 +14,7 @@
   "homepage": "https://github.com/vivekmore/generator-jhipster-nav-element",
   "author": {
     "name": "Vivek More",
-    "email": "appvisortech2017@gmail.com",
+    "email": "vivekmore@noreply.users.github.com",
     "url": "https://github.com/vivekmore"
   },
   "engines": {
