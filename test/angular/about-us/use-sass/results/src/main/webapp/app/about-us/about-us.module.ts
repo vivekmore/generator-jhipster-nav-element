@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 
-import { ABOUT_US_ROUTE, AboutUsComponent } from './';
+import { ABOUT_US_ROUTE } from './about-us/about-us.route';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
     imports: [

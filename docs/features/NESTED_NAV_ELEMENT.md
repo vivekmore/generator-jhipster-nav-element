@@ -15,7 +15,6 @@ The following (client-side) artifacts are generated/modified:
  * `src/main/webapp/app/hello-world/hello-world.component.ts`
  * `src/main/webapp/app/hello-world/hello-world.module.ts`
  * `src/main/webapp/app/hello-world/hello-world.route.ts`
- * `src/main/webapp/app/hello-world/index.ts`
  * `src/test/javascript/spec/app/hello-world/hello-world.component.spec.ts`
  * `src/main/webapp/app/hello-world/page-one/page-one.component.html`
  * `src/main/webapp/app/hello-world/page-one/page-one.component.[s]css` (_css/scss is created based on your jhipster config, i.e. useSass in your .yo-rc.json_)

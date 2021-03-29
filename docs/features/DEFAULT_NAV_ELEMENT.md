@@ -12,7 +12,6 @@ The following (client-side) artifacts are generated:
  * `src/main/webapp/app/about-us/about-us.module.ts`
  * `src/main/webapp/app/about-us/about-us.route.ts`
  * `src/main/webapp/app/about-us/about-us.component.[s]css` (_css/scss is created based on your JHipster app config, i.e. useSass in your .yo-rc.json_)
- * `src/main/webapp/app/about-us/index.ts`
  * `src/test/javascript/spec/app/about-us/about-us.component.spec.ts`
 
 ##### 2. React (assuming your page is called 'about-us'):
