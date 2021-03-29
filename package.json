@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-nav-element",
-  "version": "3.1.7",
+  "version": "4.0.0",
   "description": "Add simple and nested pages to your JHipster app",
   "keywords": [
     "scaffold",
