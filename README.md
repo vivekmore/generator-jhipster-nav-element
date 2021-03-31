@@ -10,13 +10,15 @@
 
 # Introduction
 
-This generator scaffolds various navigational elements in your [JHipster](http://jhipster.github.io/) application.
+This generator scaffolds 2 kinds of pages in your [JHipster](http://jhipster.github.io/) application:
 
-Here are the possible things you can generate:
+## 📄 [A Single Page](docs/features/DEFAULT_NAV_ELEMENT.md)
+## 📄 [A Single Page With 2 Nested Pages](docs/features/NESTED_NAV_ELEMENT.md)
 
-### 📄 [A Simple Page](docs/features/DEFAULT_NAV_ELEMENT.md)
-### 🧾 [A Page With Nested Routes](docs/features/NESTED_NAV_ELEMENT.md)
-
+Supported frontends:
+- **Angular** 
+- **React**
+- _Vue.js_ coming soon
 
 # Installing JHipster
 To install JHipster globally:
