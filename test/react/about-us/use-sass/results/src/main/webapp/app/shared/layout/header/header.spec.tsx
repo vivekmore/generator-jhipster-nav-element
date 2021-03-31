@@ -102,11 +102,10 @@ describe('Header', () => {
   });
 
   it('Renders AboutUs component.', () => {
-    const component = wrapper(prodProps);
-    expect(component).toMatchSnapshot();
-    const navbar = component.find(Navbar);
-    const nav = component.find(Nav);
-    expect(nav.find(AboutUs).length).toEqual(1);
+    const html = wrapper(prodProps);
+    expect(html).toMatchSnapshot();
+    expect(html).toContain('about-us');
+    expect(html).toContain('hand-spock');
   });
   it('Renders a Header component in prod profile with no logged in User', () => {
     const nav = wrapper(guestProps).find(Nav);
