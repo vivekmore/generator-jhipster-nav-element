@@ -7,7 +7,7 @@
       "src/main/webapp/i18n/fr/about-us.json"
     ],
     "addedTests": [
-      "src/test/javascript/spec/app/shared/layout/header/header.spec.tsx"
+      "src/main/webapp/app/shared/layout/header/header.spec.tsx"
     ],
     "skipped": [
     ],

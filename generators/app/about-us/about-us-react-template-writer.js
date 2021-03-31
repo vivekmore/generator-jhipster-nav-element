@@ -119,7 +119,8 @@ function write(generator) {
 
 
     // ENTRIES TO ICON-LOADER.TSX
-    updateIconLoaderTsx(generator, generator.routerName, 'hand-spock', jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
+    const iconName = 'hand-spock';
+    updateIconLoaderTsx(generator, generator.routerName, iconName, jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT);
 
 
     // ENTRIES TO HEADER-COMPONENTS.TSX
@@ -127,7 +128,8 @@ function write(generator) {
 
 
     // TESTS
-    updateHeaderSpecTsx(generator, generator.componentPascalCase);
+    updateHeaderSpecTsx(generator, generator.componentPascalCase, iconName,
+        iconName);
 }
 
 function updateHeaderTsx(generator, elementName) {
@@ -165,16 +167,15 @@ function updateIconLoaderTsx(generator, elementName, iconName) {
     addBlock(generator, iconLoader, 'fa', `fa${icon},`, errorMessage);
 }
 
-function updateHeaderSpecTsx(generator, componentPascalCase) {
+function updateHeaderSpecTsx(generator, componentPascalCase, iconName) {
     const errorMessage = `${chalk.yellow('Test for ') + componentPascalCase} ${chalk.yellow('not added to header.spec.tsx.\n')}`;
-    const headerSpecTsx = `${jhipsterConstants.CLIENT_TEST_SRC_DIR}spec/app/shared/layout/header/header.spec.tsx`;
+    const headerSpecTsx = `${jhipsterConstants.CLIENT_MAIN_SRC_DIR}app/shared/layout/header/header.spec.tsx`;
     const testContent = generator.stripMargin(
         `|it('Renders ${componentPascalCase} component.', () => {
-         |  const component = wrapper(prodProps);
-         |  expect(component).toMatchSnapshot();
-         |  const navbar = component.find(Navbar);
-         |  const nav = component.find(Nav);
-         |  expect(nav.find(${componentPascalCase}).length).toEqual(1);
+         |  const html = wrapper(prodProps);
+         |  expect(html).toMatchSnapshot();
+         |  expect(html).toContain('${_.kebabCase(componentPascalCase)}');
+         |  expect(html).toContain('${iconName}');
          |});`
     ).split(/\r?\n/);
     addBlock(generator, headerSpecTsx, 'import ', `import { ${componentPascalCase} } from 'app/shared/layout/header/header-components';`, errorMessage);
