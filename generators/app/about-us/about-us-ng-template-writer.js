@@ -38,14 +38,6 @@ function write(generator) {
     generator.pageTitle = `${_.kebabCase(s).toLowerCase()}.title`;
     generator.tabName = _.upperFirst(_.kebabCase(s).replace('-', ' '));
 
-    generator.log('------------------------------------------------------------');
-    generator.log(`baseName=${generator.baseName}`);
-    generator.log(`packageName=${generator.packageName}`);
-    generator.log(`angularXAppName=${generator.angularXAppName}`);
-    generator.log(`enableTranslation=${generator.enableTranslation}`);
-    generator.log(`navElementKey=${generator.navElementKey}`);
-    generator.log('------------------------------------------------------------');
-
     const componentName = _.kebabCase(s).toLowerCase();
     const componentDirName = _.kebabCase(s).toLowerCase();
 
