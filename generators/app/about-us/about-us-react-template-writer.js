@@ -47,11 +47,6 @@ function write(generator) {
     generator.routerName = _.kebabCase(titleTextKebabCase)
         .toLowerCase();
 
-    generator.log('------------------------------------------------------------');
-    generator.log(`titleText=${generator.titleText}`);
-    generator.log(`enableTranslation=${generator.enableTranslation}`);
-    generator.log('------------------------------------------------------------');
-
     const reactComponentFilename = _.kebabCase(titleTextKebabCase)
         .toLowerCase();
     const moduleDirName = _.kebabCase(titleTextKebabCase)
