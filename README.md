@@ -1,4 +1,4 @@
-# Generate <code>\<Nav Element /></code>s With Ease !!!
+# Generate <code>\<Page /></code>s With Ease !!!
 [![NPM version][npm-image]][npm-url] 
 [![Dependency Status][daviddm-image]][daviddm-url] 
 [![Build Status][travis-image]][travis-url] 
