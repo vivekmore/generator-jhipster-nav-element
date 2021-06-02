@@ -33,7 +33,7 @@
     "axios": "0.21.1",
     "chalk": "4.1.0",
     "generator-jhipster": "7.0.1",
-    "kind-of": ">=6.0.3",
+    "kind-of": "6.0.3",
     "lodash": "4.17.21",
     "minimist": "1.2.5",
     "mkdirp": "1.0.4",
