@@ -18,8 +18,8 @@
     "url": "https://github.com/vivekmore"
   },
   "engines": {
-    "node": ">=12.18.3",
-    "npm": ">=6.13.4"
+    "node": ">=17.5.0",
+    "npm": ">=8.5.0"
   },
   "files": [
     "generators"
