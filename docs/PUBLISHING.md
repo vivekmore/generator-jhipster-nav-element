@@ -50,11 +50,11 @@
     git push origin develop
     ```
 
-8. Merge the tag to master (e.g. to merge a newly created v1.0.0 tag to master)
+8. Merge the tag to main (e.g. to merge a newly created v1.0.0 tag to main)
     ```bash
-    git co master
+    git co main
     git merge v1.0.0 --ff-only
-    git push origin master
+    git push origin main
     ```
 
 # Troubleshooting
