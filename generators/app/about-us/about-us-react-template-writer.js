@@ -105,8 +105,12 @@ function write(generator) {
 
 
     // GLOBAL JSON
-    generator.addTranslationKeyToAllLanguages(generator.translationKeyMenu,
-        generator.componentStartCase, 'addElementTranslationKey', generator.enableTranslation);
+    generator.addTranslationKeyToAllLanguages(
+        generator.translationKeyMenu,
+        generator.componentStartCase,
+        'addElementTranslationKey',
+        generator.enableTranslation
+    );
 
 
     // ENTRIES TO HEADER.TSX
@@ -123,8 +127,12 @@ function write(generator) {
 
 
     // TESTS
-    updateHeaderSpecTsx(generator, generator.componentPascalCase, iconName,
-        iconName);
+    updateHeaderSpecTsx(
+        generator,
+        generator.componentPascalCase,
+        iconName,
+        iconName
+    );
 }
 
 function updateHeaderTsx(generator, elementName) {
