@@ -35,13 +35,12 @@ function promptToChooseATemplate() {
 
 function promptTemplateSpecificQuestions() {
     switch (this.templateType) {
-    case constants.TEMPLATE_TYPE.DEFAULT:
-        askDefaultTemplateQuestions(this);
-        break;
     case constants.TEMPLATE_TYPE.NESTED_ROUTES:
         askNestedRoutesTemplateQuestions(this);
         break;
+    case constants.TEMPLATE_TYPE.DEFAULT:
     default:
+        askDefaultTemplateQuestions(this);
         break;
     }
 }

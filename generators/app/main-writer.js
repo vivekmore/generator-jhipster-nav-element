@@ -10,13 +10,12 @@ module.exports = {
 
 function writeTemplate(generator) {
     switch (generator.templateType) {
-    case constants.TEMPLATE_TYPE.DEFAULT:
-        writeDefaultTemplate(generator);
-        break;
     case constants.TEMPLATE_TYPE.NESTED_ROUTES:
         writeNestedRoutesTemplate(generator);
         break;
+    case constants.TEMPLATE_TYPE.DEFAULT:
     default:
+        writeDefaultTemplate(generator);
         break;
     }
 }
