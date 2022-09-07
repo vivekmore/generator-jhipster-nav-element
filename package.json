@@ -30,17 +30,17 @@
     "url": "git+https://github.com/vivekmore/generator-jhipster-nav-element.git"
   },
   "dependencies": {
-    "axios": "0.26.0",
+    "axios": "0.27.2",
     "chalk": "4.1.2",
-    "generator-jhipster": "7.2.0",
+    "generator-jhipster": "7.3.0",
     "kind-of": ">=6.0.3",
     "lodash": "4.17.21",
-    "minimist": "1.2.5",
+    "minimist": "1.2.6",
     "mkdirp": "1.0.4",
-    "semver": "7.3.5",
+    "semver": "7.3.7",
     "shelljs": "0.8.5",
     "tabtab": "3.0.2",
-    "yeoman-environment": "3.9.1"
+    "yeoman-environment": "3.10.0"
   },
   "devDependencies": {
     "coveralls": "3.1.1",
