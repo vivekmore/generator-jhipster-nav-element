@@ -48,6 +48,6 @@ module.exports = class extends BaseGenerator {
     }
 
     end() {
-        this.log('End of navigation element generation');
+        this.log(`\nThank you for using ${chalk.bold.yellow('JHipster Navigation Element')} generator! ${chalk.yellow(`v${packageJson.version}\n`)}`);
     }
 };
